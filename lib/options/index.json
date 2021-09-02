@@ -58,7 +58,7 @@
                                     "label": "postcodeSearchURL",
                                     "customClass": "d-none",
                                     "redrawOn": "postcodeSearch",
-                                    "calculateValue": "if(data.postcodeSearch!=='')\n{\n  value = 'https://api.getaddress.io/find/'+data.postcodeSearch+'?expand=true&sort=true&api-key=lLqXj80qN0myO3rkQi2aZg32445';\n}\nelse\n{\n  value = '';\n}",
+                                    "calculateValue": "if(data.postcodeSearch!=='')\n{\n  value = 'https://api.getaddress.io/find/'+data.postcodeSearch+'?expand=true&sort=true&api-key=';\n}\nelse\n{\n  value = '';\n}",
                                     "key": "postcodeSearchURL",
                                     "type": "hidden",
                                     "input": true,
