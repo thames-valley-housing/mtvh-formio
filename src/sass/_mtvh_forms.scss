@@ -1,0 +1,187 @@
+div.mtvh_formio{
+
+  /////////////////////////////// General Styling
+
+  font-family:Arial;
+  font-size: $font-size-base;
+  color:$body-color;
+
+  h1{
+    font-family: $headings-font-family;
+    font-weight: 600;
+    line-height: 1.1;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 1.2rem;
+    @include media-breakpoint-up(sm) {
+      padding-bottom: 2rem;
+    } 
+  }
+
+  /////////////////////////////// Component - General Styling
+
+  div.formio-component{
+    
+    margin-bottom:3rem;
+    @include media-breakpoint-up(sm) {
+      margin-bottom:4rem;
+    } 
+
+    &.formio-hidden{
+      margin-bottom:0;
+    }
+    
+    &.formio-component-button{
+      margin-bottom:0rem;
+    }
+
+    div.formio-component:last-child{
+      margin-bottom:0;
+    }
+
+    //Label
+    .col-form-label:not(.fileName):not(.fileSize){
+      font-family: $headings-font-family;
+      font-weight: $headings-font-weight;
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      padding: 0;
+      line-height:1.2;
+      @include media-breakpoint-up(sm) {
+        font-size: 1.6875rem;
+      } 
+      .optional-question{
+        display:block;
+        font-size: 1.2rem;
+        margin-top: 0.25rem;
+      }
+    }
+
+    //Description
+    .form-text{
+      margin: -6px 0 0.85rem 0;
+    }
+
+    //Sub Components
+    div.formio-component{
+      margin-bottom:1rem;
+      .col-form-label{
+        font-size:1.2rem;
+        @include media-breakpoint-up(sm) {
+          font-size: 1.3rem;
+        } 
+      }
+    }
+
+  }
+
+  /////////////////////////////// Form Control
+
+  .form-control{
+    font-size: $font-size-base;
+    border: 2px solid $form-line-color;
+    border-radius: 0;
+    
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: $form-placeholder;
+      //opacity:0.7;
+    }
+
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: $form-placeholder!important;
+      font-weight:400!important;
+      //opacity:0.7;
+    }
+
+    &::-ms-input-placeholder { /* Microsoft Edge */
+      color: $form-placeholder!important;
+      font-weight:400!important;
+      //opacity:0.7;
+    }
+
+    height:auto;
+    padding:0.75rem;
+    outline: none!important;
+    box-shadow:none !important;
+    &:focus{outline:none!important;border:2px solid $mtvh-blue !important;}
+
+  }
+
+  //For IE11 fix on inputs
+  input.form-control{
+    line-height: 1rem;
+  }
+
+  /////////////////////////////// Errors
+
+  //Remove mandatory question star *
+  .field-required:after{
+    content:'';
+  }
+
+  .formio-error-wrapper,.has-error {
+    color:$body-color!important;
+    background: none!important;
+    border:none;
+    border-left: 6px solid $mtvh-error!important;
+    padding:0!important;
+    padding-left:1rem!important;
+  }
+  .form-control.is-invalid{
+    border-color: $mtvh-error;
+  }
+  input.is-invalid + span::before{
+    border-color: $mtvh-error!important;
+  }
+  input.is-invalid + input.form-control{
+    border-color: $mtvh-error!important;
+  }
+  .form-text.error{
+    margin:0!important;
+    color: $mtvh-error!important;
+    font-weight:bold;
+    font-size:1rem!important;
+  }
+  .formio-errors.invalid-feedback{
+    margin-top:0.75rem!important;
+  }
+  //Extra error styling for custom checkboxes and radio
+  .formio-component-selectboxes,.formio-component-checkbox,.formio-component-radio{
+    .formio-errors.invalid-feedback{
+      margin-top:1rem!important;
+    }
+  }
+
+  /////////////////////////////// Width defaults and helper classes for non full width fields
+
+  @include media-breakpoint-up(sm) {
+  .formio-component-textfield, .formio-component-aSelectList, .formio-component-select2, .formio-component-aCalendarPicker, .formio-component-email, .formio-component-phoneNumber, .formio-component-number, .formio-component-password{
+      .form-control:not(.dropdown),.formio-choices, .input-group{
+        width:50%;
+      }
+      &.w100{
+        .form-control{
+          width:100%;
+        }
+      }
+      &.w75{
+        .form-control{
+          width:75%;
+        }
+      }
+      &.w25{
+        .form-control{
+          width:25%;
+        }
+      }
+    }
+    .formio-component-day{
+      .row{
+        width:350px;
+      }
+    }
+  }
+
+  /////////////////////////////// 
+
+}

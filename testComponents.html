@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Form.io Premium Components</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.form.io/formiojs/formio.full.min.css">
+  <link rel="stylesheet" href="dist/mtvh-formio.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div id="formio" class="mtvh_formio" style="padding:2rem 0;"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="https://cdn.form.io/formiojs/formio.full.js"></script>
+<script src="dist/mtvh-formio.js"></script>
+<script type="text/javascript">
+  Formio.use(FormioContrib);
+  var formElement = document.getElementById('formio');
+  fetch("https://forms.mtvh.digital/smmhyasyrzmiffg/templatealltheformelements")
+  .then(response => {
+    return response.json();
+  })
+  .then(data => Formio.createForm(formElement,data)
+  );
+ 
+</script>
+</body>
+</html>

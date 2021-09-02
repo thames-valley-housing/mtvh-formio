@@ -1,0 +1,204 @@
+div.mtvh_formio{
+
+  /////////////////////////////// Password
+
+  .formio-component-password{
+    .pull-right{
+      float:none!important;
+      margin-top: 0.75rem;
+      display: block;
+    }
+  }
+
+  /////////////////////////////// Custom Radio & Checkbox
+
+  .formio-component-selectboxes, .formio-component-radio, .formio-component-checkbox{
+
+    .form-radio.radio, .form-check.checkbox{
+      position:relative;
+      top:6px; 
+    }
+
+    .form-radio .form-check,.form-check.checkbox{
+      margin-bottom:1.5rem;
+      padding-left:52px;
+      min-height: 40px;
+      //padding-left: 2rem;
+
+      &:last-child{
+        margin-bottom:0;
+      }
+
+      @include media-breakpoint-up(sm) {
+        margin-bottom:1rem;
+        &:last-child{
+          margin-bottom:0;
+        }
+      }   
+
+      input{
+        //display:none;
+        opacity: 0;
+      }
+      label{
+        display:inline-block;
+        position: relative;
+        margin-top: 0;
+        margin-left: 0;
+      }
+
+      .form-check-input{
+        margin:0;
+      }
+
+      /*Adding focus styles on the outer-box of the fake checkbox*/
+      input[type="checkbox"]:focus + span::before, input[type="radio"]:focus + span::before {
+        outline:none!important;
+        border:2px solid $mtvh-blue !important;
+      }
+
+      input + span::before{
+        position:absolute;
+        display:inline-block;
+        border: 2px solid $form-line-color;
+        content: '';
+        margin-right:0px;
+        top:-6px;
+        left:-52px;
+        height: 40px;
+        width: 40px;
+      }
+
+      input:checked + span::after {
+        font: $fontAwesome;
+        position:absolute;
+        display:inline-block;
+        content: '';
+        border-width:0px;
+        background:$mtvh-primary;
+        top:-1px;
+        left:-47px;
+        height: 30px;
+        width: 30px;
+        text-align:center;
+        color:#fff;
+        padding-top:4px;
+      }
+      input[type="radio"] + span::before,input[type="radio"]:checked + span::after{
+        border-radius: 50%;
+      }
+      input[type="checkbox"]:checked + span::after{
+        content: '\f00c';
+      }
+    }
+
+  }
+
+  /////////////////////////////// Formio Select
+
+  .formio-choices{
+    div.form-control{
+      line-height: 1rem;
+      padding-top:1rem;
+      padding-bottom:1rem;
+    }
+    .choices__list{
+      .choices__placeholder{
+        color: $form-placeholder;
+        opacity:1;
+      }
+    }
+    .choices__list--single{
+      //padding: 5px 16px 5.5px 4px;
+      .choices__item.choices__item--selectable{
+        overflow: initial;
+      }
+    }
+    .choices__input,.choices__list--dropdown .choices__item{
+      font-size:$font-size-base;
+    }
+    .choices__list--dropdown{
+      border: 2px solid $form-line-color!important;
+      border-top: 1px solid $form-line-color!important;
+    }
+  }
+
+  /////////////////////////////// File upload component
+
+  .formio-component-file{
+    .list-group{
+      border-radius: 0;
+      border: 2px solid $form-line-color;
+    }
+
+    .list-group-item{
+      border:0;
+    }
+    .list-group-item:not(.list-group-header){
+      border-top: 1px solid $form-line-color;
+    }
+    
+    .fileSelector{
+      margin-top:1rem;
+      border: 2px dashed $form-line-color;
+      .bg-info{
+        background-color: $mtvh-blue-light;
+      }
+    }
+  }
+
+  /////////////////////////////// Editgrid
+
+  .formio-component-editgrid{
+    .list-group{
+      margin-bottom:1.5rem;
+      .list-group-item{
+        border:0;
+        border-bottom: 1px solid $form-line-color;
+      }
+      .list-group-header{
+        font-weight:bold;
+        border-bottom: 2px solid $form-line-color;
+      }
+    }
+  }
+
+  /////////////////////////////// Layouts
+  
+  .formio-component-fieldset{
+    fieldset legend{
+      //@extend h2;
+    }
+  }
+  .formio-component-tabs{
+    .card-header{
+      background: none;
+      border:0;
+      .nav-tabs{
+        .nav-item{
+          padding-bottom:0;
+          //border-bottom:0;
+          //margin-bottom:-1px;
+          z-index: 100;
+          &.active{
+            //background-color: #fff;
+            .nav-link{
+              //border-color:$line-color;
+              //border-bottom:0;           
+            }
+          }
+        }
+        .nav-link:hover, .nav-link:focus{
+          //border-color:$line-color;
+          //border-bottom:0;
+        }
+      }
+    }
+    .tab-pane{
+      border: 1px solid $line-color;
+    }
+  }
+
+  /////////////////////////////// 
+
+}

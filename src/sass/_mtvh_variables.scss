@@ -1,0 +1,38 @@
+//Colours
+//$mtvh-blue: #0099FF; 
+$mtvh-blue: #0098FE; //Changed to be accessible
+$mtvh-blue-light: #cdebfe;
+
+$mtvh-lime: #c8d434;
+$mtvh-lime-light: #f4f6d6;
+$mtvh-lime-light-dark: darken($mtvh-lime-light,15%);
+
+$mtvh-green:#6BA260; //Changed to be accessible
+
+$mtvh-grey: #545454;
+$mtvh-error: #dc3545;
+
+//Bootstrap Colours - Required
+$mtvh-primary: $mtvh-blue;
+$mtvh-primary-dark: darken($mtvh-blue,15%);
+$body-color: $mtvh-grey;
+$form-line-color: #ced4da;
+$line-color: #dee2e6;
+$form-placeholder: lighten($body-color, 20%);
+$link-color: #007ACC;
+
+//Fonts
+$font-size-base: 17px;
+$font-family-base: Nunito,Arial;
+$headings-font-family: Nunito;
+$headings-font-weight: 800;
+$fontAwesome: normal normal normal 20px/1 FontAwesome;
+
+//Grid
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1280px
+) !default;

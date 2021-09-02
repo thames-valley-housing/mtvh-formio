@@ -1,0 +1,8 @@
+<div class="row" id="{{ ctx.wizardKey }}-nav">
+  {% if (ctx.buttons.submit) { %}
+  <div class="col-md-12"><span><button class="btn btn-primary btn-wizard-nav-submit" ref="{{ctx.wizardKey}}-submit">{{ctx.t('submit')}}</button></span></div>
+  {% } %}
+  {% if (ctx.buttons.next) { %}
+  <div class="col-md-12"><span><button class="btn btn-primary btn-wizard-nav-next" ref="{{ctx.wizardKey}}-next">{{ctx.t('next')}}</button></span></div>
+  {% } %}
+</div>

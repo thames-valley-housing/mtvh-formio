@@ -1,0 +1,390 @@
+{
+    "builder": {
+        "builder": {
+            "custom": {
+                "title": "MTVH Fields",
+                "weight": 100,
+                "components": {
+                    "Address": {
+                        "title": "Address",
+                        "key": "mtvhAddress",
+                        "icon": "terminal",
+                        "schema": {
+                            "key": "fieldSet3",
+                            "type": "fieldset",
+                            "label": "Field Set",
+                            "input": false,
+                            "tableView": false,
+                            "components": [
+                                {
+                                    "label": "postcodeSearch",
+                                    "customClass": "d-none",
+                                    "key": "postcodeSearch",
+                                    "logic": [
+                                        {
+                                            "name": "postcodeSearch",
+                                            "trigger": {
+                                                "type": "event",
+                                                "event": "postcodeSearchSubmit"
+                                            },
+                                            "actions": [
+                                                {
+                                                    "name": "postcodeSearch",
+                                                    "type": "value",
+                                                    "value": "value = data.postCode;"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "postcodeSearchChange",
+                                            "trigger": {
+                                                "type": "event",
+                                                "event": "postcodeSearchChange"
+                                            },
+                                            "actions": [
+                                                {
+                                                    "name": "postcodeSearchChange",
+                                                    "type": "value",
+                                                    "value": "value = '';"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "type": "hidden",
+                                    "input": true,
+                                    "tableView": false
+                                },
+                                {
+                                    "label": "postcodeSearchURL",
+                                    "customClass": "d-none",
+                                    "redrawOn": "postcodeSearch",
+                                    "calculateValue": "if(data.postcodeSearch!=='')\n{\n  value = 'https://api.getaddress.io/find/'+data.postcodeSearch+'?expand=true&sort=true&api-key=lLqXj80qN0myO3rkQi2aZg32445';\n}\nelse\n{\n  value = '';\n}",
+                                    "key": "postcodeSearchURL",
+                                    "type": "hidden",
+                                    "input": true,
+                                    "tableView": false
+                                },
+                                {
+                                    "label": "postcodeManual",
+                                    "customClass": "d-none",
+                                    "key": "postcodeManual",
+                                    "logic": [
+                                        {
+                                            "name": "Set Value",
+                                            "trigger": {
+                                                "type": "event",
+                                                "event": "addressManual"
+                                            },
+                                            "actions": [
+                                                {
+                                                    "name": "Set Value",
+                                                    "type": "value",
+                                                    "value": "value = '1';"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "type": "hidden",
+                                    "input": true,
+                                    "tableView": false
+                                },
+                                {
+                                    "label": "Question Title",
+                                    "tag": "div",
+                                    "className": "col-form-label",
+                                    "attrs": [
+                                        {
+                                            "attr": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "content": "What is your address?",
+                                    "refreshOnChange": false,
+                                    "customClass": "mb-0",
+                                    "key": "html1",
+                                    "type": "htmlelement",
+                                    "input": false,
+                                    "tableView": false
+                                },
+                                {
+                                    "html": "<p>We need this information so that we can confirm you are an MTVH resident</p>",
+                                    "label": "Address description",
+                                    "customClass": "mb-1",
+                                    "refreshOnChange": false,
+                                    "key": "whatIsYourHomeAddress",
+                                    "type": "content",
+                                    "input": false,
+                                    "tableView": false
+                                },
+                                {
+                                    "customClass": "mb-0",
+                                    "key": "fieldSet",
+                                    "customConditional": "show = (data.postcodeSearch==='');",
+                                    "type": "fieldset",
+                                    "label": "",
+                                    "input": false,
+                                    "tableView": false,
+                                    "components": [
+                                        {
+                                            "label": "Postcode",
+                                            "tag": "h5",
+                                            "attrs": [
+                                                {
+                                                    "attr": "",
+                                                    "value": ""
+                                                }
+                                            ],
+                                            "content": "Postcode",
+                                            "refreshOnChange": false,
+                                            "customClass": "mb-0",
+                                            "key": "address1",
+                                            "type": "htmlelement",
+                                            "input": false,
+                                            "tableView": false
+                                        },
+                                        {
+                                            "label": "Postcode",
+                                            "customClass": "mb-3",
+                                            "hideLabel": true,
+                                            "tableView": true,
+                                            "case": "uppercase",
+                                            "clearOnHide": false,
+                                            "validateOn": "blur",
+                                            "validate": {
+                                                "required": true,
+                                                "pattern": "([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\\s?[0-9][A-Za-z]{2})",
+                                                "customMessage": "Enter a valid postcode",
+                                                "minLength": 5,
+                                                "maxLength": 8
+                                            },
+                                            "key": "postCode",
+                                            "type": "textfield",
+                                            "input": true
+                                        },
+                                        {
+                                            "label": "Find address",
+                                            "action": "event",
+                                            "showValidations": false,
+                                            "theme": "secondary",
+                                            "tableView": false,
+                                            "key": "findAddress",
+                                            "logic": [
+                                                {
+                                                    "name": "Disable",
+                                                    "trigger": {
+                                                        "type": "javascript",
+                                                        "javascript": "var postCode = utils.getComponent(instance.parent.components,'postCode');\nif(postCode.error===''||postCode.error===null){\n  result = false;\n}"
+                                                    },
+                                                    "actions": [
+                                                        {
+                                                            "name": "Disable",
+                                                            "type": "property",
+                                                            "property": {
+                                                                "label": "Disabled",
+                                                                "value": "disabled",
+                                                                "type": "boolean"
+                                                            },
+                                                            "state": true
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "type": "button",
+                                            "event": "postcodeSearchSubmit",
+                                            "input": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "customClass": "mb-0",
+                                    "key": "SelectAddressFieldSet",
+                                    "customConditional": "show = (data.postcodeManual === '' && data.postcodeSearchURL!=='');",
+                                    "type": "fieldset",
+                                    "label": "",
+                                    "input": false,
+                                    "tableView": false,
+                                    "components": [
+                                        {
+                                            "label": "postcodeSearchResultsCount",
+                                            "customClass": "d-none",
+                                            "defaultValue": "postcodeSearchResultsCount",
+                                            "redrawOn": "data",
+                                            "calculateValue": "var addressSelect = utils.getComponent(instance.parent.components,'addressSelect');\r\nconsole.log(addressSelect.selectOptions.length);\r\n//console.log(addressSelect);\r\nif(addressSelect.selectOptions){\r\n  addressSelect.description = addressSelect.selectOptions.length + ' results found';\r\n  value = addressSelect.selectOptions.length;\r\n}\r\nelse{\r\n  value = 0;\r\n}",
+                                            "key": "postcodeSearchResultsCount",
+                                            "type": "hidden",
+                                            "input": true,
+                                            "tableView": false
+                                        },
+                                        {
+                                            "label": "Postcode",
+                                            "tag": "h5",
+                                            "attrs": [
+                                                {
+                                                    "attr": "",
+                                                    "value": ""
+                                                }
+                                            ],
+                                            "content": "Postcode",
+                                            "refreshOnChange": false,
+                                            "customClass": "mb-0",
+                                            "key": "postcode",
+                                            "type": "htmlelement",
+                                            "input": false,
+                                            "tableView": false
+                                        },
+                                        {
+                                            "label": "Change {{data.postcodeSearch}}",
+                                            "action": "event",
+                                            "showValidations": false,
+                                            "theme": "secondary",
+                                            "tableView": false,
+                                            "key": "change",
+                                            "type": "button",
+                                            "event": "postcodeSearchChange",
+                                            "input": true
+                                        },
+                                        {
+                                            "label": "HTML",
+                                            "tag": "h5",
+                                            "attrs": [
+                                                {
+                                                    "attr": "",
+                                                    "value": ""
+                                                }
+                                            ],
+                                            "content": "Select address",
+                                            "refreshOnChange": false,
+                                            "customClass": "mt-4 mb-0",
+                                            "key": "html",
+                                            "type": "htmlelement",
+                                            "input": false,
+                                            "tableView": false
+                                        },
+                                        {
+                                            "label": "Result count",
+                                            "attrs": [
+                                                {
+                                                    "attr": "",
+                                                    "value": ""
+                                                }
+                                            ],
+                                            "content": "{{data.postcodeSearchResultsCount}} results found",
+                                            "refreshOnChange": true,
+                                            "customClass": "mb-1",
+                                            "key": "resultCount",
+                                            "customConditional": "show = (data.postcodeSearchResultsCount>0)",
+                                            "type": "htmlelement",
+                                            "input": false,
+                                            "tableView": false
+                                        },
+                                        {
+                                            "label": "HTML",
+                                            "attrs": [
+                                                {
+                                                    "attr": "",
+                                                    "value": ""
+                                                }
+                                            ],
+                                            "content": "0 results found",
+                                            "refreshOnChange": false,
+                                            "key": "html2",
+                                            "customConditional": "show = (data.postcodeSearchResultsCount===0||data.postcodeSearchResultsCount==='')",
+                                            "type": "htmlelement",
+                                            "input": false,
+                                            "tableView": false
+                                        },
+                                        {
+                                            "label": "Address Select",
+                                            "widget": "choicesjs",
+                                            "customClass": "mb-3",
+                                            "hideLabel": true,
+                                            "tableView": false,
+                                            "dataSrc": "url",
+                                            "data": {
+                                                "url": "{{data.postcodeSearchURL}}",
+                                                "headers": [
+                                                    {
+                                                        "key": "",
+                                                        "value": ""
+                                                    }
+                                                ]
+                                            },
+                                            "dataType": "auto",
+                                            "template": "<span>{{item.line_1}} {{item.line_2}} {{item.line_3}} {{item.line_4}} {{item.locality}} {{item.town_or_city}}</span>",
+                                            "searchEnabled": false,
+                                            "persistent": false,
+                                            "clearOnHide": false,
+                                            "calculateValue": "console.log(instance);",
+                                            "validate": {
+                                                "required": true,
+                                                "custom": "let mtvhEle = document.getElementById(instance.id);\r\nlet mList = mtvhEle.getElementsByClassName('choices__list'),\r\noptions = {\r\n  childList: true\r\n},\r\nobserver = new MutationObserver(mCallback);\r\nconsole.log(mList[2]);\r\nfunction mCallback(mutations) {\r\n  for (let mutation of mutations) {\r\n      console.log('Mutation Detected: A child node has been added or removed.');\r\n  }\r\n}\r\n\r\nobserver.observe(mList[2], options);\r\nvalid = true;"
+                                            },
+                                            "key": "addressSelect",
+                                            "type": "select",
+                                            "selectValues": "addresses",
+                                            "input": true,
+                                            "disableLimit": false,
+                                            "keyModified": true,
+                                            "lazyLoad": false,
+                                            "ignoreCache": true
+                                        },
+                                        {
+                                            "label": "I can't find my address in this list",
+                                            "action": "event",
+                                            "showValidations": false,
+                                            "theme": "secondary",
+                                            "tableView": false,
+                                            "key": "iCantFindMyAddressInThisList",
+                                            "type": "button",
+                                            "input": true,
+                                            "event": "addressManual"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "customClass": "mb-0",
+                                    "key": "ManualAddressFieldSet",
+                                    "customConditional": "show = (data.postcodeManual === '1');",
+                                    "type": "fieldset",
+                                    "label": "",
+                                    "input": false,
+                                    "tableView": false,
+                                    "components": [
+                                        {
+                                            "label": "Address Manual",
+                                            "autoExpand": false,
+                                            "hideLabel": true,
+                                            "tableView": true,
+                                            "clearOnHide": false,
+                                            "validate": {
+                                                "required": true,
+                                                "customMessage": "Enter an address"
+                                            },
+                                            "key": "addressManual",
+                                            "type": "textarea",
+                                            "input": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "label": "Address Formatted",
+                                    "customClass": "d-none",
+                                    "autocomplete": "off",
+                                    "tableView": true,
+                                    "clearOnHide": false,
+                                    "calculateValue": "if(data.postcodeManual !== '1' && data.addressSelect){\r\n  value = [data.addressSelect.line_1,data.addressSelect.line_2,data.addressSelect.line_3,\r\ndata.addressSelect.line_4,data.addressSelect.locality,data.addressSelect.town_or_city,data.addressSelect.county,data.addressSelect.district,data.addressSelect.country,data.postcodeSearch].filter(Boolean).join(', ');\r\n}\r\nelse if(data.postcodeManual === '1'){\r\n  value = data.addressManual.replace(/\\n/g, \", \");\r\n}",
+                                    "validate": {
+                                        "required": true
+                                    },
+                                    "key": "addressFormatted",
+                                    "type": "textfield",
+                                    "input": true
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

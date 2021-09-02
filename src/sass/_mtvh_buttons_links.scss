@@ -1,0 +1,60 @@
+div.mtvh_formio{
+
+  button.btn{
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-radius: 1.5rem;
+    border-width:2px;
+    &:not(.btn-sm){
+      display:block;
+      margin: 0 auto;
+      width:50%;
+      @include media-breakpoint-up(sm) {
+        display:inline-block;
+        width:auto; 
+        margin: 0;
+        min-width: 150px;
+      }
+    }
+    &.btn-sm{
+      font-weight:600;
+    }
+    &.btn-xs{
+      font-weight:600;
+      padding:0;
+      border:0!important;
+      color:$link-color!important;
+      text-decoration: underline!important;
+      background: none!important;
+      border: 0!important;
+      margin: 0!important;
+      width: auto!important;
+      &:hover{
+        color:darken($link-color,20%)!important;
+      }
+    }
+    &:hover{text-decoration: underline!important;}
+    &.btn-primary{
+      border-color:$mtvh-primary;
+      background:$mtvh-primary;
+      &:hover {
+        border-color:$mtvh-primary-dark;
+        background:$mtvh-primary-dark;
+      }
+    }
+
+    &.btn-secondary{
+      color: $mtvh-grey;
+      background-color: #fff;
+      border-color: $mtvh-grey;
+      &:hover {
+        border-color:darken($mtvh-grey,15%);
+        color:darken($mtvh-grey,15%);
+      }
+    }
+
+  }
+
+}

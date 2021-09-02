@@ -1,0 +1,18 @@
+<div class="{{ctx.className}}">
+  <div class="row">
+    <div class="col-md-12 col-lg-8">
+      <h1>{{ctx.panels[ctx.currentPage].title}}</h1> 
+    </div>
+  </div>  
+  <div class="row">
+    <div class="col-md-8">
+      <div class="wizard-page" ref="{{ctx.wizardKey}}">
+        {{ctx.components}}
+        {{ctx.wizardNav}}
+      </div>
+    </div>    
+    <div class="col-md-4">
+     {{ ctx.wizardHeader }}
+    </div>
+  </div>
+</div>
