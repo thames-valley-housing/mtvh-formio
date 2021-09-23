@@ -127,12 +127,13 @@ export default class mtvhAddress extends (Input as any) {
     var selectAddressResultsCnt = 0;
     var selectAddress = this.refs.selectAddress;
     selectAddress.options.length = 0;
+    selectAddress.options.add( new Option('Loading ...','') );
     var mtvhFormatAddress = this.mtvhFormatAddress;
 
     this.mtvhGetAddresses(this.refs.postCode.value.trim().toLowerCase()).then(function(result:any){
       selectAddressResultsCnt = result.addresses.length;
-      selectAddress.options.add( new Option('Loading ...','') );
 
+      selectAddress.options.length = 0;
       selectAddress.options.add( new Option(selectAddressResultsCnt+' results found','') );
       for(var i = 0, l = result.addresses.length; i < l; i++){
         var option = result.addresses[i];
@@ -142,6 +143,7 @@ export default class mtvhAddress extends (Input as any) {
       selectAddress.focus();
 
     }, function(error) {
+      selectAddress.options.length = 0;
       selectAddress.options.add( new Option('0 results found','') );
       console.log(error); //Need to do something with this.
     })
