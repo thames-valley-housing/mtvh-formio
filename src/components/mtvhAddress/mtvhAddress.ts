@@ -71,6 +71,7 @@ export default class mtvhAddress extends (Input as any) {
     this.addEventListener(this.refs.postCodeChange, 'click', () => {
       this.mtvhAddressReset(element);
       this.mtvhAddressResetData(element);
+      return false;
     });
 
     this.addEventListener(this.refs.findAddress, 'click', () => {
@@ -84,6 +85,7 @@ export default class mtvhAddress extends (Input as any) {
 
     this.addEventListener(this.refs.cantFindAddress, 'click', () => {
       this.mtvhAddressStage3(element);
+      return false;
     });
 
     this.addEventListener(this.refs.manualAddress, 'keyup', () => {
