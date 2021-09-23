@@ -1,3 +1,12 @@
+div.mtvh_formio a:not(.btn):not(.card) {
+  text-decoration: underline;
+  color: #007ACC;
+  font-weight: 600; }
+  div.mtvh_formio a:not(.btn):not(.card):visited {
+    color: #71599b; }
+  div.mtvh_formio a:not(.btn):not(.card):hover {
+    color: #000; }
+
 div.mtvh_formio button.btn {
   font-family: Nunito;
   font-weight: 800;
@@ -66,11 +75,9 @@ div.mtvh_formio {
         margin-bottom: 4rem; } }
     div.mtvh_formio div.formio-component.formio-hidden {
       margin-bottom: 0; }
-    div.mtvh_formio div.formio-component.formio-component-button {
+    div.mtvh_formio div.formio-component.formio-component-button, div.mtvh_formio div.formio-component.formio-component-form {
       margin-bottom: 0rem; }
-    div.mtvh_formio div.formio-component div.formio-component:last-child {
-      margin-bottom: 0; }
-    div.mtvh_formio div.formio-component .col-form-label:not(.fileName):not(.fileSize) {
+    div.mtvh_formio div.formio-component .col-form-label {
       font-family: Nunito;
       font-weight: 800;
       font-size: 1.4rem;
@@ -78,21 +85,23 @@ div.mtvh_formio {
       padding: 0;
       line-height: 1.2; }
       @media (min-width: 576px) {
-        div.mtvh_formio div.formio-component .col-form-label:not(.fileName):not(.fileSize) {
+        div.mtvh_formio div.formio-component .col-form-label {
           font-size: 1.6875rem; } }
-      div.mtvh_formio div.formio-component .col-form-label:not(.fileName):not(.fileSize) .optional-question {
+      div.mtvh_formio div.formio-component .col-form-label .optional-question {
         display: block;
         font-size: 1.2rem;
         margin-top: 0.25rem; }
     div.mtvh_formio div.formio-component .form-text {
       margin: -6px 0 0.85rem 0; }
-    div.mtvh_formio div.formio-component div.formio-component {
+    div.mtvh_formio div.formio-component div.formio-component-form div.formio-component {
       margin-bottom: 1rem; }
-      div.mtvh_formio div.formio-component div.formio-component .col-form-label {
+      div.mtvh_formio div.formio-component div.formio-component-form div.formio-component .col-form-label {
         font-size: 1.2rem; }
         @media (min-width: 576px) {
-          div.mtvh_formio div.formio-component div.formio-component .col-form-label {
+          div.mtvh_formio div.formio-component div.formio-component-form div.formio-component .col-form-label {
             font-size: 1.3rem; } }
+  div.mtvh_formio div.formio-component-form .formio-component:last-child {
+    margin-bottom: 0px !important; }
   div.mtvh_formio .form-control {
     font-size: 18px;
     border: 2px solid #ced4da;
@@ -268,6 +277,9 @@ div.mtvh_formio .formio-component-tabs .card-header {
 
 div.mtvh_formio .formio-component-tabs .tab-pane {
   border: 1px solid #dee2e6; }
+
+div.mtvh_formio .formio-component-mtvhAddress label.label-sm {
+  font-size: 1.4rem; }
 
 div.mtvh_formio nav {
   margin-top: 1.5rem;

@@ -1,0 +1,30 @@
+<div ref="element" class="mt-4">
+  <div ref="postCodeLabel">
+    <label ref="label" class="col-form-label label-sm" for="{{ctx.instance.id}}-{{ctx.component.key}}-postCode">
+      Postcode
+    </label>
+  </div>
+  <div ref="postCodeSection">
+    <input id="{{ctx.instance.id}}-{{ctx.component.key}}-postCode" value="" lang="en" class="form-control" type="text" style="text-transform: uppercase;" ref="postCode" maxlength="9">
+    <button lang="en" class="btn btn-secondary btn-md mt-3" type="button" ref="findAddress">Find address</button>
+  </div>
+  <div ref="selectAddressSection" style="display:none;">
+    <p><b class="pr-3" ref="postCodeSelected"></b> <a href="#" ref="postCodeChange">Change</a></p>
+    <label ref="label" class="col-form-label label-sm mt-3" for="{{ctx.instance.id}}-{{ctx.component.key}}-selectAddress">
+      Select address
+    </label>
+    <select lang="en" class="form-control mb-3" type="text" id="{{ctx.instance.id}}-{{ctx.component.key}}-selectAddress" ref="selectAddress">
+      <option value="" selected="selected"></option>
+      <option value="label"><span>label</span></option>
+      <option value="label2"><span>label2</span></option>
+    </select>
+    <a href="#" ref="cantFindAddress">I can't find my address in this list</a>
+  </div>
+  <div ref="manualAddressSection" style="display:none;">
+    <label ref="label" class="col-form-label d-none" for="{{ctx.instance.id}}-{{ctx.component.key}}-manualAddress">
+      Address
+    </label>
+    <textarea rows="3" spellcheck="true" lang="en" class="form-control" type="text" id="{{ctx.instance.id}}-{{ctx.component.key}}-manualAddress" ref="manualAddress"></textarea>
+  </div>
+  <input value="" spellcheck="true" lang="en" class="form-control" type="hidden" name="data[{{ctx.component.key}}]" ref="address">
+</div>

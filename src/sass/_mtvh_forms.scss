@@ -31,16 +31,13 @@ div.mtvh_formio{
       margin-bottom:0;
     }
     
-    &.formio-component-button{
+    &.formio-component-button,&.formio-component-form{
       margin-bottom:0rem;
     }
 
-    div.formio-component:last-child{
-      margin-bottom:0;
-    }
-
     //Label
-    .col-form-label:not(.fileName):not(.fileSize){
+    //.col-form-label:not(.fileName):not(.fileSize){
+    .col-form-label {
       font-family: $headings-font-family;
       font-weight: $headings-font-weight;
       font-size: 1.4rem;
@@ -63,7 +60,7 @@ div.mtvh_formio{
     }
 
     //Sub Components
-    div.formio-component{
+    div.formio-component-form div.formio-component{
       margin-bottom:1rem;
       .col-form-label{
         font-size:1.2rem;
@@ -73,6 +70,13 @@ div.mtvh_formio{
       }
     }
 
+  }
+
+  //Remove padding from last child
+  div.formio-component-form{
+    & .formio-component:last-child {
+        margin-bottom:0px!important;    
+    }
   }
 
   /////////////////////////////// Form Control

@@ -2,7 +2,7 @@
 //$mtvh-blue: #0099FF; 
 $mtvh-blue: #0098FE; //Changed to be accessible
 $mtvh-blue-light: #cdebfe;
-
+$mtvh-purple:#71599b;
 $mtvh-lime: #c8d434;
 $mtvh-lime-light: #f4f6d6;
 $mtvh-lime-light-dark: darken($mtvh-lime-light,15%);
@@ -20,6 +20,8 @@ $form-line-color: #ced4da;
 $line-color: #dee2e6;
 $form-placeholder: lighten($body-color, 20%);
 $link-color: #007ACC;
+$link-hover-color: #000;
+$link-visited-color: $mtvh-purple;
 
 //Fonts
 //$font-size-base: 17px;

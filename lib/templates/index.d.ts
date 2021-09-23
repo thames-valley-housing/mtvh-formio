@@ -16,6 +16,9 @@ declare const _default: {
         wizardHeader: {
             form: string;
         };
+        mtvhAddress: {
+            form: string;
+        };
     };
 };
 export default _default;

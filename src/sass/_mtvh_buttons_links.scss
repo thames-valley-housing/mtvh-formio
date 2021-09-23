@@ -1,5 +1,14 @@
 div.mtvh_formio{
 
+  //Standard links in main content area
+  a:not(.btn):not(.card) {
+    text-decoration: underline;
+    color:$link-color;
+    font-weight: 600;
+    &:visited{color:$link-visited-color;}
+    &:hover{color:$link-hover-color;}
+  }
+
   button.btn{
     font-family: $headings-font-family;
     font-weight: $headings-font-weight;
