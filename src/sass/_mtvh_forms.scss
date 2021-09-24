@@ -120,7 +120,8 @@ div.mtvh_formio{
 
   //Remove mandatory question star *
   .field-required:after{
-    content:'';
+    //content:'';
+    color:$mtvh-rose;
   }
 
   .formio-error-wrapper,.has-error {
@@ -158,7 +159,14 @@ div.mtvh_formio{
 
   /////////////////////////////// Width defaults and helper classes for non full width fields
 
+  .formio-component-mtvhAddress div#postCodeSection{
+    .form-control{
+      width:50%;
+    }
+  }
+
   @include media-breakpoint-up(sm) {
+
   .formio-component-textfield, .formio-component-aSelectList, .formio-component-select2, .formio-component-aCalendarPicker, .formio-component-email, .formio-component-phoneNumber, .formio-component-number, .formio-component-password{
       .form-control:not(.dropdown),.formio-choices, .input-group{
         width:50%;
@@ -182,6 +190,11 @@ div.mtvh_formio{
     .formio-component-day{
       .row{
         width:350px;
+      }
+    }
+    .formio-component-mtvhAddress div#postCodeSection{
+      .form-control{
+        width:25%;
       }
     }
   }

@@ -68,10 +68,10 @@ export default class mtvhAddress extends (Input as any) {
       this.mtvhValid(element,'postCode');
     });
 
-    this.addEventListener(this.refs.postCodeChange, 'click', () => {
+    this.addEventListener(this.refs.postCodeChange, 'click', (e) => {
       this.mtvhAddressReset(element);
       this.mtvhAddressResetData(element);
-      return false;
+      e.preventDefault();
     });
 
     this.addEventListener(this.refs.findAddress, 'click', () => {
@@ -83,9 +83,9 @@ export default class mtvhAddress extends (Input as any) {
       this.updateValue(this.refs.selectAddress.value);
     });
 
-    this.addEventListener(this.refs.cantFindAddress, 'click', () => {
+    this.addEventListener(this.refs.cantFindAddress, 'click', (e) => {
       this.mtvhAddressStage3(element);
-      return false;
+      e.preventDefault();
     });
 
     this.addEventListener(this.refs.manualAddress, 'keyup', () => {

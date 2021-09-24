@@ -58,6 +58,8 @@ div.mtvh_formio{
       color: $mtvh-grey;
       background-color: #fff;
       border-color: $mtvh-grey;
+      width:auto;
+      margin:0;
       &:hover {
         border-color:darken($mtvh-grey,15%);
         color:darken($mtvh-grey,15%);

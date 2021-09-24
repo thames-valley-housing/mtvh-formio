@@ -4,8 +4,8 @@
       Postcode
     </label>
   </div>
-  <div ref="postCodeSection">
-    <input id="{{ctx.instance.id}}-{{ctx.component.key}}-postCode" value="" lang="en" class="form-control" type="text" style="text-transform: uppercase;width:25%;" ref="postCode" maxlength="9">
+  <div ref="postCodeSection" id="postCodeSection">
+    <input id="{{ctx.instance.id}}-{{ctx.component.key}}-postCode" value="" lang="en" class="form-control" type="text" style="text-transform: uppercase;" ref="postCode" maxlength="9">
     <button lang="en" class="btn btn-secondary btn-md mt-3" type="button" ref="findAddress">Find address</button>
   </div>
   <div ref="selectAddressSection" style="display:none;">
