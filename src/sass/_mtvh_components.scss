@@ -203,7 +203,10 @@ div.mtvh_formio{
 
   .formio-component-mtvhAddress{
     label.label-sm{
-      font-size:1.4rem;
+      font-size: 1.175rem;
+      @include media-breakpoint-up(sm) {
+        font-size:1.4rem;
+      }   
     }
   }
 
