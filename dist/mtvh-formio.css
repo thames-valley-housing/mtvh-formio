@@ -252,12 +252,15 @@ div.mtvh_formio .formio-choices .choices__list--dropdown {
 
 div.mtvh_formio .formio-component-file .list-group {
   border-radius: 0;
-  border: 2px solid #ced4da;
-  display: none; }
+  border: 2px solid #ced4da; }
+
+@media (max-width: 767.98px) {
+  div.mtvh_formio .formio-component-file .list-group-header .col-md-1 {
+    display: none; } }
 
 div.mtvh_formio .formio-component-file .list-group-item {
   border: 0;
-  padding: 0.75rem 1.25rem; }
+  padding: 0.75rem 1.25rem !important; }
 
 div.mtvh_formio .formio-component-file .list-group-item:not(.list-group-header) {
   border-top: 1px solid #ced4da; }

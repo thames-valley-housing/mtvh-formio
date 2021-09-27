@@ -129,12 +129,17 @@ div.mtvh_formio{
     .list-group{
       border-radius: 0;
       border: 2px solid $form-line-color;
-      display:none;
     }
+
+    @include media-breakpoint-down(sm) {
+      .list-group-header .col-md-1{
+        display:none;
+      }
+    }  
 
     .list-group-item{
       border:0;
-      padding: 0.75rem 1.25rem;
+      padding: 0.75rem 1.25rem!important;
     }
     .list-group-item:not(.list-group-header){
       border-top: 1px solid $form-line-color;
