@@ -84,7 +84,8 @@ div.mtvh_formio {
       font-weight: 800;
       font-size: 1.4rem;
       margin-bottom: 0.75rem;
-      padding: 0;
+      padding-top: 0;
+      padding-bottom: 0;
       line-height: 1.2; }
       @media (min-width: 576px) {
         div.mtvh_formio div.formio-component .col-form-label {
@@ -251,19 +252,29 @@ div.mtvh_formio .formio-choices .choices__list--dropdown {
 
 div.mtvh_formio .formio-component-file .list-group {
   border-radius: 0;
-  border: 2px solid #ced4da; }
+  border: 2px solid #ced4da;
+  display: none; }
 
 div.mtvh_formio .formio-component-file .list-group-item {
-  border: 0; }
+  border: 0;
+  padding: 0.75rem 1.25rem; }
 
 div.mtvh_formio .formio-component-file .list-group-item:not(.list-group-header) {
   border-top: 1px solid #ced4da; }
 
 div.mtvh_formio .formio-component-file .fileSelector {
   margin-top: 1rem;
+  padding: 3rem 1.5rem;
   border: 2px dashed #ced4da; }
-  div.mtvh_formio .formio-component-file .fileSelector .bg-info {
-    background-color: #cdebfe; }
+
+div.mtvh_formio .formio-component-file .file {
+  margin-top: 1rem; }
+  div.mtvh_formio .formio-component-file .file .row .col-form-label {
+    font-weight: 600;
+    font-size: 18px; }
+  div.mtvh_formio .formio-component-file .file .bg-info {
+    background-color: #cdebfe !important;
+    padding: 15px; }
 
 div.mtvh_formio .formio-component-editgrid .list-group {
   margin-bottom: 1.5rem; }
@@ -285,7 +296,10 @@ div.mtvh_formio .formio-component-tabs .tab-pane {
   border: 1px solid #dee2e6; }
 
 div.mtvh_formio .formio-component-mtvhAddress label.label-sm {
-  font-size: 1.4rem; }
+  font-size: 1.175rem; }
+  @media (min-width: 576px) {
+    div.mtvh_formio .formio-component-mtvhAddress label.label-sm {
+      font-size: 1.4rem; } }
 
 div.mtvh_formio nav {
   margin-top: 1.5rem;

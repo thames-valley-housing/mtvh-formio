@@ -129,10 +129,12 @@ div.mtvh_formio{
     .list-group{
       border-radius: 0;
       border: 2px solid $form-line-color;
+      display:none;
     }
 
     .list-group-item{
       border:0;
+      padding: 0.75rem 1.25rem;
     }
     .list-group-item:not(.list-group-header){
       border-top: 1px solid $form-line-color;
@@ -140,11 +142,23 @@ div.mtvh_formio{
     
     .fileSelector{
       margin-top:1rem;
+      padding: 3rem 1.5rem;
       border: 2px dashed $form-line-color;
+    }
+    .file{
+      margin-top:1rem;
+      .row{
+        .col-form-label{
+          font-weight:600;
+          font-size:$font-size-base;
+        }
+      }
       .bg-info{
-        background-color: $mtvh-blue-light;
+        background-color: $mtvh-blue-light!important;
+        padding: 15px;
       }
     }
+
   }
 
   /////////////////////////////// Editgrid

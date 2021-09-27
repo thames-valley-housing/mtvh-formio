@@ -42,7 +42,8 @@ div.mtvh_formio{
       font-weight: $headings-font-weight;
       font-size: 1.4rem;
       margin-bottom: 0.75rem;
-      padding: 0;
+      padding-top: 0;
+      padding-bottom: 0;
       line-height:1.2;
       @include media-breakpoint-up(sm) {
         font-size: 1.6875rem;
