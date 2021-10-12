@@ -2,9 +2,11 @@ div.mtvh_formio{
 
   /////////////////////////////// General Styling
 
-  font-family:$font-family-base;
-  font-size: $font-size-base;
-  color:$body-color;
+  &,label{
+    font-family:$font-family-base;
+    font-size: $font-size-base;
+    color:$body-color;
+  }
 
   h1{
     font-family: $headings-font-family;
