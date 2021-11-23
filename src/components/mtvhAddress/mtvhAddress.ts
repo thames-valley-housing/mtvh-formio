@@ -224,9 +224,12 @@ export default class mtvhAddress extends (Input as any) {
       return super.normalizeValue(value, flags);
   }
 
+  /*
+  //Removed as discovered issues when nested. No impact.
   getValue() {
       return this.refs.address.value;
   }
+  */
 
   getValueAt(index) {
       return super.getValueAt(index);
@@ -240,10 +243,13 @@ export default class mtvhAddress extends (Input as any) {
       return super.setValueAt(index, value, flags);
   }
 
+  /*
+  //Removed as discovered issues when nested. No impact.
   updateValue(value, flags = {}) {
     this.refs.address.value = value;
     return super.updateValue();
   }
+  */
 
   /*
   get defaultSchema() {

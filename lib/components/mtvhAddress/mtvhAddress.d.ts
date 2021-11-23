@@ -28,10 +28,8 @@ export default class mtvhAddress extends mtvhAddress_base {
     detach(): any;
     destroy(): any;
     normalizeValue(value: any, flags?: {}): any;
-    getValue(): any;
     getValueAt(index: any): any;
     setValue(value: any, flags?: {}): any;
     setValueAt(index: any, value: any, flags?: {}): any;
-    updateValue(value: any, flags?: {}): any;
 }
 export {};
