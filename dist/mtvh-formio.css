@@ -73,7 +73,18 @@
       padding-bottom: 2rem; } }
 
 .formio-form div.formio-component {
-  margin-bottom: 3rem; }
+  margin-bottom: 3rem;
+  /*
+    div.formio-component-form div.formio-component{
+      margin-bottom:1rem;
+      .col-form-label{
+        font-size:1.2rem;
+        @include media-breakpoint-up(sm) {
+          font-size: 1.3rem;
+        } 
+      }
+    }
+    */ }
   @media (min-width: 576px) {
     .formio-form div.formio-component {
       margin-bottom: 4rem; } }
@@ -98,13 +109,6 @@
       margin-top: 0.25rem; }
   .formio-form div.formio-component .form-text {
     margin: -6px 0 0.85rem 0; }
-  .formio-form div.formio-component div.formio-component-form div.formio-component {
-    margin-bottom: 1rem; }
-    .formio-form div.formio-component div.formio-component-form div.formio-component .col-form-label {
-      font-size: 1.2rem; }
-      @media (min-width: 576px) {
-        .formio-form div.formio-component div.formio-component-form div.formio-component .col-form-label {
-          font-size: 1.3rem; } }
 
 .formio-form div.formio-component-form .formio-component:last-child {
   margin-bottom: 0px !important; }

@@ -18,6 +18,7 @@ declare const _default: {
         };
         mtvhAddress: {
             form: string;
+            html: string;
         };
     };
 };

@@ -1,5 +1,4 @@
 import { Components } from 'formiojs';
-import { callbackify } from 'util';
 const Input = (Components as any).components.field;
 import editForm from './mtvhAddress.form';
 
@@ -213,26 +212,29 @@ export default class mtvhAddress extends (Input as any) {
   }
 
   detach() {
-      return super.detach();
+    return super.detach();
   }
 
   destroy() {
-      return super.destroy();
+    return super.destroy();
   }
 
   normalizeValue(value, flags = {}) {
-      return super.normalizeValue(value, flags);
+    return super.normalizeValue(value, flags);
   }
 
-  /*
-  //Removed as discovered issues when nested. No impact.
+  
+  //Required for display of values in readonly mode - Issues with nested forms
+  
   getValue() {
+    if(this.refs.address){
       return this.refs.address.value;
+    }
   }
-  */
+  
 
   getValueAt(index) {
-      return super.getValueAt(index);
+    return super.getValueAt(index);
   }
 
   setValue(value, flags = {}) {
@@ -240,16 +242,19 @@ export default class mtvhAddress extends (Input as any) {
   }
 
   setValueAt(index, value, flags = {}) {
-      return super.setValueAt(index, value, flags);
+    return super.setValueAt(index, value, flags);
   }
 
-  /*
-  //Removed as discovered issues when nested. No impact.
+  //Required for display of values in readonly mode - Issues with nested forms
+  
   updateValue(value, flags = {}) {
-    this.refs.address.value = value;
+    if(this.refs.address){
+      this.refs.address.value = value;
+    }
     return super.updateValue();
   }
-  */
+  
+
 
   /*
   get defaultSchema() {

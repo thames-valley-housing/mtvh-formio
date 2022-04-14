@@ -32,6 +32,7 @@
 <div class="row mt-4">
   <div class="col-sm-8 offset-sm-2">
     <h3 class="text-center text-muted">which creates a Submission JSON</h3>
+    <div id="formioHTML" class="card card-body bg-light"></div>
     <div class="card card-body bg-light jsonviewer">
       <pre id="subjson"></pre>
     </div>
@@ -43,15 +44,23 @@
 <script type="text/javascript">
   var jsonElement = document.getElementById('json');
   var formElement = document.getElementById('formio');
+  var formHTMLElement = document.getElementById('formioHTML');
   var subJSON = document.getElementById('subjson');
   var builder = new Formio.FormBuilder(document.getElementById("builder"));
 
   var onForm = function(form) {
     form.on('change', function() {
       subJSON.innerHTML = '';
+      theSubmission = form.submission;
       subJSON.appendChild(document.createTextNode(JSON.stringify(form.submission, null, 4)));
     });
+    form.on('submit', function() {
+      console.log(form.submission);
+      Formio.createForm(formHTMLElement, builder.instance.form, {readOnly: true}).then(function(formHTML){formHTML.submission = form.submission;});
+    });
   };
+
+
 
   var onBuild = function(build) {
     jsonElement.innerHTML = '';
@@ -81,3 +90,4 @@
 </script>
 </body>
 </html>
+
