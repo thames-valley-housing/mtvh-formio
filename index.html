@@ -65,7 +65,7 @@
   var onBuild = function(build) {
     jsonElement.innerHTML = '';
     formElement.innerHTML = '';
-    jsonElement.appendChild(document.createTextNode(JSON.stringify(builder.instance.schema, null, 4)));
+    jsonElement.appendChild(document.createTextNode(JSON.stringify(builder.instance.schema, null, 4).replace(/\s+/g, ' ').trim()));
     Formio.createForm(formElement, builder.instance.form).then(onForm);
   };
 

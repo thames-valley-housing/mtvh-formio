@@ -17,14 +17,16 @@
     border-radius: 1.5rem;
     border-width:2px;
     &:not(.btn-sm){
-      display:block;
-      margin: 0 auto;
-      width:50%;
+      //display:block;
+      display:inline-block;
+      //margin: 0 auto;
+      //width:50%;
+      min-width: 150px;
       @include media-breakpoint-up(sm) {
-        display:inline-block;
-        width:auto; 
-        margin: 0;
-        min-width: 150px;
+        //display:inline-block;
+        //width:auto; 
+        //margin: 0;
+        //min-width: 150px;
       }
     }
     &.btn-sm{

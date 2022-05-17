@@ -14,7 +14,9 @@
       </div>
     </div>    
     <div class="col-md-4">
-     {{ ctx.wizardHeader }}
+      {% if (ctx.panels[ctx.currentPage].breadcrumb !== 'none') { %}
+        {{ ctx.wizardHeader }}
+      {% } %}
     </div>
   </div>
 </div>

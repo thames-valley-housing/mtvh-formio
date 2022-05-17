@@ -15,15 +15,8 @@
   border-radius: 1.5rem;
   border-width: 2px; }
   .formio-form button.btn:not(.btn-sm) {
-    display: block;
-    margin: 0 auto;
-    width: 50%; }
-    @media (min-width: 576px) {
-      .formio-form button.btn:not(.btn-sm) {
-        display: inline-block;
-        width: auto;
-        margin: 0;
-        min-width: 150px; } }
+    display: inline-block;
+    min-width: 150px; }
   .formio-form button.btn.btn-sm {
     font-weight: 600; }
   .formio-form button.btn.btn-xs {
@@ -71,6 +64,9 @@
   @media (min-width: 576px) {
     .formio-form h1 {
       padding-bottom: 2rem; } }
+
+.formio-form .mtvh-none {
+  display: none; }
 
 .formio-form div.formio-component {
   margin-bottom: 3rem;
@@ -328,7 +324,7 @@
   border-radius: 0;
   border: 0;
   background: #f4f6d6; }
-  @media (min-width: 576px) {
+  @media (min-width: 768px) {
     .formio-form nav {
       margin-top: 0; } }
   .formio-form nav h5 {
@@ -385,3 +381,12 @@
     .formio-form nav ul.mtvh-ul li:last-child {
       border-left: 2px solid rgba(255, 0, 0, 0);
       padding-bottom: 0; }
+
+/* Wizard buttons - e.g cancel, previous, next, submit */
+.formio-wizard-nav-container {
+  flex-direction: row; }
+  .formio-wizard-nav-container li {
+    margin-right: 0.5rem; }
+    .formio-wizard-nav-container li .btn {
+      width: auto;
+      margin-bottom: auto; }

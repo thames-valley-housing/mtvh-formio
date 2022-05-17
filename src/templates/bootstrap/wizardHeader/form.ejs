@@ -4,9 +4,11 @@
     <div class="card-text">
       <ul class="mtvh-ul">
         {% ctx.panels.forEach(function(panel, index) { %}
-        <li class="page-item{{ctx.currentPage === index ? ' active' : ''}}" style="cursor: pointer;">
-          <span ref="{{ctx.wizardKey}}-link">{{ctx.t(panel.title)}}</span>
-        </li>
+          {% if (panel.breadcrumb !== 'none') { %}
+            <li class="page-item{{ctx.currentPage === index ? ' active' : ''}}" style="cursor: pointer;">
+              <span ref="{{ctx.wizardKey}}-link">{{ctx.t(panel.title)}}</span>
+            </li>
+          {% } %}
         {% }) %}
       </ul>
     </div>

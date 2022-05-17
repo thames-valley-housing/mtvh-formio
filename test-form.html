@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Form.io Premium Components</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.form.io/formiojs/formio.full.min.css">
+  <link rel="stylesheet" href="dist/mtvh-formio.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
+        <div id="formio"></div>
+      </div>
+    </div>
+  <div>
+<script src="https://cdn.form.io/formiojs/formio.full.js"></script>
+<script src="dist/mtvh-formio.use.min.js"></script>
+<script type="text/javascript">
+  var formElement = document.getElementById('formio');
+  Formio.createForm(formElement,{ "display": "wizard", "components": [ { "title": "Page 1", "label": "Page 1", "type": "panel", "key": "page1", "components": [ { "label": "Text Field", "tableView": true, "key": "textField", "type": "textfield", "input": true }, { "label": "Text Area", "autoExpand": false, "tableView": true, "key": "textArea", "type": "textarea", "input": true } ], "input": false, "tableView": false }, { "title": "Page 2", "label": "Page 2", "type": "panel", "key": "page2", "components": [ { "label": "Text Field", "tableView": true, "key": "textField1", "type": "textfield", "input": true } ], "input": false, "tableView": false } ] })
+</script>
+</body>
+</html>
+

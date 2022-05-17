@@ -3,7 +3,7 @@
 MTVH custom Form.io templates, components and styling for MTVH websites:
 
 This library is dependant on:
-- Formio JS v4.13.5 
+- Formio JS v4.14.1 
 - Bootstrap 4.*
 
 ## Installation
