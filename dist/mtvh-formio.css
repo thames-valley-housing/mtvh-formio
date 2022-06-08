@@ -50,7 +50,7 @@
       color: #2e2e2e; }
 
 .formio-form, .formio-form label {
-  font-family: Nunito, Arial;
+  font-family: Arial;
   font-size: 18px;
   color: #545454; }
 
@@ -102,7 +102,9 @@
     .formio-form div.formio-component .col-form-label .optional-question {
       display: block;
       font-size: 1.2rem;
-      margin-top: 0.25rem; }
+      margin-top: 0.25rem;
+      font-family: Arial;
+      font-weight: 400; }
   .formio-form div.formio-component .form-text {
     margin: -6px 0 0.85rem 0; }
 
@@ -168,7 +170,7 @@
   margin-top: 1rem !important; }
 
 .formio-form .formio-component-mtvhAddress div#postCodeSection .form-control {
-  width: 50%; }
+  width: 140px; }
 
 @media (min-width: 576px) {
   .formio-form .formio-component-textfield .form-control:not(.dropdown), .formio-form .formio-component-textfield .formio-choices, .formio-form .formio-component-textfield .input-group, .formio-form .formio-component-aSelectList .form-control:not(.dropdown), .formio-form .formio-component-aSelectList .formio-choices, .formio-form .formio-component-aSelectList .input-group, .formio-form .formio-component-select2 .form-control:not(.dropdown), .formio-form .formio-component-select2 .formio-choices, .formio-form .formio-component-select2 .input-group, .formio-form .formio-component-aCalendarPicker .form-control:not(.dropdown), .formio-form .formio-component-aCalendarPicker .formio-choices, .formio-form .formio-component-aCalendarPicker .input-group, .formio-form .formio-component-email .form-control:not(.dropdown), .formio-form .formio-component-email .formio-choices, .formio-form .formio-component-email .input-group, .formio-form .formio-component-phoneNumber .form-control:not(.dropdown), .formio-form .formio-component-phoneNumber .formio-choices, .formio-form .formio-component-phoneNumber .input-group, .formio-form .formio-component-number .form-control:not(.dropdown), .formio-form .formio-component-number .formio-choices, .formio-form .formio-component-number .input-group, .formio-form .formio-component-password .form-control:not(.dropdown), .formio-form .formio-component-password .formio-choices, .formio-form .formio-component-password .input-group {
@@ -180,9 +182,7 @@
   .formio-form .formio-component-textfield.w25 .form-control, .formio-form .formio-component-aSelectList.w25 .form-control, .formio-form .formio-component-select2.w25 .form-control, .formio-form .formio-component-aCalendarPicker.w25 .form-control, .formio-form .formio-component-email.w25 .form-control, .formio-form .formio-component-phoneNumber.w25 .form-control, .formio-form .formio-component-number.w25 .form-control, .formio-form .formio-component-password.w25 .form-control {
     width: 25%; }
   .formio-form .formio-component-day .row {
-    width: 350px; }
-  .formio-form .formio-component-mtvhAddress div#postCodeSection .form-control {
-    width: 25%; } }
+    width: 370px; } }
 
 .formio-form .formio-component-password .pull-right {
   float: none !important;

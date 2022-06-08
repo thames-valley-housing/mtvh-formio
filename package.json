@@ -1,6 +1,6 @@
 {
   "name": "@mtvh/mtvh-formio",
-  "version": "1.0.28",
+  "version": "1.0.31",
   "description": "MTVH custom templates, components and styling for Form.io",
   "module": "node",
   "scripts": {

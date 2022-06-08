@@ -15,6 +15,7 @@ export default class mtvhAddress extends mtvhAddress_base {
     get inputInfo(): any;
     render(): any;
     attach(element: any): any;
+    mtvhAddressInitiate(element: any): void;
     mtvhAddressReset(element: any): void;
     mtvhAddressResetData(element: any): void;
     mtvhAddressStage1(element: any, postCode: any): void;

@@ -1,7 +1,7 @@
 {% if (ctx.readOnly === true) { %}
 <input value="{% if (ctx.value) { %}{{ctx.value}}{% } else { %}{% } %}" spellcheck="true" lang="en" class="form-control" type="input" name="data[{{ctx.component.key}}]" ref="address" readonly>
 {% } else { %}
-<div ref="element" class="mt-4">
+<div ref="element">
   <div ref="postCodeLabel">
     <label ref="label" class="col-form-label label-sm" for="{{ctx.instance.id}}-{{ctx.component.key}}-postCode">
       Postcode
@@ -12,7 +12,7 @@
     <button lang="en" class="btn btn-secondary btn-md mt-3" type="button" ref="findAddress">Find address</button>
   </div>
   <div ref="selectAddressSection" style="display:none;">
-    <p><b class="pr-3" ref="postCodeSelected"></b> <a href="#" ref="postCodeChange">Change</a></p>
+    <p><span style="font-weight:bold" class="pr-3" ref="postCodeSelected"></span> <a href="#" ref="postCodeChange">Change</a></p>
     <label ref="label" class="col-form-label label-sm mt-3" for="{{ctx.instance.id}}-{{ctx.component.key}}-selectAddress">
       Select address
     </label>
@@ -29,6 +29,9 @@
     </label>
     <textarea rows="3" spellcheck="true" lang="en" class="form-control" type="text" id="{{ctx.instance.id}}-{{ctx.component.key}}-manualAddress" ref="manualAddress"></textarea>
   </div>
-  <input value="" spellcheck="true" lang="en" class="form-control" type="hidden" name="data[{{ctx.component.key}}]" ref="address">
+  <div ref="readonlyAddressSection" style="display:none;">
+    <p><span style="font-weight:bold" class="pr-3" ref="readonlyAddress"></span><br><a href="#" ref="readonlyAddressChange">Change</a></p>
+  </div>
+  <input value="{% if (ctx.value) { %}{{ctx.value}}{% } else { %}{% } %}" spellcheck="true" lang="en" class="form-control" type="hidden" name="data[{{ctx.component.key}}]" ref="address">
 </div>
 {% } %}

@@ -60,11 +60,13 @@ export default class mtvhAddress extends (Input as any) {
       selectAddress: 'single',
       cantFindAddress: 'single',
       manualAddressSection: 'single',
-      manualAddress: 'single'
+      manualAddress: 'single',
+      readonlyAddressSection: 'single',
+      readonlyAddress: 'single',
+      readonlyAddressChange: 'single'
     });
   
     this.addEventListener(this.refs.postCode, 'focus', () => {
-      this.mtvhValid(element,'postCode');
     });
 
     this.addEventListener(this.refs.postCodeChange, 'click', (e) => {
@@ -87,26 +89,51 @@ export default class mtvhAddress extends (Input as any) {
       e.preventDefault();
     });
 
+    this.addEventListener(this.refs.readonlyAddressChange, 'click', (e) => {
+      this.updateValue('');
+      this.mtvhAddressReset(element);
+      this.mtvhAddressResetData(element);
+      this.refs.postCode.focus();
+      e.preventDefault();
+    });    
+
     this.addEventListener(this.refs.manualAddress, 'keyup', () => {
       this.updateValue(this.refs.manualAddress.value.replace(/(?:\r\n|\r|\n)/g, ', '));
     });
+
+    this.mtvhAddressInitiate(element);
 
     return super.attach(element);
   }
 
   /////////////////////////////////////// Steps
 
+  mtvhAddressInitiate(element){
+    var cvar = this.getValue();
+    if(cvar!=='' && cvar !==null){
+      this.refs.postCodeSection.style.display = 'none';
+      this.refs.postCodeLabel.style.display = 'none';
+      this.refs.selectAddressSection.style.display = 'none';
+      this.refs.manualAddressSection.style.display = 'none';
+      this.refs.readonlyAddress.innerHTML = cvar;
+      this.refs.readonlyAddressSection.style.display = 'block';
+    }
+  }
+
   mtvhAddressReset(element){
     this.refs.postCode.value = '';
     this.mtvhValid(element,'postCode');
     this.refs.postCodeSection.style.display = 'block';
+    this.refs.postCodeLabel.style.display = 'block';
     this.refs.selectAddressSection.style.display = 'none';
-    this.refs.postCode.focus();
+    this.refs.manualAddressSection.style.display = 'none';
+    this.refs.readonlyAddressSection.style.display = 'none';
   }
 
   mtvhAddressResetData(element){
     this.refs.postCode.value = '';
     this.refs.postCodeSelected.innerHTML = '';
+    this.refs.readonlyAddress.innerHTML = '';
     //this.refs.selectAddressResults.innerHTML = '0';
     this.refs.selectAddress.options.length = 0;
     this.updateValue('');
@@ -114,6 +141,9 @@ export default class mtvhAddress extends (Input as any) {
 
   mtvhAddressStage1(element,postCode){
     if(this.mtvhValidatePostcode(postCode)==true){
+      if(this.refs.messageContainer.innerHTML == '<div class="form-text error">Enter a valid postcode</div>'){
+        this.mtvhValid(element,'postCode');
+      }
       this.mtvhAddressStage2(element)
     }
     else{
@@ -195,14 +225,14 @@ export default class mtvhAddress extends (Input as any) {
   mtvhInvalid(element,field,error){
     element.classList.add("has-error");
     this.refs[field].classList.add("is-invalid");
-    this.refs.messageContainer.style.display = 'block';
+    //this.refs.messageContainer.style.display = 'block';
     this.refs.messageContainer.innerHTML = '<div class="form-text error">'+error+'</div>';
   }
   
   mtvhValid(element,field){
     element.classList.remove("has-error");
     this.refs[field].classList.remove("is-invalid");
-    this.refs.messageContainer.style.display = 'none';
+    //this.refs.messageContainer.style.display = 'none';
     this.refs.messageContainer.innerHTML = '';
   }
 
@@ -231,7 +261,6 @@ export default class mtvhAddress extends (Input as any) {
       return this.refs.address.value;
     }
   }
-  
 
   getValueAt(index) {
     return super.getValueAt(index);
