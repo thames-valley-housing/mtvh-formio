@@ -47,24 +47,39 @@
       }
     }
     &:hover{text-decoration: underline!important;}
+    &:focus{
+      border-color:#000;
+      outline: 3px solid $mtvh-focus;
+      outline-offset: 0;
+    }
     &.btn-primary{
-      border-color:$mtvh-primary;
-      background:$mtvh-primary;
+      border-color:$mtvh-link-default;
+      background:$mtvh-link-default;
       &:hover {
-        border-color:$mtvh-primary-dark;
-        background:$mtvh-primary-dark;
+        border-color:$mtvh-link-hover;
+        background:$mtvh-link-hover;
+      }
+      &:active {
+        border-color:$mtvh-link-click;
+        background:$mtvh-link-click;
       }
     }
 
     &.btn-secondary{
-      color: $mtvh-grey;
+      color: $body-color;
       background-color: #fff;
-      border-color: $mtvh-grey;
+      border-color: $body-color;
       width:auto;
       margin:0;
       &:hover {
-        border-color:darken($mtvh-grey,15%);
-        color:darken($mtvh-grey,15%);
+        border-color:$mtvh-link-hover;
+        color:$mtvh-link-hover;
+      }
+      &:active {
+        color: $body-color;
+        background-color: #fff;
+        border-color:$mtvh-link-click;
+        color:$mtvh-link-click;
       }
     }
 
