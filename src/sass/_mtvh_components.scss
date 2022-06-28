@@ -23,7 +23,6 @@
       margin-bottom:1.5rem;
       padding-left:52px;
       min-height: 40px;
-      //padding-left: 2rem;
 
       &:last-child{
         margin-bottom:0;
@@ -37,7 +36,6 @@
       }   
 
       input{
-        //display:none;
         opacity: 0;
       }
       label{
@@ -53,8 +51,6 @@
 
       /*Adding focus styles on the outer-box of the fake checkbox*/
       input[type="checkbox"]:focus + span::before, input[type="radio"]:focus + span::before {
-        //outline:none!important;
-        //border:2px solid $mtvh-focus !important;
         border-color:#000;
         outline: 3px solid $mtvh-focus;
         outline-offset: 0;
@@ -112,7 +108,6 @@
       }
     }
     .choices__list--single{
-      //padding: 5px 16px 5.5px 4px;
       .choices__item.choices__item--selectable{
         overflow: initial;
       }
@@ -131,7 +126,7 @@
   .formio-component-file{
     .list-group{
       border-radius: 0;
-      border: 2px solid $form-line-color;
+      border: 0px
     }
 
     @include media-breakpoint-down(sm) {
@@ -141,11 +136,19 @@
     }  
 
     .list-group-item{
-      border:0;
+      border: 2px solid $form-line-color;
+      border-bottom: 0;
+      border-radius: 0;
       padding: 0.75rem 1.25rem!important;
+    }
+    .list-group-item:only-child{
+      display:none;
     }
     .list-group-item:not(.list-group-header){
       border-top: 1px solid $form-line-color;
+    }
+    .list-group-item:last-child {
+      border-bottom: 2px solid $form-line-color;
     }
     
     .fileSelector{
@@ -162,7 +165,7 @@
         }
       }
       .bg-info{
-        background-color: $mtvh-blue-light!important;
+        background-color: $mtvh-yellow-light!important;
         padding: 15px;
       }
     }
@@ -205,19 +208,19 @@
           &.active{
             //background-color: #fff;
             .nav-link{
-              //border-color:$line-color;
+              //border-color:$form-line-color;
               //border-bottom:0;           
             }
           }
         }
         .nav-link:hover, .nav-link:focus{
-          //border-color:$line-color;
+          //border-color:$form-line-color;
           //border-bottom:0;
         }
       }
     }
     .tab-pane{
-      border: 1px solid $line-color;
+      border: 1px solid $form-line-color;
     }
   }
 

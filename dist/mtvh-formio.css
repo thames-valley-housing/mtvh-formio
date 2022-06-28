@@ -6,11 +6,15 @@
     color: #7e54c2; }
   .formio-form a:not(.btn):not(.card):hover {
     color: #005792; }
+  .formio-form a:not(.btn):not(.card):focus {
+    outline: 3px solid #f8d643;
+    outline-offset: 0;
+    background: #f8d643; }
 
 .formio-form button.btn {
-  font-family: "Paralucent W05 Demi Bold", Arial;
-  font-weight: 800;
-  font-size: 1.2rem;
+  font-family: Arial, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
   text-decoration: none;
   border-radius: 1.5rem;
   border-width: 2px; }
@@ -29,8 +33,6 @@
     border: 0 !important;
     margin: 0 !important;
     width: auto !important; }
-    .formio-form button.btn.btn-xs:hover {
-      color: #003559 !important; }
   .formio-form button.btn:hover {
     text-decoration: underline !important; }
   .formio-form button.btn:focus {
@@ -62,12 +64,12 @@
       color: #00385e; }
 
 .formio-form, .formio-form label {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   font-size: 18px;
   color: #000; }
 
 .formio-form h1 {
-  font-family: "Paralucent W05 Demi Bold", Arial;
+  font-family: "Paralucent W05 Demi Bold", Arial, sans-serif;
   font-weight: 600;
   line-height: 1.1;
   margin: 0;
@@ -101,7 +103,7 @@
   .formio-form div.formio-component.formio-component-button, .formio-form div.formio-component.formio-component-form {
     margin-bottom: 0rem; }
   .formio-form div.formio-component .col-form-label {
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     font-weight: 600;
     font-size: 1.4rem;
     margin-bottom: 0.75rem;
@@ -115,7 +117,7 @@
       display: block;
       font-size: 1.2rem;
       margin-top: 0.25rem;
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       font-weight: 400; }
   .formio-form div.formio-component .form-text {
     margin: -6px 0 0.85rem 0; }
@@ -139,14 +141,14 @@
     */ }
   .formio-form .form-control::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #333333; }
+    color: #404040; }
   .formio-form .form-control:-ms-input-placeholder {
     /* Internet Explorer 10-11 */
-    color: #333333 !important;
+    color: #404040 !important;
     font-weight: 400 !important; }
   .formio-form .form-control::-ms-input-placeholder {
     /* Microsoft Edge */
-    color: #333333 !important;
+    color: #404040 !important;
     font-weight: 400 !important; }
   .formio-form .form-control:focus {
     border-color: #000;
@@ -157,7 +159,7 @@
   line-height: 1rem; }
 
 .formio-form .field-required:after {
-  color: #ea4e5a; }
+  color: #fa3d54; }
 
 .formio-form .formio-error-wrapper, .formio-form .has-error {
   color: #000 !important;
@@ -180,7 +182,7 @@
   margin: 0 !important;
   color: #db070c !important;
   font-weight: bold;
-  font-size: 1rem !important; }
+  font-size: 18px !important; }
 
 .formio-form .formio-errors.invalid-feedback {
   margin-top: 0.75rem !important; }
@@ -253,7 +255,7 @@
     display: inline-block;
     content: '';
     border-width: 0px;
-    background: #545454;
+    background: #000;
     top: -1px;
     left: -47px;
     height: 30px;
@@ -272,7 +274,7 @@
   padding-bottom: 1rem; }
 
 .formio-form .formio-choices .choices__list .choices__placeholder {
-  color: #333333;
+  color: #404040;
   opacity: 1; }
 
 .formio-form .formio-choices .choices__list--single .choices__item.choices__item--selectable {
@@ -287,18 +289,26 @@
 
 .formio-form .formio-component-file .list-group {
   border-radius: 0;
-  border: 2px solid #ced4da; }
+  border: 0px; }
 
 @media (max-width: 767.98px) {
   .formio-form .formio-component-file .list-group-header .col-md-1 {
     display: none; } }
 
 .formio-form .formio-component-file .list-group-item {
-  border: 0;
+  border: 2px solid #ced4da;
+  border-bottom: 0;
+  border-radius: 0;
   padding: 0.75rem 1.25rem !important; }
+
+.formio-form .formio-component-file .list-group-item:only-child {
+  display: none; }
 
 .formio-form .formio-component-file .list-group-item:not(.list-group-header) {
   border-top: 1px solid #ced4da; }
+
+.formio-form .formio-component-file .list-group-item:last-child {
+  border-bottom: 2px solid #ced4da; }
 
 .formio-form .formio-component-file .fileSelector {
   margin-top: 1rem;
@@ -311,7 +321,7 @@
     font-weight: 600;
     font-size: 18px; }
   .formio-form .formio-component-file .file .bg-info {
-    background-color: #cdebfe !important;
+    background-color: #f8d643 !important;
     padding: 15px; }
 
 .formio-form .formio-component-editgrid .list-group {
@@ -331,7 +341,7 @@
     z-index: 100; }
 
 .formio-form .formio-component-tabs .tab-pane {
-  border: 1px solid #dee2e6; }
+  border: 1px solid #ced4da; }
 
 .formio-form .formio-component-mtvhAddress label.label-sm {
   font-size: 1.175rem; }
@@ -348,8 +358,8 @@
     .formio-form nav {
       margin-top: 0; } }
   .formio-form nav h5 {
-    font-family: "Paralucent W05 Demi Bold", Arial;
-    font-weight: 800; }
+    font-family: "Paralucent W05 Demi Bold", Arial, sans-serif;
+    font-weight: 600; }
   .formio-form nav ul.mtvh-ul {
     display: inline-block;
     padding: 0;

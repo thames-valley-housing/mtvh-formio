@@ -3,16 +3,21 @@
   //Standard links in main content area
   a:not(.btn):not(.card) {
     text-decoration: underline;
-    color:$link-color;
+    color:$mtvh-link-default;
     font-weight: 600;
-    &:visited{color:$link-visited-color;}
-    &:hover{color:$link-hover-color;}
+    &:visited{color:$mtvh-link-visited;}
+    &:hover{color:$mtvh-link-hover;}
+    &:focus{
+      outline: 3px solid #f8d643;
+      outline-offset: 0;
+      background: #f8d643;
+    }
   }
 
   button.btn{
-    font-family: $headings-font-family;
-    font-weight: $headings-font-weight;
-    font-size: 1.2rem;
+    font-family: $font-family-base;
+    font-weight: 600;
+    font-size: $font-size-base;
     text-decoration: none;
     border-radius: 1.5rem;
     border-width:2px;
@@ -36,15 +41,12 @@
       font-weight:600;
       padding:0;
       border:0!important;
-      color:$link-color!important;
+      color:$mtvh-link-default!important;
       text-decoration: underline!important;
       background: none!important;
       border: 0!important;
       margin: 0!important;
       width: auto!important;
-      &:hover{
-        color:darken($link-color,20%)!important;
-      }
     }
     &:hover{text-decoration: underline!important;}
     &:focus{

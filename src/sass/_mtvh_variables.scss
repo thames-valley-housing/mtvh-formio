@@ -1,51 +1,32 @@
-//Colours
-//$mtvh-blue: #0099FF; 
-$mtvh-blue: #0098FE; //Changed to be accessible
-$mtvh-blue-light: #cdebfe;
-
-$mtvh-rose: #ea4e5a;
-$mtvh-lime: #c8d434;
-$mtvh-lime-light: #f4f6d6;
-$mtvh-lime-light-dark: darken($mtvh-lime-light,3%);
-
-//New
+//New Colours
 $mtvh-stone:#F9F2EA;
 $mtvh-stone-dark: darken($mtvh-stone,6%);
 $mtvh-green:#5eaf4b;
 $mtvh-yellow:#e8c426;
 $mtvh-yellow-light:#f8d643;
+$mtvh-rose: #fa3d54;
 $mtvh-grey: #545454; //No real need to use currently
+
+$body-color: #000;
+$form-placeholder: lighten($body-color, 25%);
 
 $mtvh-link-default:#0072bf;
 $mtvh-link-hover:#005792;
 $mtvh-link-click:#00385e;
 $mtvh-link-visited:#7e54c2;
 
-$mtvh-error: #db070c;
-
 $mtvh-focus:$mtvh-yellow-light;
 
+$mtvh-error: #db070c;
 
-//Bootstrap Colours - Required
-$mtvh-primary: $mtvh-link-default;
-$mtvh-primary-dark: $mtvh-link-hover;
-$body-color: #000;
 $form-line-color: #ced4da;
-$line-color: #dee2e6;
-$form-placeholder: lighten($body-color, 20%);
-$link-color: $mtvh-link-default;
-$link-hover-color: $mtvh-link-hover;
-$link-visited-color: $mtvh-link-visited;
-
-$mtvh-check-fill: $mtvh-grey;
+$mtvh-check-fill: $body-color;
 
 //Fonts
-//$font-size-base: 17px;
-//$font-family-base: Arial;
 $font-size-base: 18px;
-$font-family-base: Arial;
-$headings-font-family: 'Paralucent W05 Demi Bold',Arial;
-$headings-font-weight: 800;
+$font-family-base: Arial,sans-serif;
+$headings-font-family: 'Paralucent W05 Demi Bold',Arial,sans-serif;
+$headings-font-weight: 600;
 $fontAwesome: normal normal normal 20px/1 FontAwesome;
 
 //Grid

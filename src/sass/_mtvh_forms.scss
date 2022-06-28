@@ -166,7 +166,7 @@
     margin:0!important;
     color: $mtvh-error!important;
     font-weight:bold;
-    font-size:1rem!important;
+    font-size:$font-size-base!important;
   }
   .formio-errors.invalid-feedback{
     margin-top:0.75rem!important;
