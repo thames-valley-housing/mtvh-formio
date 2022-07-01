@@ -5,8 +5,8 @@
       <ul class="mtvh-ul">
         {% ctx.panels.forEach(function(panel, index) { %}
           {% if (panel.breadcrumb !== 'none') { %}
-            <li class="page-item{{ctx.currentPage === index ? ' active' : ''}}">
-              <a href="#" ref="{{ctx.wizardKey}}-link">{{ctx.t(panel.title)}}</a>
+            <li class="page-item{{ctx.currentPage === index ? ' active' : ''}}" style="cursor: pointer;">
+              <span ref="{{ctx.wizardKey}}-link">{{ctx.t(panel.title)}}</span>
             </li>
           {% } %}
         {% }) %}
