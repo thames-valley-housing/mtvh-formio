@@ -1,11 +1,14 @@
 //New Colours
 $mtvh-stone:#F9F2EA;
-$mtvh-stone-dark: darken($mtvh-stone,6%);
+$mtvh-stone-dark: darken($mtvh-stone,10%);
 $mtvh-green:#5eaf4b;
 $mtvh-yellow:#e8c426;
 $mtvh-yellow-light:#f8d643;
 $mtvh-rose: #fa3d54;
 $mtvh-grey: #545454; //No real need to use currently
+
+$mtvh-green-darker:#1d8106;
+$mtvh-grey-disabled: #8C8C8C;
 
 $body-color: #000;
 $form-placeholder: lighten($body-color, 25%);

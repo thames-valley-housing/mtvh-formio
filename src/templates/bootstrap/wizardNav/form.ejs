@@ -1,18 +1,8 @@
 <ul class="formio-wizard-nav-container list-inline" id="{{ ctx.wizardKey }}-nav">
   {% ctx.buttonOrder.forEach(function(button) { %}
-    {% if (button === 'cancel' && ctx.buttons.cancel) { %}
-    <li>
-      <button class="btn btn-secondary btn-wizard-nav-cancel" ref="{{ctx.wizardKey}}-cancel" aria-label="{{ctx.t('cancelButtonAriaLabel')}}">{{ctx.t('cancel')}}</button>
-    </li>
-    {% } %}
-    {% if (button === 'previous' && ctx.buttons.previous) { %}
-    <li>
-      <button class="btn btn-secondary btn-wizard-nav-previous" ref="{{ctx.wizardKey}}-previous" aria-label="{{ctx.t('previousButtonAriaLabel')}}">{{ctx.t('previous')}}</button>
-    </li>
-    {% } %}
     {% if (button === 'next' && ctx.buttons.next) { %}
     <li>
-      <button class="btn btn-primary btn-wizard-nav-next" ref="{{ctx.wizardKey}}-next" aria-label="{{ctx.t('nextButtonAriaLabel')}}">{{ctx.t('Continue')}}</button>
+      <button class="btn btn-primary btn-wizard-nav-next" ref="{{ctx.wizardKey}}-next" aria-label="{{ctx.t('nextButtonAriaLabel')}}">{{ctx.t('Continue')}} &#8594;</button>
     </li>
     {% } %}
     {% if (button === 'submit' && ctx.buttons.submit) { %}
@@ -26,3 +16,13 @@
     {% } %}
   {% }) %}
 </ul>
+
+{% if (ctx.buttons.previous) { %}
+  {% if (ctx.buttons.submit || ctx.buttons.next) { %}
+  <p class="mt-5">
+  {% } else { %}
+  <p>
+  {% } %}
+    <a href="#" ref="{{ctx.wizardKey}}-previous" aria-label="{{ctx.t('previousButtonAriaLabel')}}">&#8592; Previous page</a>
+  </p>
+{% } %}

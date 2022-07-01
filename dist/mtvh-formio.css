@@ -386,27 +386,34 @@
       color: #fff; }
     .formio-form nav ul.mtvh-ul li.page-item {
       padding: 0 0 1rem 1rem;
-      border-left: 2px solid #f2e3d2; }
+      border-left: 2px solid #eed9c2; }
       .formio-form nav ul.mtvh-ul li.page-item:before {
-        border-color: #5eaf4b;
-        background: #5eaf4b;
+        border-color: #1d8106;
+        background: #1d8106;
         content: '\f00c'; }
-      .formio-form nav ul.mtvh-ul li.page-item span {
+      .formio-form nav ul.mtvh-ul li.page-item span, .formio-form nav ul.mtvh-ul li.page-item a {
         top: -1px;
         left: 10px;
-        position: relative; }
+        position: relative;
+        font-weight: normal;
+        color: #000 !important;
+        text-decoration: none; }
+        .formio-form nav ul.mtvh-ul li.page-item span:hover, .formio-form nav ul.mtvh-ul li.page-item a:hover {
+          text-decoration: underline; }
     .formio-form nav ul.mtvh-ul li.page-item.active {
       color: #000; }
       .formio-form nav ul.mtvh-ul li.page-item.active:before {
-        border-color: #e8c426;
-        background: #e8c426;
-        content: ''; }
+        border-color: #fff;
+        background: #000;
+        content: '';
+        outline: 5px solid #e8c426;
+        outline-offset: 0; }
     .formio-form nav ul.mtvh-ul li.page-item.active ~ * {
       font-weight: normal;
       color: #000; }
       .formio-form nav ul.mtvh-ul li.page-item.active ~ *:before {
-        border-color: #f2e3d2;
-        background: #f2e3d2;
+        border-color: #eed9c2;
+        background: #eed9c2;
         content: ''; }
     .formio-form nav ul.mtvh-ul li:last-child {
       border-left: 2px solid rgba(255, 0, 0, 0);
