@@ -52,8 +52,10 @@
       /*Adding focus styles on the outer-box of the fake checkbox*/
       input[type="checkbox"]:focus + span::before, input[type="radio"]:focus + span::before {
         border-color:#000;
-        outline: 3px solid $mtvh-focus;
-        outline-offset: 0;
+        //outline: 3px solid $mtvh-focus;
+        //outline-offset: 0;
+        -webkit-box-shadow: 0 0 0 3px $mtvh-focus;
+        box-shadow: 0 0 0 3px $mtvh-focus;
       }
 
       input + span::before{

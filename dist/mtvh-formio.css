@@ -37,8 +37,8 @@
     text-decoration: underline !important; }
   .formio-form button.btn:focus {
     border-color: #000;
-    outline: 3px solid #f8d643;
-    outline-offset: 0; }
+    -webkit-box-shadow: 0 0 0 3px #f8d643;
+    box-shadow: 0 0 0 3px #f8d643; }
   .formio-form button.btn.btn-primary {
     border-color: #0072bf;
     background: #0072bf; }
@@ -152,8 +152,8 @@
     font-weight: 400 !important; }
   .formio-form .form-control:focus {
     border-color: #000;
-    outline: 3px solid #f8d643;
-    outline-offset: 0; }
+    -webkit-box-shadow: 0 0 0 3px #f8d643;
+    box-shadow: 0 0 0 3px #f8d643; }
 
 .formio-form input.form-control {
   line-height: 1rem; }
@@ -237,8 +237,8 @@
     margin: 0; }
   .formio-form .formio-component-selectboxes .form-radio .form-check input[type="checkbox"]:focus + span::before, .formio-form .formio-component-selectboxes .form-radio .form-check input[type="radio"]:focus + span::before, .formio-form .formio-component-selectboxes .form-check.checkbox input[type="checkbox"]:focus + span::before, .formio-form .formio-component-selectboxes .form-check.checkbox input[type="radio"]:focus + span::before, .formio-form .formio-component-radio .form-radio .form-check input[type="checkbox"]:focus + span::before, .formio-form .formio-component-radio .form-radio .form-check input[type="radio"]:focus + span::before, .formio-form .formio-component-radio .form-check.checkbox input[type="checkbox"]:focus + span::before, .formio-form .formio-component-radio .form-check.checkbox input[type="radio"]:focus + span::before, .formio-form .formio-component-checkbox .form-radio .form-check input[type="checkbox"]:focus + span::before, .formio-form .formio-component-checkbox .form-radio .form-check input[type="radio"]:focus + span::before, .formio-form .formio-component-checkbox .form-check.checkbox input[type="checkbox"]:focus + span::before, .formio-form .formio-component-checkbox .form-check.checkbox input[type="radio"]:focus + span::before {
     border-color: #000;
-    outline: 3px solid #f8d643;
-    outline-offset: 0; }
+    -webkit-box-shadow: 0 0 0 3px #f8d643;
+    box-shadow: 0 0 0 3px #f8d643; }
   .formio-form .formio-component-selectboxes .form-radio .form-check input + span::before, .formio-form .formio-component-selectboxes .form-check.checkbox input + span::before, .formio-form .formio-component-radio .form-radio .form-check input + span::before, .formio-form .formio-component-radio .form-check.checkbox input + span::before, .formio-form .formio-component-checkbox .form-radio .form-check input + span::before, .formio-form .formio-component-checkbox .form-check.checkbox input + span::before {
     position: absolute;
     display: inline-block;
@@ -406,8 +406,8 @@
         border-color: #fff;
         background: #000;
         content: '';
-        outline: 5px solid #e8c426;
-        outline-offset: 0; }
+        -webkit-box-shadow: 0 0 0 5px #e8c426;
+        box-shadow: 0 0 0 5px #e8c426; }
     .formio-form nav ul.mtvh-ul li.page-item.active ~ * {
       font-weight: normal;
       color: #000; }

@@ -63,8 +63,10 @@
           border-color:#fff;
           background: $body-color;
           content: '';
-          outline: 5px solid $mtvh-yellow;
-          outline-offset: 0;
+          //outline: 5px solid $mtvh-yellow;
+          //outline-offset: 0;
+          -webkit-box-shadow: 0 0 0 5px $mtvh-yellow;
+          box-shadow: 0 0 0 5px $mtvh-yellow;
         }
       }
       li.page-item.active ~ * {

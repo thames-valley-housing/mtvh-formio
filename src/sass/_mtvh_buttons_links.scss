@@ -51,8 +51,10 @@
     &:hover{text-decoration: underline!important;}
     &:focus{
       border-color:#000;
-      outline: 3px solid $mtvh-focus;
-      outline-offset: 0;
+      //outline: 3px solid $mtvh-focus;
+      //outline-offset: 0;
+      -webkit-box-shadow: 0 0 0 3px $mtvh-focus;
+      box-shadow: 0 0 0 3px $mtvh-focus;
     }
     &.btn-primary{
       border-color:$mtvh-link-default;
