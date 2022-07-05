@@ -39,7 +39,7 @@
       }
       li.page-item{
         padding:0 0 1rem 1rem;
-        border-left: 2px solid $mtvh-stone-dark;
+        border-left: 2px solid #000;
         &:before{
           border-color:$mtvh-green-darker;
           background:$mtvh-green-darker;
@@ -65,16 +65,16 @@
           content: '';
           //outline: 5px solid $mtvh-yellow;
           //outline-offset: 0;
-          -webkit-box-shadow: 0 0 0 5px $mtvh-yellow;
-          box-shadow: 0 0 0 5px $mtvh-yellow;
+          -webkit-box-shadow: 0 0 0 3px $mtvh-yellow;
+          box-shadow: 0 0 0 3px $mtvh-yellow;
         }
       }
       li.page-item.active ~ * {
         font-weight:normal;
         color:$body-color;
         &:before{
-          border-color: $mtvh-stone-dark;
-          background:$mtvh-stone-dark; 
+          border-color: #000;
+          background:$mtvh-stone; 
           content: '';
         }
       }

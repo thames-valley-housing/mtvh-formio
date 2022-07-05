@@ -48,6 +48,15 @@
     .formio-form button.btn.btn-primary:active {
       border-color: #00385e;
       background: #00385e; }
+    .formio-form button.btn.btn-primary:disabled {
+      border: none;
+      border-color: #0072bf;
+      background: #0072bf;
+      opacity: .50;
+      cursor: default;
+      text-decoration: none !important;
+      -webkit-box-shadow: none;
+      box-shadow: none; }
   .formio-form button.btn.btn-secondary {
     color: #000;
     background-color: #fff;
@@ -386,7 +395,7 @@
       color: #fff; }
     .formio-form nav ul.mtvh-ul li.page-item {
       padding: 0 0 1rem 1rem;
-      border-left: 2px solid #eed9c2; }
+      border-left: 2px solid #000; }
       .formio-form nav ul.mtvh-ul li.page-item:before {
         border-color: #1d8106;
         background: #1d8106;
@@ -406,14 +415,14 @@
         border-color: #fff;
         background: #000;
         content: '';
-        -webkit-box-shadow: 0 0 0 5px #e8c426;
-        box-shadow: 0 0 0 5px #e8c426; }
+        -webkit-box-shadow: 0 0 0 3px #e8c426;
+        box-shadow: 0 0 0 3px #e8c426; }
     .formio-form nav ul.mtvh-ul li.page-item.active ~ * {
       font-weight: normal;
       color: #000; }
       .formio-form nav ul.mtvh-ul li.page-item.active ~ *:before {
-        border-color: #eed9c2;
-        background: #eed9c2;
+        border-color: #000;
+        background: #F9F2EA;
         content: ''; }
     .formio-form nav ul.mtvh-ul li:last-child {
       border-left: 2px solid rgba(255, 0, 0, 0);
