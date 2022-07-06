@@ -78,7 +78,7 @@
   color: #000; }
 
 .formio-form h1 {
-  font-family: "Paralucent W05 Demi Bold", Arial, sans-serif;
+  font-family: "Paralucent W05", Arial, sans-serif;
   font-weight: 600;
   line-height: 1.1;
   margin: 0;
@@ -367,7 +367,7 @@
     .formio-form nav {
       margin-top: 0; } }
   .formio-form nav h5 {
-    font-family: "Paralucent W05 Demi Bold", Arial, sans-serif;
+    font-family: "Paralucent W05", Arial, sans-serif;
     font-weight: 600; }
   .formio-form nav ul.mtvh-ul {
     display: inline-block;
