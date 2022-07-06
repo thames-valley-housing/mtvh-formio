@@ -35,7 +35,7 @@
     width: auto !important; }
   .formio-form button.btn:hover {
     text-decoration: underline !important; }
-  .formio-form button.btn:focus {
+  .formio-form button.btn:focus, .formio-form button.btn:active {
     border-color: #000;
     -webkit-box-shadow: 0 0 0 3px #f8d643;
     box-shadow: 0 0 0 3px #f8d643; }
