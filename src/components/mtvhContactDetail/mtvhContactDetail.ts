@@ -1,15 +1,15 @@
 import { Components } from 'formiojs';
 const Input = (Components as any).components.field;
-import editForm from './mtvhAddress.form';
+import editForm from './mtvhContactDetail.form';
 
-export default class mtvhAddress extends (Input as any) {
+export default class mtvhContactDetail extends (Input as any) {
 
   static schema() {
     return Input.schema({
-      type: 'mtvhAddress',
-      label: 'What is your address?',
-      description: 'We need this information so that we can confirm you are an MTVH resident',
-      key: 'mtvhAddress',
+      type: 'mtvhContactDetail',
+      label: 'What is your number?',
+      description: 'We need to know what number to contact you on',
+      key: 'mtvhContactDetail',
       tableView: true,
       inputType: 'text',
       'validate': {
@@ -21,11 +21,11 @@ export default class mtvhAddress extends (Input as any) {
   public static editForm = editForm;
 
   static builderInfo = {
-    title: 'MTVH Address',
+    title: 'MTVH Contact details',
     group: 'custom',
-    icon: 'home',
+    icon: 'phone',
     weight: 10,
-    schema: mtvhAddress.schema()
+    schema: mtvhContactDetail.schema()
   }
 
   constructor(component, options, data) {
@@ -42,124 +42,117 @@ export default class mtvhAddress extends (Input as any) {
   }
 
   public render() {
-    return super.render(this.renderTemplate('mtvhAddress', {}));
+    return super.render(this.renderTemplate('mtvhContactDetail', {}));
   }
 
   attach(element) {
 
     this.loadRefs(element, {
-      postCodeLabel: 'single',
-      postCode: 'single',
-      findAddress: 'single',
-      address: 'single',
-      messageContainer: 'single',
-      postCodeSection: 'single',
-      postCodeChange: 'single',
-      postCodeSelected: 'single',
-      selectAddressSection: 'single',
-      selectAddress: 'single',
-      cantFindAddress: 'single',
-      manualAddressSection: 'single',
-      manualAddress: 'single',
-      readonlyAddressSection: 'single',
-      readonlyAddress: 'single',
-      readonlyAddressChange: 'single'
+      existingDetailsDropdown: 'single',
+      switchToFreetext: 'single',
+
+      newDetailsInput: 'single',
+      switchToDropdown: 'single',
     });
 
-    this.addEventListener(this.refs.postCode, 'focus', () => {
+    this.addEventListener(this.refs.switchToFreetext, 'click', () => {
+      this.switchToContactDetailFreetext(element);
+    });
+    this.addEventListener(this.refs.switchToDropdown, 'click', () => {
+      this.switchToContactDetailDropwdown(element);
     });
 
-    this.addEventListener(this.refs.postCodeChange, 'click', (e) => {
-      this.mtvhAddressReset(element);
-      this.mtvhAddressResetData(element);
-      e.preventDefault();
+    this.addEventListener(this.refs.existingDetailsDropdown, 'change', () => {
+      console.log('Change on dropdown')
+      super.updateValue(this.refs.existingDetailsDropdown);
     });
 
-    this.addEventListener(this.refs.findAddress, 'click', () => {
-      let postCode = this.refs.postCode.value.trim().toLowerCase();
-      this.mtvhAddressStage1(element,postCode);
+    this.addEventListener(this.refs.newDetailsInput, 'keyup', () => {
+      console.log('Key up on new details')
+      super.updateValue(this.refs.newDetailsInput);
+      console.log(this.getValue())
     });
 
-    this.addEventListener(this.refs.selectAddress, 'change', () => {
-      this.updateValue(this.refs.selectAddress.value);
-    });
 
-    this.addEventListener(this.refs.cantFindAddress, 'click', (e) => {
-      this.mtvhAddressStage3(element);
-      e.preventDefault();
-    });
 
-    this.addEventListener(this.refs.readonlyAddressChange, 'click', (e) => {
-      this.updateValue('');
-      this.mtvhAddressReset(element);
-      this.mtvhAddressResetData(element);
-      this.refs.postCode.focus();
-      e.preventDefault();
-    });
-
-    this.addEventListener(this.refs.manualAddress, 'keyup', () => {
-      this.updateValue(this.refs.manualAddress.value.replace(/(?:\r\n|\r|\n)/g, ', '));
-    });
-
-    this.mtvhAddressInitiate(element);
+    this.mtvhContactDetailInitiate(element);
 
     return super.attach(element);
   }
 
   /////////////////////////////////////// Steps
 
-  mtvhAddressInitiate(element){
-    let cvar = this.getValue();
-    if(cvar!=='' && cvar !==null){
-      this.refs.postCodeSection.style.display = 'none';
-      this.refs.postCodeLabel.style.display = 'none';
-      this.refs.selectAddressSection.style.display = 'none';
-      this.refs.manualAddressSection.style.display = 'none';
-      this.refs.readonlyAddress.innerHTML = cvar;
-      this.refs.readonlyAddressSection.style.display = 'block';
+  getDropdownData(){
+    return ['0123456', '789013456', '12390243']
+  }
+
+  populateDropdown(){
+
+    const dropdown = this.refs.existingDetailsDropdown
+    const options = this.getDropdownData()
+
+    if (options.length == 0) {
+        return false
+    } else {
+      for(let i = 0, l = options.length; i < l; i++){
+        const option = options[i];
+        dropdown.options.add( new Option(option,option) );
+      }
+      dropdown.focus();
+      return true
     }
   }
 
-  mtvhAddressReset(element){
-    this.refs.postCode.value = '';
-    this.mtvhValid(element,'postCode');
-    this.refs.postCodeSection.style.display = 'block';
-    this.refs.postCodeLabel.style.display = 'block';
-    this.refs.selectAddressSection.style.display = 'none';
-    this.refs.manualAddressSection.style.display = 'none';
-    this.refs.readonlyAddressSection.style.display = 'none';
+  mtvhContactDetailInitiate(element){
+
+    this.refs.existingDetailsDropdown.style.display = 'block';
+    this.refs.switchToFreetext.style.display = 'block';
+    this.refs.newDetailsInput.style.display = 'none';
+    this.refs.switchToDropdown.style.display = 'none';
+
+    if (!(this.populateDropdown())){
+      this.switchToContactDetailFreetext(element)
+    }
   }
 
-  mtvhAddressResetData(element){
-    this.refs.postCode.value = '';
-    this.refs.postCodeSelected.innerHTML = '';
-    this.refs.readonlyAddress.innerHTML = '';
-    // this.refs.selectAddressResults.innerHTML = '0';
-    this.refs.selectAddress.options.length = 0;
-    this.updateValue('');
+  switchToContactDetailFreetext(element){
+    this.refs.existingDetailsDropdown.style.display = 'none';
+    this.refs.switchToFreetext.style.display = 'none';
+    this.refs.newDetailsInput.style.display = 'block';
+    this.refs.switchToDropdown.style.display = 'block';
   }
 
-  mtvhAddressStage1(element,postCode){
+  switchToContactDetailDropwdown(element){
+    this.refs.existingDetailsDropdown.style.display = 'block';
+    this.refs.switchToFreetext.style.display = 'block';
+    this.refs.newDetailsInput.style.display = 'none';
+    this.refs.switchToDropdown.style.display = 'none';
+  }
+
+
+
+
+  mtvhContactDetailStage1(element,postCode){
     if(this.mtvhValidatePostcode(postCode)==true){
       if(this.refs.messageContainer.innerHTML == '<div class="form-text error">Enter a valid postcode</div>'){
         this.mtvhValid(element,'postCode');
       }
-      this.mtvhAddressStage2(element)
+      this.mtvhContactDetailStage2(element)
     }
     else{
       this.mtvhInvalid(element,'postCode','Enter a valid postcode')
     }
   }
 
-  mtvhAddressStage2(element){
+  mtvhContactDetailStage2(element){
     this.refs.postCodeSelected.innerHTML = this.refs.postCode.value.trim().toUpperCase();
     this.refs.postCodeSection.style.display = 'none';
     this.refs.selectAddressSection.style.display = 'block';
     let selectAddressResultsCnt = 0;
-    let selectAddress = this.refs.selectAddress;
+    const selectAddress = this.refs.selectAddress;
     selectAddress.options.length = 0;
     selectAddress.options.add( new Option('Loading ...','') );
-    let mtvhFormatAddress = this.mtvhFormatAddress;
+    const mtvhFormatAddress = this.mtvhFormatAddress;
 
     this.mtvhGetAddresses(this.refs.postCode.value.trim().toLowerCase()).then(function(result:any){
       selectAddressResultsCnt = result.addresses.length;
@@ -167,8 +160,8 @@ export default class mtvhAddress extends (Input as any) {
       selectAddress.options.length = 0;
       selectAddress.options.add( new Option(selectAddressResultsCnt+' results found','') );
       for(let i = 0, l = result.addresses.length; i < l; i++){
-        let option = result.addresses[i];
-        let optionFormat = mtvhFormatAddress(option,result.postcode);
+        const option = result.addresses[i];
+        const optionFormat = mtvhFormatAddress(option,result.postcode);
         selectAddress.options.add( new Option(optionFormat,optionFormat) );
       }
       selectAddress.focus();
@@ -180,7 +173,7 @@ export default class mtvhAddress extends (Input as any) {
     })
   }
 
-  mtvhAddressStage3(element){
+  mtvhContactDetailStage3(element){
     this.refs.manualAddressSection.style.display = 'block';
     this.refs.selectAddressSection.style.display = 'none';
     this.refs.postCodeLabel.style.display = 'none';
@@ -188,7 +181,7 @@ export default class mtvhAddress extends (Input as any) {
   }
 
   mtvhFormatAddress(array,postcode){
-    let fields=['line_1','line_2','line_3','line_4','locality','town_or_city','county']
+    const fields=['line_1','line_2','line_3','line_4','locality','town_or_city','county']
     let ret = ''
     for (const field of fields) {
       if(array[field]!=''){
@@ -199,13 +192,13 @@ export default class mtvhAddress extends (Input as any) {
   }
 
   mtvhGetAddresses(postcode){
-    let xmlhttp = new XMLHttpRequest();
-    let url = 'https://api.getaddress.io/find/'+postcode+'?expand=true&sort=true&api-key='+this.component.gaIoApiKey;
+    const xmlhttp = new XMLHttpRequest();
+    const url = 'https://api.getaddress.io/find/'+postcode+'?expand=true&sort=true&api-key='+this.component.gaIoApiKey;
 
     return new Promise(function(resolve, reject) {
       xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          let responseJSON = JSON.parse(this.responseText);
+          const responseJSON = JSON.parse(this.responseText);
           if(responseJSON.addresses){
             resolve(responseJSON)
           }
@@ -237,7 +230,7 @@ export default class mtvhAddress extends (Input as any) {
   }
 
   mtvhValidatePostcode(input){
-    let regEx = /^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$/;
+    const regEx = /^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$/;
     return regEx.test(input);
   }
 
@@ -287,7 +280,7 @@ export default class mtvhAddress extends (Input as any) {
 
   /*
   get defaultSchema() {
-    return mtvhAddress.schema();
+    return mtvhContactDetail.schema();
   }
 
   get skipInEmail() {

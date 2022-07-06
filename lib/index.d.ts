@@ -1,6 +1,7 @@
 declare const _default: {
     components: {
         mtvhAddress: typeof import("./components/mtvhAddress/mtvhAddress").default;
+        mtvhContactDetail: typeof import("./components/mtvhContactDetail/mtvhContactDetail").default;
     };
     templates: {
         bootstrap: {
@@ -21,6 +22,10 @@ declare const _default: {
                 form: string;
             };
             mtvhAddress: {
+                form: string;
+                html: string;
+            };
+            mtvhContactDetail: {
                 form: string;
                 html: string;
             };
