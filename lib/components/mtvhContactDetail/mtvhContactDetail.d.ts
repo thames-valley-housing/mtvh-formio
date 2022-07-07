@@ -20,14 +20,6 @@ export default class mtvhContactDetail extends mtvhContactDetail_base {
     mtvhContactDetailInitiate(element: any): void;
     switchToContactDetailFreetext(element: any): void;
     switchToContactDetailDropwdown(element: any): void;
-    mtvhContactDetailStage1(element: any, postCode: any): void;
-    mtvhContactDetailStage2(element: any): void;
-    mtvhContactDetailStage3(element: any): void;
-    mtvhFormatAddress(array: any, postcode: any): string;
-    mtvhGetAddresses(postcode: any): Promise<unknown>;
-    mtvhInvalid(element: any, field: any, error: any): void;
-    mtvhValid(element: any, field: any): void;
-    mtvhValidatePostcode(input: any): boolean;
     detach(): any;
     destroy(): any;
     normalizeValue(value: any, flags?: {}): any;

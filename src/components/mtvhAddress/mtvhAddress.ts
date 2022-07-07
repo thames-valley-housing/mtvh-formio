@@ -76,7 +76,7 @@ export default class mtvhAddress extends (Input as any) {
     });
 
     this.addEventListener(this.refs.findAddress, 'click', () => {
-      let postCode = this.refs.postCode.value.trim().toLowerCase();
+      const postCode = this.refs.postCode.value.trim().toLowerCase();
       this.mtvhAddressStage1(element,postCode);
     });
 
@@ -109,7 +109,7 @@ export default class mtvhAddress extends (Input as any) {
   /////////////////////////////////////// Steps
 
   mtvhAddressInitiate(element){
-    let cvar = this.getValue();
+    const cvar = this.getValue();
     if(cvar!=='' && cvar !==null){
       this.refs.postCodeSection.style.display = 'none';
       this.refs.postCodeLabel.style.display = 'none';
@@ -156,10 +156,10 @@ export default class mtvhAddress extends (Input as any) {
     this.refs.postCodeSection.style.display = 'none';
     this.refs.selectAddressSection.style.display = 'block';
     let selectAddressResultsCnt = 0;
-    let selectAddress = this.refs.selectAddress;
+    const selectAddress = this.refs.selectAddress;
     selectAddress.options.length = 0;
     selectAddress.options.add( new Option('Loading ...','') );
-    let mtvhFormatAddress = this.mtvhFormatAddress;
+    const mtvhFormatAddress = this.mtvhFormatAddress;
 
     this.mtvhGetAddresses(this.refs.postCode.value.trim().toLowerCase()).then(function(result:any){
       selectAddressResultsCnt = result.addresses.length;
@@ -167,8 +167,8 @@ export default class mtvhAddress extends (Input as any) {
       selectAddress.options.length = 0;
       selectAddress.options.add( new Option(selectAddressResultsCnt+' results found','') );
       for(let i = 0, l = result.addresses.length; i < l; i++){
-        let option = result.addresses[i];
-        let optionFormat = mtvhFormatAddress(option,result.postcode);
+        const option = result.addresses[i];
+        const optionFormat = mtvhFormatAddress(option,result.postcode);
         selectAddress.options.add( new Option(optionFormat,optionFormat) );
       }
       selectAddress.focus();
@@ -188,7 +188,7 @@ export default class mtvhAddress extends (Input as any) {
   }
 
   mtvhFormatAddress(array,postcode){
-    let fields=['line_1','line_2','line_3','line_4','locality','town_or_city','county']
+    const fields=['line_1','line_2','line_3','line_4','locality','town_or_city','county']
     let ret = ''
     for (const field of fields) {
       if(array[field]!=''){
@@ -199,13 +199,13 @@ export default class mtvhAddress extends (Input as any) {
   }
 
   mtvhGetAddresses(postcode){
-    let xmlhttp = new XMLHttpRequest();
-    let url = 'https://api.getaddress.io/find/'+postcode+'?expand=true&sort=true&api-key='+this.component.gaIoApiKey;
+    const xmlhttp = new XMLHttpRequest();
+    const url = 'https://api.getaddress.io/find/'+postcode+'?expand=true&sort=true&api-key='+this.component.gaIoApiKey;
 
     return new Promise(function(resolve, reject) {
       xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          let responseJSON = JSON.parse(this.responseText);
+          const responseJSON = JSON.parse(this.responseText);
           if(responseJSON.addresses){
             resolve(responseJSON)
           }
@@ -237,7 +237,7 @@ export default class mtvhAddress extends (Input as any) {
   }
 
   mtvhValidatePostcode(input){
-    let regEx = /^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$/;
+    const regEx = /^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$/;
     return regEx.test(input);
   }
 
