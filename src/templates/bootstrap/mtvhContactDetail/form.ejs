@@ -1,9 +1,12 @@
 <div>
+
   <select lang="en" class="form-control mb-3" type="text" id="{{ctx.instance.id}}-{{ctx.component.key}}-selectAddress" ref="existingDetailsDropdown">
     <option value="" selected="selected"></option>
   </select>
   <a ref="switchToFreetext">Switch to text</a>
 
-  <input ref="newDetailsInput" class="form-control"></div>
+  <input ref="newDetailsInput" type='number' placeholder='_____-______' class="form-control"></div>
   <a ref="switchToDropdown">Switch to dropdown</a>
+
+  <div ref='messageContainer'></div>
 </div>

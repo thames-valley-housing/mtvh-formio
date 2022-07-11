@@ -3,6 +3,8 @@ const Input = (Components as any).components.field;
 import editForm from './mtvhContactDetail.form';
 
 export default class mtvhContactDetail extends (Input as any) {
+  NOT_UK_NUMBER = 'This does not loook like a UK number';
+  ERROR_BEEN_SHOWN = false;
 
   static schema() {
     return Input.schema({
@@ -42,15 +44,15 @@ export default class mtvhContactDetail extends (Input as any) {
   }
 
   public render() {
-    return super.render(this.renderTemplate('mtvhContactDetail', {}));
+    return super.render(this.renderTemplate('mtvhContactDetail'));
   }
 
   attach(element) {
-
     this.loadRefs(element, {
+      phoneNumber: 'single',
       existingDetailsDropdown: 'single',
       switchToFreetext: 'single',
-
+      messageContainer: 'single',
       newDetailsInput: 'single',
       switchToDropdown: 'single',
     });
@@ -67,64 +69,18 @@ export default class mtvhContactDetail extends (Input as any) {
     });
 
     this.addEventListener(this.refs.newDetailsInput, 'keyup', (val) => {
-      this.setValue(this.refs.newDetailsInput.value);
+      if (this.ERROR_BEEN_SHOWN || this.inputtedPhoneNumber().length > 11){
+        this.validatePhoneNumber(element);
+      }
+    });
+
+    this.addEventListener(this.refs.newDetailsInput, 'blur', (val) => {
+      this.validatePhoneNumber(element);
     });
 
     this.mtvhContactDetailInitiate(element);
 
     return super.attach(element);
-  }
-
-  /////////////////////////////////////// Steps
-
-  getDropdownData(){
-    return ['0123456', '789013456', '12390243']
-  }
-
-  populateDropdown(){
-
-    const dropdown = this.refs.existingDetailsDropdown
-    const options = this.getDropdownData()
-
-    if (options.length == 0) {
-        return false
-    } else {
-      for(let i = 0, l = options.length; i < l; i++){
-        const option = options[i];
-        dropdown.options.add( new Option(option,option) );
-      }
-      dropdown.focus();
-      return true
-    }
-  }
-
-  mtvhContactDetailInitiate(element){
-    this.refs.existingDetailsDropdown.style.display = 'block';
-    this.refs.switchToFreetext.style.display = 'block';
-    this.refs.newDetailsInput.style.display = 'none';
-    this.refs.switchToDropdown.style.display = 'none';
-
-    if (!(this.populateDropdown())){
-      this.switchToContactDetailFreetext(element)
-    }
-  }
-
-  switchToContactDetailFreetext(element){
-    this.refs.existingDetailsDropdown.style.display = 'none';
-    this.refs.switchToFreetext.style.display = 'none';
-    this.refs.newDetailsInput.style.display = 'block';
-    this.refs.switchToDropdown.style.display = 'block';
-
-    this.setValue(this.refs.newDetailsInput.value);
-  }
-
-  switchToContactDetailDropwdown(element){
-    this.refs.existingDetailsDropdown.style.display = 'block';
-    this.refs.switchToFreetext.style.display = 'block';
-    this.refs.newDetailsInput.style.display = 'none';
-    this.refs.switchToDropdown.style.display = 'none';
-    
-    this.setValue(this.refs.existingDetailsDropdown.value);
   }
 
   detach() {
@@ -164,16 +120,101 @@ export default class mtvhContactDetail extends (Input as any) {
     return super.updateValue(value);
   }
 
+  // ========= switch between input modes
 
 
-  /*
-  get defaultSchema() {
-    return mtvhContactDetail.schema();
+  mtvhContactDetailInitiate(element){
+    this.refs.existingDetailsDropdown.style.display = 'block';
+    this.refs.switchToFreetext.style.display = 'block';
+    this.refs.newDetailsInput.style.display = 'none';
+    this.refs.switchToDropdown.style.display = 'none';
+
+    if (!(this.populateDropdown())){
+      this.switchToContactDetailFreetext(element)
+    }
   }
 
-  get skipInEmail() {
-    return false;
-  }
-  */
+  switchToContactDetailFreetext(element){
+    this.refs.existingDetailsDropdown.style.display = 'none';
+    this.refs.switchToFreetext.style.display = 'none';
+    this.refs.newDetailsInput.style.display = 'block';
+    this.refs.switchToDropdown.style.display = 'block';
 
+    if (this.ERROR_BEEN_SHOWN || this.inputtedPhoneNumber().length > 11){
+      this.validatePhoneNumber(element);
+    }
+  }
+
+  switchToContactDetailDropwdown(element){
+    this.refs.existingDetailsDropdown.style.display = 'block';
+    this.refs.switchToFreetext.style.display = 'block';
+    this.refs.newDetailsInput.style.display = 'none';
+    this.refs.switchToDropdown.style.display = 'none';
+
+    this.setValue(this.refs.existingDetailsDropdown.value);
+  }
+  getDropdownData(){
+    return ['0123456', '789013456', '12390243']
+  }
+
+
+
+    populateDropdown(){
+      const dropdown = this.refs.existingDetailsDropdown
+      const options = this.getDropdownData()
+
+      if (options.length == 0) {
+          return false
+      } else {
+        for(let i = 0, l = options.length; i < l; i++){
+          const option = options[i];
+          dropdown.options.add( new Option(option,option) );
+        }
+        dropdown.focus();
+        return true
+      }
+    }
+
+
+
+  // ======= Validation =======
+
+  validatePhoneNumber(element){
+    const input = this.inputtedPhoneNumber();
+
+    if (this.isPhoneNumberValid(input)){
+      this.setValue(input);
+      this.mtvhValid(element, 'newDetailsInput');
+    } else {
+      this.setValue('');
+      this.mtvhInvalid(element, 'newDetailsInput', this.NOT_UK_NUMBER);
+    }
+  }
+
+  mtvhInvalid(element,field,error){
+    const input = this.inputtedPhoneNumber();
+
+    this.ERROR_BEEN_SHOWN = true;
+    element.classList.add('has-error');
+    this.refs[field].classList.add('is-invalid');
+    // this.refs.messageContainer.style.display = 'block';
+    this.refs.messageContainer.innerHTML = '<div class="form-text error">'+error+'</div>';
+  }
+
+  mtvhValid(element,field){
+    const input = this.inputtedPhoneNumber();
+
+    element.classList.remove('has-error');
+    this.refs[field].classList.remove('is-invalid');
+    // this.refs.messageContainer.style.display = 'none';
+    this.refs.messageContainer.innerHTML = '';
+  }
+
+  isPhoneNumberValid(input){
+    return /^(?:\W*\d){11}\W*$/.test(input)
+  }
+
+  inputtedPhoneNumber(){
+    return this.refs.newDetailsInput.value.replace(/\W+/g, '');
+  }
 }
