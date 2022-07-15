@@ -1,50 +1,65 @@
-import { Components } from 'formiojs';
-const Input = (Components as any).components.field;
+import TextFieldComponent from 'formiojs/components/textfield/TextField';
 import editForm from './mtvhContactDetail.form';
 
-export default class mtvhContactDetail extends (Input as any) {
-  NOT_UK_NUMBER = 'This does not loook like a UK number';
-  ERROR_BEEN_SHOWN = false;
+export default class mtvhContactDetail extends (TextFieldComponent as any) {
 
-  static schema() {
-    return Input.schema({
+  static schema(...extend) {
+    return TextFieldComponent.schema({
       type: 'mtvhContactDetail',
       label: 'What is your number?',
       description: 'We need to know what number to contact you on',
       key: 'mtvhContactDetail',
       tableView: true,
-      inputType: 'text',
-      'validate': {
-        'required': true
-      }
-    });
+      inputType: 'tel',
+      inputMask: '99999999999',
+      inputMode: 'decimal',
+      displayMask: '',
+      required: true,
+    }, ...extend);
   }
 
   public static editForm = editForm;
 
-  static builderInfo = {
-    title: 'MTVH Contact details',
-    group: 'custom',
-    icon: 'phone',
-    weight: 10,
-    schema: mtvhContactDetail.schema()
+  static get builderInfo() {
+    return {
+      title: 'MTVH Contact details',
+      group: 'custom',
+      icon: 'phone',
+      weight: 10,
+      schema: mtvhContactDetail.schema()
+    };
   }
 
-  constructor(component, options, data) {
-    super(component, options, data);
+  get defaultSchema() {
+    return mtvhContactDetail.schema();
   }
 
-  init() {
-    super.init();
-  }
+  renderElement(value, index) {
+    // Double quotes cause the input value to close so replace them with html quote char.
+    if (value && typeof value === 'string') {
+      value = value.replace(/"/g, '&quot;');
+    }
+    const info = this.inputInfo;
+    info.attr = info.attr || {};
+    info.attr.value = this.getValueAsString(this.formatValue(this.parseValue(value)))
+      .replace(/"/g, '&quot;');
 
-  get inputInfo() {
-    const info = super.inputInfo;
-    return info;
-  }
+    const valueMask = this.component.inputMask;
+    const displayMask = this.component.displayMask;
+    const hasDifferentDisplayAndSaveFormats = valueMask && displayMask && valueMask !== displayMask;
 
-  public render() {
-    return super.render(this.renderTemplate('mtvhContactDetail'));
+    if (this.isMultipleMasksField) {
+      info.attr.class += ' formio-multiple-mask-input';
+    }
+
+    return this.renderTemplate('mtvhContactDetail', {
+      prefix: this.prefix,
+      suffix: this.suffix,
+      input: info,
+      value: this.formatValue(this.parseValue(value)),
+      hasValueMaskInput: hasDifferentDisplayAndSaveFormats,
+      index
+    });
   }
 
   attach(element) {
@@ -53,7 +68,7 @@ export default class mtvhContactDetail extends (Input as any) {
       existingDetailsDropdown: 'single',
       switchToFreetext: 'single',
       messageContainer: 'single',
-      newDetailsInput: 'single',
+      input: 'single',
       switchToDropdown: 'single',
     });
 
@@ -68,153 +83,59 @@ export default class mtvhContactDetail extends (Input as any) {
       this.setValue(this.refs.existingDetailsDropdown.value);
     });
 
-    this.addEventListener(this.refs.newDetailsInput, 'keyup', (val) => {
-      if (this.ERROR_BEEN_SHOWN || this.inputtedPhoneNumber().length > 11){
-        this.validatePhoneNumber(element);
-      }
-    });
-
-    this.addEventListener(this.refs.newDetailsInput, 'blur', (val) => {
-      this.validatePhoneNumber(element);
-    });
-
     this.mtvhContactDetailInitiate(element);
 
     return super.attach(element);
   }
 
-  detach() {
-    return super.detach();
-  }
-
-  destroy() {
-    return super.destroy();
-  }
-
-  normalizeValue(value, flags = {}) {
-    return super.normalizeValue(value, flags);
-  }
-
-
-  // Required for display of values in readonly mode - Issues with nested forms
-
-  getValue() {
-    return super.getValue();
-  }
-
-  getValueAt(index) {
-    return super.getValueAt(index);
-  }
-
-  setValue(value, flags = {}) {
-    return super.setValue(value, flags);
-  }
-
-  setValueAt(index, value, flags = {}) {
-    return super.setValueAt(index, value, flags);
-  }
-
-  // Required for display of values in readonly mode - Issues with nested forms
-
-  updateValue(value, flags = {}) {
-    return super.updateValue(value);
-  }
-
-  // ========= switch between input modes
-
-
-  mtvhContactDetailInitiate(element){
+  mtvhContactDetailInitiate(element) {
     this.refs.existingDetailsDropdown.style.display = 'block';
     this.refs.switchToFreetext.style.display = 'block';
-    this.refs.newDetailsInput.style.display = 'none';
+    this.refs.input.style.display = 'none';
     this.refs.switchToDropdown.style.display = 'none';
-
-    if (!(this.populateDropdown())){
-      this.switchToContactDetailFreetext(element)
-    }
+    this.populateDropdown();
+    // if (!(this.populateDropdown())){
+    //   this.switchToContactDetailFreetext(element)
+    // }
   }
 
-  switchToContactDetailFreetext(element){
+  switchToContactDetailFreetext(element) {
     this.refs.existingDetailsDropdown.style.display = 'none';
     this.refs.switchToFreetext.style.display = 'none';
-    this.refs.newDetailsInput.style.display = 'block';
+    this.refs.input[0].style.display = 'block';
     this.refs.switchToDropdown.style.display = 'block';
-
-    if (this.ERROR_BEEN_SHOWN || this.inputtedPhoneNumber().length > 11){
-      this.validatePhoneNumber(element);
-    }
   }
 
-  switchToContactDetailDropwdown(element){
+  switchToContactDetailDropwdown(element) {
     this.refs.existingDetailsDropdown.style.display = 'block';
     this.refs.switchToFreetext.style.display = 'block';
-    this.refs.newDetailsInput.style.display = 'none';
+    this.refs.input[0].style.display = 'none';
     this.refs.switchToDropdown.style.display = 'none';
-
-    this.setValue(this.refs.existingDetailsDropdown.value);
-  }
-  getDropdownData(){
-    return ['0123456', '789013456', '12390243']
+    this.setValue('');
+    this.refs.existingDetailsDropdown.value = '';
   }
 
-
-
-    populateDropdown(){
-      const dropdown = this.refs.existingDetailsDropdown
-      const options = this.getDropdownData()
-
-      if (options.length == 0) {
-          return false
-      } else {
-        for(let i = 0, l = options.length; i < l; i++){
-          const option = options[i];
-          dropdown.options.add( new Option(option,option) );
-        }
-        dropdown.focus();
-        return true
-      }
-    }
-
-
-
-  // ======= Validation =======
-
-  validatePhoneNumber(element){
-    const input = this.inputtedPhoneNumber();
-
-    if (this.isPhoneNumberValid(input)){
-      this.setValue(input);
-      this.mtvhValid(element, 'newDetailsInput');
+  getDropdownData() {
+    if (this.options.data && this.options.data.isMtvho && this.options.data.phoneNumbers && this.options.data.phoneNumbers.length > 0) {
+      return this.options.data.phoneNumbers
     } else {
-      this.setValue('');
-      this.mtvhInvalid(element, 'newDetailsInput', this.NOT_UK_NUMBER);
+      return []
     }
   }
 
-  mtvhInvalid(element,field,error){
-    const input = this.inputtedPhoneNumber();
+  populateDropdown() {
+    const dropdown = this.refs.existingDetailsDropdown
+    const options = this.getDropdownData()
 
-    this.ERROR_BEEN_SHOWN = true;
-    element.classList.add('has-error');
-    this.refs[field].classList.add('is-invalid');
-    // this.refs.messageContainer.style.display = 'block';
-    this.refs.messageContainer.innerHTML = '<div class="form-text error">'+error+'</div>';
-  }
-
-  mtvhValid(element,field){
-    const input = this.inputtedPhoneNumber();
-
-    element.classList.remove('has-error');
-    this.refs[field].classList.remove('is-invalid');
-    // this.refs.messageContainer.style.display = 'none';
-    this.refs.messageContainer.innerHTML = '';
-  }
-
-  isPhoneNumberValid(input){
-    return /^(?:\W*\d){11}\W*$/.test(input)
-  }
-
-  inputtedPhoneNumber(){
-    return this.refs.newDetailsInput.value.replace(/\W+/g, '');
+    if (options.length == 0) {
+      return false
+    } else {
+      for (let i = 0, l = options.length; i < l; i++) {
+        const option = options[i];
+        dropdown.options.add(new Option(option, option));
+      }
+      dropdown.focus();
+      return true
+    }
   }
 }

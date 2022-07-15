@@ -1,39 +1,22 @@
 import editForm from './mtvhContactDetail.form';
 declare const mtvhContactDetail_base: any;
 export default class mtvhContactDetail extends mtvhContactDetail_base {
-    NOT_UK_NUMBER: string;
-    ERROR_BEEN_SHOWN: boolean;
-    static schema(): any;
+    static schema(...extend: any[]): any;
     static editForm: typeof editForm;
-    static builderInfo: {
+    static get builderInfo(): {
         title: string;
         group: string;
         icon: string;
         weight: number;
         schema: any;
     };
-    constructor(component: any, options: any, data: any);
-    init(): void;
-    get inputInfo(): any;
-    render(): any;
+    get defaultSchema(): any;
+    renderElement(value: any, index: any): any;
     attach(element: any): any;
-    detach(): any;
-    destroy(): any;
-    normalizeValue(value: any, flags?: {}): any;
-    getValue(): any;
-    getValueAt(index: any): any;
-    setValue(value: any, flags?: {}): any;
-    setValueAt(index: any, value: any, flags?: {}): any;
-    updateValue(value: any, flags?: {}): any;
     mtvhContactDetailInitiate(element: any): void;
     switchToContactDetailFreetext(element: any): void;
     switchToContactDetailDropwdown(element: any): void;
-    getDropdownData(): string[];
+    getDropdownData(): any;
     populateDropdown(): boolean;
-    validatePhoneNumber(element: any): void;
-    mtvhInvalid(element: any, field: any, error: any): void;
-    mtvhValid(element: any, field: any): void;
-    isPhoneNumberValid(input: any): boolean;
-    inputtedPhoneNumber(): any;
 }
 export {};
