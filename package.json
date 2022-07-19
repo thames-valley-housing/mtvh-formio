@@ -2,6 +2,7 @@
   "name": "@mtvh/mtvh-formio",
   "version": "1.0.31",
   "description": "MTVH custom templates, components and styling for Form.io",
+  "main": "lib/index.js",
   "module": "node",
   "watch": {
     "mtvhFormioBuild": {
