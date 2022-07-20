@@ -73,7 +73,7 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "formiojs": "4.14.1",
+    "formiojs": "^4.14.8",
     "npm-watch": "^0.11.0",
     "watch": "^1.0.2"
   }

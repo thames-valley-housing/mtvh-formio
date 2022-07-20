@@ -1,0 +1,110 @@
+Arguments: 
+  /Users/mtvh04519/.asdf/installs/nodejs/14.17.3/bin/node /Users/mtvh04519/.asdf/installs/nodejs/14.17.3/.npm/bin/yarn
+
+PATH: 
+  /Users/mtvh04519/.asdf/plugins/nodejs/shims:/Users/mtvh04519/.asdf/installs/nodejs/14.17.3/.npm/bin:/Users/mtvh04519/.asdf/installs/nodejs/14.17.3/bin:/opt/homebrew/opt/postgresql@11/bin:/Users/mtvh04519/.asdf/shims:/opt/homebrew/opt/asdf/libexec/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  14.17.3
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  SyntaxError: /Users/mtvh04519/Code/mtvh-formio/package.json: Unexpected token / in JSON at position 2081
+      at JSON.parse (<anonymous>)
+      at /Users/mtvh04519/.asdf/installs/nodejs/14.17.3/.npm/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/Users/mtvh04519/.asdf/installs/nodejs/14.17.3/.npm/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /Users/mtvh04519/.asdf/installs/nodejs/14.17.3/.npm/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "@mtvh/mtvh-formio",
+    "version": "1.0.32",
+    "description": "MTVH custom templates, components and styling for Form.io",
+    "main": "lib/index.js",
+    "module": "node",
+    "watch": {
+      "mtvhFormioBuild": {
+        "patterns": [
+          "src"
+        ],
+        "extensions": "ts,ejs,js"
+      }
+    },
+    "scripts": {
+      "watch": "tsc -w",
+      "webpack:dev": "webpack",
+      "webpack:prod": "webpack --config webpack.prod.js",
+      "webpack:use": "webpack --config webpack.use.js",
+      "webpack": "npm run webpack:dev && npm run webpack:prod && npm run webpack:use",
+      "build": "tsc && gulp templates && npm run webpack && node-sass ./src/sass/mtvh-formio.scss ./dist/mtvh-formio.css",
+      "mtvhFormioBuild": "tsc && gulp templates && npm run webpack && node-sass ./src/sass/mtvh-formio.scss ./dist/mtvh-formio.css",
+      "lint": "tslint -p .",
+      "prepublish": "npm run build",
+      "runFormio": "npm-watch mtvhFormioBuild"
+    },
+    "pre-commit": [
+      "lint",
+      "test"
+    ],
+    "files": [
+      "dist"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/thames-valley-housing/mtvh-formio.git"
+    },
+    "keywords": [
+      "formio"
+    ],
+    "author": "MTVH",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/thames-valley-housing/mtvh-formio/issues"
+    },
+    "homepage": "https://github.com/thames-valley-housing/mtvh-formio/#readme",
+    "peerDependencies": {
+      "bootstrap": "4.*",
+      "formiojs": "4.14.1"
+    },
+    "devDependencies": {
+      "@types/chai": "^4.2.11",
+      "@types/ejs": "^3.0.2",
+      "@types/mocha": "^7.0.2",
+      "@types/node": "^13.13.1",
+      "@types/sinon": "^9.0.0",
+      "bootstrap": "4.*",
+      "chai": "^4.2.0",
+      "gulp": "^4.0.2",
+      "gulp-insert": "^0.5.0",
+      "gulp-rename": "^2.0.0",
+      "gulp-template": "^5.0.0",
+      "mocha": "^7.1.1",
+      "node-sass": "^7.0.1",
+      "nyc": "^15.0.1",
+      "pre-commit": "^1.2.2",
+      "sinon": "^9.0.2",
+      "ts-node": "^8.9.0",
+      "ts-sinon": "^1.2.0",
+      "tslint": "^6.1.1",
+      "typescript": "^3.8.3",
+      "webpack": "^4.42.1",
+      "webpack-cli": "^3.3.11"
+    },
+    "dependencies": {
+      // "formiojs": "4.14.1",
+      "npm-watch": "^0.11.0",
+      "watch": "^1.0.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
