@@ -104,6 +104,7 @@ export default class mtvhContactDetail extends (TextFieldComponent as any) {
   switchToContactDetailFreetext(element) {
     this.refs.mtvhContactDetailsDropdown.style.display = 'none';
     this.refs.mtvhContactDetailsFreetext.style.display = 'block';
+    this.setValue('');
   }
 
   switchToContactDetailDropdown(element) {
