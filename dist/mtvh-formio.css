@@ -390,3 +390,6 @@
     .formio-wizard-nav-container li .btn {
       width: auto;
       margin-bottom: auto; }
+
+.formio-component-mtvhContactDetail select, .formio-component-mtvhContactDetail input {
+  margin-bottom: 1rem; }
