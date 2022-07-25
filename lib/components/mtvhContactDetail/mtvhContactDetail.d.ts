@@ -15,8 +15,9 @@ export default class mtvhContactDetail extends mtvhContactDetail_base {
     attach(element: any): any;
     mtvhContactDetailInitiate(element: any): void;
     switchToContactDetailFreetext(element: any): void;
-    switchToContactDetailDropwdown(element: any): void;
+    switchToContactDetailDropdown(element: any): void;
     getDropdownData(): any;
+    getSelected(): any;
     populateDropdown(): boolean;
 }
 export {};

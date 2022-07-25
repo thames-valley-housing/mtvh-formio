@@ -12,12 +12,15 @@
     </span>
     </div>
   {% } %}
-  <select lang="en" class="form-control" type="text" id="{{ctx.instance.id}}-{{ctx.component.key}}-selectAddress" ref="existingDetailsDropdown">
-    <option value="" selected="selected"></option>
-  </select>
-  <a ref="switchToFreetext" href='#'>
-    <span class="input-switch-icon"></span> Provide a different phone number
-  </a>
+  <div ref="mtvhContactDetailsDropdown">
+    <select lang="en" class="form-control" type="text" id="{{ctx.instance.id}}-{{ctx.component.key}}-selectAddress" ref="existingDetailsDropdown">
+      <option value=""></option>
+    </select>
+    <a ref="switchToFreetext" href='#'>
+      <span class="input-switch-icon"></span> Provide a different phone number
+    </a>
+  </div>
+  <div ref="mtvhContactDetailsFreetext">
   {% if (!ctx.component.editor && !ctx.component.wysiwyg) { %}
     <{{ctx.input.type}}
       ref="{{ctx.input.ref ? ctx.input.ref : 'input'}}"
@@ -33,12 +36,13 @@
       <input ref="valueMaskInput" />
     {% } %}
 {% } %}
-{% if (ctx.component.editor || ctx.component.wysiwyg) { %}
-  <div ref="input"></div>
-{% } %}
-<a ref="switchToDropdown" href='#'>
-  <span class="input-switch-icon"></span> Choose an existing phone number
-</a>
+  {% if (ctx.component.editor || ctx.component.wysiwyg) { %}
+    <div ref="input"></div>
+  {% } %}
+  <a ref="switchToDropdown" href='#'>
+    <span class="input-switch-icon"></span> Choose an existing phone number
+  </a>
+</div>
 {% if (ctx.suffix) { %}
   <div class="input-group-append" ref="suffix">
     <span class="input-group-text">

@@ -754,12 +754,16 @@ var mtvhContactDetail = /** @class */ (function (_super) {
             messageContainer: 'single',
             input: 'single',
             switchToDropdown: 'single',
+            mtvhContactDetailsDropdown: 'single',
+            mtvhContactDetailsFreetext: 'single',
         });
-        this.addEventListener(this.refs.switchToFreetext, 'click', function () {
+        this.addEventListener(this.refs.switchToFreetext, 'click', function (event) {
+            event.preventDefault();
             _this.switchToContactDetailFreetext(element);
         });
-        this.addEventListener(this.refs.switchToDropdown, 'click', function () {
-            _this.switchToContactDetailDropwdown(element);
+        this.addEventListener(this.refs.switchToDropdown, 'click', function (event) {
+            event.preventDefault();
+            _this.switchToContactDetailDropdown(element);
         });
         this.addEventListener(this.refs.existingDetailsDropdown, 'change', function () {
             _this.setValue(_this.refs.existingDetailsDropdown.value);
@@ -768,26 +772,21 @@ var mtvhContactDetail = /** @class */ (function (_super) {
         return _super.prototype.attach.call(this, element);
     };
     mtvhContactDetail.prototype.mtvhContactDetailInitiate = function (element) {
-        this.refs.existingDetailsDropdown.style.display = 'block';
-        this.refs.switchToFreetext.style.display = 'block';
-        this.refs.input.style.display = 'none';
-        this.refs.switchToDropdown.style.display = 'none';
         this.populateDropdown();
-        // if (!(this.populateDropdown())){
-        //   this.switchToContactDetailFreetext(element)
-        // }
+        if ((this.getDropdownData().length == 0)) {
+            this.switchToContactDetailFreetext(element);
+        }
+        else {
+            this.switchToContactDetailDropdown(element);
+        }
     };
     mtvhContactDetail.prototype.switchToContactDetailFreetext = function (element) {
-        this.refs.existingDetailsDropdown.style.display = 'none';
-        this.refs.switchToFreetext.style.display = 'none';
-        this.refs.input[0].style.display = 'block';
-        this.refs.switchToDropdown.style.display = 'block';
+        this.refs.mtvhContactDetailsDropdown.style.display = 'none';
+        this.refs.mtvhContactDetailsFreetext.style.display = 'block';
     };
-    mtvhContactDetail.prototype.switchToContactDetailDropwdown = function (element) {
-        this.refs.existingDetailsDropdown.style.display = 'block';
-        this.refs.switchToFreetext.style.display = 'block';
-        this.refs.input[0].style.display = 'none';
-        this.refs.switchToDropdown.style.display = 'none';
+    mtvhContactDetail.prototype.switchToContactDetailDropdown = function (element) {
+        this.refs.mtvhContactDetailsDropdown.style.display = 'block';
+        this.refs.mtvhContactDetailsFreetext.style.display = 'none';
         this.setValue('');
         this.refs.existingDetailsDropdown.value = '';
     };
@@ -799,7 +798,16 @@ var mtvhContactDetail = /** @class */ (function (_super) {
             return [];
         }
     };
+    mtvhContactDetail.prototype.getSelected = function () {
+        if (this.options.data && this.options.data.selectedPhoneNumber && this.options.data.selectedPhoneNumber.length > 0) {
+            return this.options.data.selectedPhoneNumber;
+        }
+        else {
+            return '';
+        }
+    };
     mtvhContactDetail.prototype.populateDropdown = function () {
+        var _this = this;
         var dropdown = this.refs.existingDetailsDropdown;
         var options = this.getDropdownData();
         if (options.length == 0) {
@@ -811,6 +819,10 @@ var mtvhContactDetail = /** @class */ (function (_super) {
                 dropdown.options.add(new Option(option, option));
             }
             dropdown.focus();
+            setTimeout(function () {
+                _this.setValue(_this.getSelected());
+                _this.refs.existingDetailsDropdown.value = _this.getSelected();
+            }, 200);
             return true;
         }
     };
@@ -1192,11 +1204,11 @@ __p += '\n        ' +
  } ;
 __p += '\n    </span>\n    </div>\n  ';
  } ;
-__p += '\n  <select lang="en" class="form-control" type="text" id="' +
+__p += '\n  <div ref="mtvhContactDetailsDropdown">\n    <select lang="en" class="form-control" type="text" id="' +
 ((__t = (ctx.instance.id)) == null ? '' : __t) +
 '-' +
 ((__t = (ctx.component.key)) == null ? '' : __t) +
-'-selectAddress" ref="existingDetailsDropdown">\n    <option value="" selected="selected"></option>\n  </select>\n  <a ref="switchToFreetext" href=\'#\'>\n    <span class="input-switch-icon"></span> Provide a different phone number\n  </a>\n  ';
+'-selectAddress" ref="existingDetailsDropdown">\n      <option value=""></option>\n    </select>\n    <a ref="switchToFreetext" href=\'#\'>\n      <span class="input-switch-icon"></span> Provide a different phone number\n    </a>\n  </div>\n  <div ref="mtvhContactDetailsFreetext">\n  ';
  if (!ctx.component.editor && !ctx.component.wysiwyg) { ;
 __p += '\n    <' +
 ((__t = (ctx.input.type)) == null ? '' : __t) +
@@ -1238,11 +1250,11 @@ __p += '\n      <input ref="valueMaskInput" />\n    ';
  } ;
 __p += '\n';
  } ;
-__p += '\n';
+__p += '\n  ';
  if (ctx.component.editor || ctx.component.wysiwyg) { ;
-__p += '\n  <div ref="input"></div>\n';
+__p += '\n    <div ref="input"></div>\n  ';
  } ;
-__p += '\n<a ref="switchToDropdown" href=\'#\'>\n  <span class="input-switch-icon"></span> Choose an existing phone number\n</a>\n';
+__p += '\n  <a ref="switchToDropdown" href=\'#\'>\n    <span class="input-switch-icon"></span> Choose an existing phone number\n  </a>\n</div>\n';
  if (ctx.suffix) { ;
 __p += '\n  <div class="input-group-append" ref="suffix">\n    <span class="input-group-text">\n      ';
  if(ctx.suffix instanceof HTMLElement){ ;

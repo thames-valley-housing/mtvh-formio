@@ -70,13 +70,17 @@ export default class mtvhContactDetail extends (TextFieldComponent as any) {
       messageContainer: 'single',
       input: 'single',
       switchToDropdown: 'single',
+      mtvhContactDetailsDropdown: 'single',
+      mtvhContactDetailsFreetext: 'single',
     });
 
-    this.addEventListener(this.refs.switchToFreetext, 'click', () => {
+    this.addEventListener(this.refs.switchToFreetext, 'click', (event) => {
+      event.preventDefault();
       this.switchToContactDetailFreetext(element);
     });
-    this.addEventListener(this.refs.switchToDropdown, 'click', () => {
-      this.switchToContactDetailDropwdown(element);
+    this.addEventListener(this.refs.switchToDropdown, 'click', (event) => {
+      event.preventDefault();
+      this.switchToContactDetailDropdown(element);
     });
 
     this.addEventListener(this.refs.existingDetailsDropdown, 'change', () => {
@@ -89,28 +93,22 @@ export default class mtvhContactDetail extends (TextFieldComponent as any) {
   }
 
   mtvhContactDetailInitiate(element) {
-    this.refs.existingDetailsDropdown.style.display = 'block';
-    this.refs.switchToFreetext.style.display = 'block';
-    this.refs.input.style.display = 'none';
-    this.refs.switchToDropdown.style.display = 'none';
     this.populateDropdown();
-    // if (!(this.populateDropdown())){
-    //   this.switchToContactDetailFreetext(element)
-    // }
+    if ((this.getDropdownData().length == 0)){
+      this.switchToContactDetailFreetext(element)
+    } else {
+      this.switchToContactDetailDropdown(element)
+    }
   }
 
   switchToContactDetailFreetext(element) {
-    this.refs.existingDetailsDropdown.style.display = 'none';
-    this.refs.switchToFreetext.style.display = 'none';
-    this.refs.input[0].style.display = 'block';
-    this.refs.switchToDropdown.style.display = 'block';
+    this.refs.mtvhContactDetailsDropdown.style.display = 'none';
+    this.refs.mtvhContactDetailsFreetext.style.display = 'block';
   }
 
-  switchToContactDetailDropwdown(element) {
-    this.refs.existingDetailsDropdown.style.display = 'block';
-    this.refs.switchToFreetext.style.display = 'block';
-    this.refs.input[0].style.display = 'none';
-    this.refs.switchToDropdown.style.display = 'none';
+  switchToContactDetailDropdown(element) {
+    this.refs.mtvhContactDetailsDropdown.style.display = 'block';
+    this.refs.mtvhContactDetailsFreetext.style.display = 'none';
     this.setValue('');
     this.refs.existingDetailsDropdown.value = '';
   }
@@ -123,6 +121,14 @@ export default class mtvhContactDetail extends (TextFieldComponent as any) {
     }
   }
 
+  getSelected() {
+    if (this.options.data && this.options.data.selectedPhoneNumber && this.options.data.selectedPhoneNumber.length > 0) {
+      return this.options.data.selectedPhoneNumber
+    } else {
+      return ''
+    }
+  }
+
   populateDropdown() {
     const dropdown = this.refs.existingDetailsDropdown
     const options = this.getDropdownData()
@@ -132,9 +138,13 @@ export default class mtvhContactDetail extends (TextFieldComponent as any) {
     } else {
       for (let i = 0, l = options.length; i < l; i++) {
         const option = options[i];
-        dropdown.options.add(new Option(option, option));
+        dropdown.options.add(new Option(option, option ));
       }
       dropdown.focus();
+      setTimeout( () => {
+        this.setValue(this.getSelected());
+        this.refs.existingDetailsDropdown.value = this.getSelected();
+      }, 200);
       return true
     }
   }
