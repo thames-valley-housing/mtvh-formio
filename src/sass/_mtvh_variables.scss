@@ -1,36 +1,36 @@
-//Colours
-//$mtvh-blue: #0099FF; 
-$mtvh-blue: #0098FE; //Changed to be accessible
-$mtvh-blue-light: #cdebfe;
-$mtvh-purple:#71599b;
-$mtvh-rose: #ea4e5a;
-$mtvh-lime: #c8d434;
-$mtvh-lime-light: #f4f6d6;
-$mtvh-lime-light-dark: darken($mtvh-lime-light,15%);
+//New Colours
+$mtvh-stone:#F9F2EA;
+$mtvh-stone-dark: darken($mtvh-stone,10%);
+$mtvh-green:#5eaf4b;
+$mtvh-yellow:#e8c426;
+$mtvh-yellow-light:#f8d643;
+$mtvh-rose: #fa3d54;
+$mtvh-grey: #545454; //No real need to use currently
 
-$mtvh-green:#6BA260; //Changed to be accessible
+$mtvh-green-darker:#1d8106;
+$mtvh-grey-disabled: #8C8C8C;
 
-$mtvh-grey: #545454;
-$mtvh-error: #dc3545;
+$body-color: #000;
+$form-placeholder: lighten($body-color, 25%);
 
-//Bootstrap Colours - Required
-$mtvh-primary: $mtvh-blue;
-$mtvh-primary-dark: darken($mtvh-blue,15%);
-$body-color: $mtvh-grey;
+$mtvh-link-default:#0072bf;
+$mtvh-link-hover:#005792;
+$mtvh-link-click:#00385e;
+$mtvh-link-visited:#7e54c2;
+
+$mtvh-focus:$mtvh-yellow-light;
+
+$mtvh-error: #db070c;
+
 $form-line-color: #ced4da;
-$line-color: #dee2e6;
-$form-placeholder: lighten($body-color, 20%);
-$link-color: #007ACC;
-$link-hover-color: #000;
-$link-visited-color: $mtvh-purple;
+$mtvh-check-fill: $body-color;
 
 //Fonts
-//$font-size-base: 17px;
-//$font-family-base: Arial;
 $font-size-base: 18px;
-$font-family-base: Arial;
-$headings-font-family: Nunito;
-$headings-font-weight: 800;
+$font-family-base: Arial,sans-serif;
+$font-weight: 400;
+$headings-font-family: 'Paralucent W05',Arial,sans-serif;
+$headings-font-weight: 600;
 $fontAwesome: normal normal normal 20px/1 FontAwesome;
 
 //Grid

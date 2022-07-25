@@ -4,6 +4,7 @@
 
   &,label{
     font-family:$font-family-base;
+    font-weight:$font-weight;
     font-size: $font-size-base;
     color:$body-color;
   }
@@ -44,8 +45,8 @@
     //Label
     //.col-form-label:not(.fileName):not(.fileSize){
     .col-form-label {
-      font-family: $headings-font-family;
-      font-weight: $headings-font-weight;
+      font-family: $font-family-base;
+      font-weight: 600;
       font-size: 1.4rem;
       margin-bottom: 0.75rem;
       padding-top: 0;
@@ -59,7 +60,7 @@
         font-size: 1.2rem;
         margin-top: 0.25rem;
         font-family: $font-family-base;
-        font-weight:400;
+        font-weight:$font-weight;
       }
     }
 
@@ -94,6 +95,7 @@
   /////////////////////////////// Form Control
 
   .form-control{
+    color:$body-color;
     font-size: $font-size-base;
     border: 2px solid $form-line-color;
     border-radius: 0;
@@ -117,10 +119,20 @@
 
     height:auto;
     padding:0.75rem;
-    outline: none!important;
-    box-shadow:none !important;
-    &:focus{outline:none!important;border:2px solid $mtvh-blue !important;}
-
+    outline: none;//!important;
+    box-shadow:none;// !important;
+    /*
+    &:focus{
+      outline:none!important;border:2px solid $mtvh-focus !important;
+    }
+    */
+    &:focus{
+      border-color:#000;
+      //outline: 3px solid $mtvh-focus;
+      //outline-offset: 0;
+      -webkit-box-shadow: 0 0 0 3px $mtvh-focus;
+      box-shadow: 0 0 0 3px $mtvh-focus;
+    }
   }
 
   //For IE11 fix on inputs
@@ -157,7 +169,7 @@
     margin:0!important;
     color: $mtvh-error!important;
     font-weight:bold;
-    font-size:1rem!important;
+    font-size:$font-size-base!important;
   }
   .formio-errors.invalid-feedback{
     margin-top:0.75rem!important;

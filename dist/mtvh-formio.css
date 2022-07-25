@@ -1,16 +1,20 @@
 .formio-form a:not(.btn):not(.card) {
   text-decoration: underline;
-  color: #007ACC;
+  color: #0072bf;
   font-weight: 600; }
   .formio-form a:not(.btn):not(.card):visited {
-    color: #71599b; }
+    color: #7e54c2; }
   .formio-form a:not(.btn):not(.card):hover {
-    color: #000; }
+    color: #005792; }
+  .formio-form a:not(.btn):not(.card):focus {
+    outline: 3px solid #f8d643;
+    outline-offset: 0;
+    background: #f8d643; }
 
 .formio-form button.btn {
-  font-family: Nunito;
-  font-weight: 800;
-  font-size: 1.2rem;
+  font-family: Arial, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
   text-decoration: none;
   border-radius: 1.5rem;
   border-width: 2px; }
@@ -23,39 +27,59 @@
     font-weight: 600;
     padding: 0;
     border: 0 !important;
-    color: #007ACC !important;
+    color: #0072bf !important;
     text-decoration: underline !important;
     background: none !important;
     border: 0 !important;
     margin: 0 !important;
     width: auto !important; }
-    .formio-form button.btn.btn-xs:hover {
-      color: #003d66 !important; }
   .formio-form button.btn:hover {
     text-decoration: underline !important; }
+  .formio-form button.btn:focus, .formio-form button.btn:active {
+    border-color: #000;
+    -webkit-box-shadow: 0 0 0 3px #f8d643;
+    box-shadow: 0 0 0 3px #f8d643; }
   .formio-form button.btn.btn-primary {
-    border-color: #0098FE;
-    background: #0098FE; }
+    border-color: #0072bf;
+    background: #0072bf; }
     .formio-form button.btn.btn-primary:hover {
-      border-color: #006ab2;
-      background: #006ab2; }
+      border-color: #005792;
+      background: #005792; }
+    .formio-form button.btn.btn-primary:active {
+      border-color: #00385e;
+      background: #00385e; }
+    .formio-form button.btn.btn-primary:disabled {
+      border: none;
+      border-color: #0072bf;
+      background: #0072bf;
+      opacity: .50;
+      cursor: default;
+      text-decoration: none !important;
+      -webkit-box-shadow: none;
+      box-shadow: none; }
   .formio-form button.btn.btn-secondary {
-    color: #545454;
+    color: #000;
     background-color: #fff;
-    border-color: #545454;
+    border-color: #000;
     width: auto;
     margin: 0; }
     .formio-form button.btn.btn-secondary:hover {
-      border-color: #2e2e2e;
-      color: #2e2e2e; }
+      border-color: #005792;
+      color: #005792; }
+    .formio-form button.btn.btn-secondary:active {
+      color: #000;
+      background-color: #fff;
+      border-color: #00385e;
+      color: #00385e; }
 
 .formio-form, .formio-form label {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
   font-size: 18px;
-  color: #545454; }
+  color: #000; }
 
 .formio-form h1 {
-  font-family: Nunito;
+  font-family: "Paralucent W05", Arial, sans-serif;
   font-weight: 600;
   line-height: 1.1;
   margin: 0;
@@ -89,8 +113,8 @@
   .formio-form div.formio-component.formio-component-button, .formio-form div.formio-component.formio-component-form {
     margin-bottom: 0rem; }
   .formio-form div.formio-component .col-form-label {
-    font-family: Nunito;
-    font-weight: 800;
+    font-family: Arial, sans-serif;
+    font-weight: 600;
     font-size: 1.4rem;
     margin-bottom: 0.75rem;
     padding-top: 0;
@@ -103,7 +127,7 @@
       display: block;
       font-size: 1.2rem;
       margin-top: 0.25rem;
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       font-weight: 400; }
   .formio-form div.formio-component .form-text {
     margin: -6px 0 0.85rem 0; }
@@ -112,56 +136,63 @@
   margin-bottom: 0px !important; }
 
 .formio-form .form-control {
+  color: #000;
   font-size: 18px;
   border: 2px solid #ced4da;
   border-radius: 0;
   height: auto;
   padding: 0.75rem;
-  outline: none !important;
-  box-shadow: none !important; }
+  outline: none;
+  box-shadow: none;
+  /*
+    &:focus{
+      outline:none!important;border:2px solid $mtvh-focus !important;
+    }
+    */ }
   .formio-form .form-control::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #878787; }
+    color: #404040; }
   .formio-form .form-control:-ms-input-placeholder {
     /* Internet Explorer 10-11 */
-    color: #878787 !important;
+    color: #404040 !important;
     font-weight: 400 !important; }
   .formio-form .form-control::-ms-input-placeholder {
     /* Microsoft Edge */
-    color: #878787 !important;
+    color: #404040 !important;
     font-weight: 400 !important; }
   .formio-form .form-control:focus {
-    outline: none !important;
-    border: 2px solid #0098FE !important; }
+    border-color: #000;
+    -webkit-box-shadow: 0 0 0 3px #f8d643;
+    box-shadow: 0 0 0 3px #f8d643; }
 
 .formio-form input.form-control {
   line-height: 1rem; }
 
 .formio-form .field-required:after {
-  color: #ea4e5a; }
+  color: #fa3d54; }
 
 .formio-form .formio-error-wrapper, .formio-form .has-error {
-  color: #545454 !important;
+  color: #000 !important;
   background: none !important;
   border: none;
-  border-left: 6px solid #dc3545 !important;
+  border-left: 6px solid #db070c !important;
   padding: 0 !important;
   padding-left: 1rem !important; }
 
 .formio-form .form-control.is-invalid {
-  border-color: #dc3545; }
+  border-color: #db070c; }
 
 .formio-form input.is-invalid + span::before {
-  border-color: #dc3545 !important; }
+  border-color: #db070c !important; }
 
 .formio-form input.is-invalid + input.form-control {
-  border-color: #dc3545 !important; }
+  border-color: #db070c !important; }
 
 .formio-form .form-text.error {
   margin: 0 !important;
-  color: #dc3545 !important;
+  color: #db070c !important;
   font-weight: bold;
-  font-size: 1rem !important; }
+  font-size: 18px !important; }
 
 .formio-form .formio-errors.invalid-feedback {
   margin-top: 0.75rem !important; }
@@ -215,8 +246,9 @@
   .formio-form .formio-component-selectboxes .form-radio .form-check .form-check-input, .formio-form .formio-component-selectboxes .form-check.checkbox .form-check-input, .formio-form .formio-component-radio .form-radio .form-check .form-check-input, .formio-form .formio-component-radio .form-check.checkbox .form-check-input, .formio-form .formio-component-checkbox .form-radio .form-check .form-check-input, .formio-form .formio-component-checkbox .form-check.checkbox .form-check-input {
     margin: 0; }
   .formio-form .formio-component-selectboxes .form-radio .form-check input[type="checkbox"]:focus + span::before, .formio-form .formio-component-selectboxes .form-radio .form-check input[type="radio"]:focus + span::before, .formio-form .formio-component-selectboxes .form-check.checkbox input[type="checkbox"]:focus + span::before, .formio-form .formio-component-selectboxes .form-check.checkbox input[type="radio"]:focus + span::before, .formio-form .formio-component-radio .form-radio .form-check input[type="checkbox"]:focus + span::before, .formio-form .formio-component-radio .form-radio .form-check input[type="radio"]:focus + span::before, .formio-form .formio-component-radio .form-check.checkbox input[type="checkbox"]:focus + span::before, .formio-form .formio-component-radio .form-check.checkbox input[type="radio"]:focus + span::before, .formio-form .formio-component-checkbox .form-radio .form-check input[type="checkbox"]:focus + span::before, .formio-form .formio-component-checkbox .form-radio .form-check input[type="radio"]:focus + span::before, .formio-form .formio-component-checkbox .form-check.checkbox input[type="checkbox"]:focus + span::before, .formio-form .formio-component-checkbox .form-check.checkbox input[type="radio"]:focus + span::before {
-    outline: none !important;
-    border: 2px solid #0098FE !important; }
+    border-color: #000;
+    -webkit-box-shadow: 0 0 0 3px #f8d643;
+    box-shadow: 0 0 0 3px #f8d643; }
   .formio-form .formio-component-selectboxes .form-radio .form-check input + span::before, .formio-form .formio-component-selectboxes .form-check.checkbox input + span::before, .formio-form .formio-component-radio .form-radio .form-check input + span::before, .formio-form .formio-component-radio .form-check.checkbox input + span::before, .formio-form .formio-component-checkbox .form-radio .form-check input + span::before, .formio-form .formio-component-checkbox .form-check.checkbox input + span::before {
     position: absolute;
     display: inline-block;
@@ -233,7 +265,7 @@
     display: inline-block;
     content: '';
     border-width: 0px;
-    background: #0098FE;
+    background: #000;
     top: -1px;
     left: -47px;
     height: 30px;
@@ -252,7 +284,7 @@
   padding-bottom: 1rem; }
 
 .formio-form .formio-choices .choices__list .choices__placeholder {
-  color: #878787;
+  color: #404040;
   opacity: 1; }
 
 .formio-form .formio-choices .choices__list--single .choices__item.choices__item--selectable {
@@ -267,18 +299,26 @@
 
 .formio-form .formio-component-file .list-group {
   border-radius: 0;
-  border: 2px solid #ced4da; }
+  border: 0px; }
 
 @media (max-width: 767.98px) {
   .formio-form .formio-component-file .list-group-header .col-md-1 {
     display: none; } }
 
 .formio-form .formio-component-file .list-group-item {
-  border: 0;
+  border: 2px solid #ced4da;
+  border-bottom: 0;
+  border-radius: 0;
   padding: 0.75rem 1.25rem !important; }
+
+.formio-form .formio-component-file .list-group-item:only-child {
+  display: none; }
 
 .formio-form .formio-component-file .list-group-item:not(.list-group-header) {
   border-top: 1px solid #ced4da; }
+
+.formio-form .formio-component-file .list-group-item:last-child {
+  border-bottom: 2px solid #ced4da; }
 
 .formio-form .formio-component-file .fileSelector {
   margin-top: 1rem;
@@ -291,7 +331,7 @@
     font-weight: 600;
     font-size: 18px; }
   .formio-form .formio-component-file .file .bg-info {
-    background-color: #cdebfe !important;
+    background-color: #f8d643 !important;
     padding: 15px; }
 
 .formio-form .formio-component-editgrid .list-group {
@@ -311,7 +351,7 @@
     z-index: 100; }
 
 .formio-form .formio-component-tabs .tab-pane {
-  border: 1px solid #dee2e6; }
+  border: 1px solid #ced4da; }
 
 .formio-form .formio-component-mtvhAddress label.label-sm {
   font-size: 1.175rem; }
@@ -323,13 +363,13 @@
   margin-top: 1.5rem;
   border-radius: 0;
   border: 0;
-  background: #f4f6d6; }
+  background: #F9F2EA; }
   @media (min-width: 768px) {
     .formio-form nav {
       margin-top: 0; } }
   .formio-form nav h5 {
-    font-family: Nunito;
-    font-weight: 800; }
+    font-family: "Paralucent W05", Arial, sans-serif;
+    font-weight: 600; }
   .formio-form nav ul.mtvh-ul {
     display: inline-block;
     padding: 0;
@@ -356,27 +396,34 @@
       color: #fff; }
     .formio-form nav ul.mtvh-ul li.page-item {
       padding: 0 0 1rem 1rem;
-      border-left: 2px solid #e3e897; }
+      border-left: 2px solid #000; }
       .formio-form nav ul.mtvh-ul li.page-item:before {
-        border-color: #6BA260;
-        background: #6BA260;
+        border-color: #1d8106;
+        background: #1d8106;
         content: '\f00c'; }
-      .formio-form nav ul.mtvh-ul li.page-item span {
+      .formio-form nav ul.mtvh-ul li.page-item span, .formio-form nav ul.mtvh-ul li.page-item a {
         top: -1px;
         left: 10px;
-        position: relative; }
+        position: relative;
+        font-weight: normal;
+        color: #000 !important;
+        text-decoration: none; }
+        .formio-form nav ul.mtvh-ul li.page-item span:hover, .formio-form nav ul.mtvh-ul li.page-item a:hover {
+          text-decoration: underline; }
     .formio-form nav ul.mtvh-ul li.page-item.active {
-      color: #545454; }
+      color: #000; }
       .formio-form nav ul.mtvh-ul li.page-item.active:before {
-        border-color: #0098FE;
-        background: #0098FE;
-        content: ''; }
+        border-color: #fff;
+        background: #000;
+        content: '';
+        -webkit-box-shadow: 0 0 0 3px #e8c426;
+        box-shadow: 0 0 0 3px #e8c426; }
     .formio-form nav ul.mtvh-ul li.page-item.active ~ * {
       font-weight: normal;
-      color: #545454; }
+      color: #000; }
       .formio-form nav ul.mtvh-ul li.page-item.active ~ *:before {
-        border-color: #e3e897;
-        background: #e3e897;
+        border-color: #000;
+        background: #F9F2EA;
         content: ''; }
     .formio-form nav ul.mtvh-ul li:last-child {
       border-left: 2px solid rgba(255, 0, 0, 0);

@@ -3,16 +3,21 @@
   //Standard links in main content area
   a:not(.btn):not(.card) {
     text-decoration: underline;
-    color:$link-color;
+    color:$mtvh-link-default;
     font-weight: 600;
-    &:visited{color:$link-visited-color;}
-    &:hover{color:$link-hover-color;}
+    &:visited{color:$mtvh-link-visited;}
+    &:hover{color:$mtvh-link-hover;}
+    &:focus{
+      outline: 3px solid #f8d643;
+      outline-offset: 0;
+      background: #f8d643;
+    }
   }
 
   button.btn{
-    font-family: $headings-font-family;
-    font-weight: $headings-font-weight;
-    font-size: 1.2rem;
+    font-family: $font-family-base;
+    font-weight: 600;
+    font-size: $font-size-base;
     text-decoration: none;
     border-radius: 1.5rem;
     border-width:2px;
@@ -36,35 +41,59 @@
       font-weight:600;
       padding:0;
       border:0!important;
-      color:$link-color!important;
+      color:$mtvh-link-default!important;
       text-decoration: underline!important;
       background: none!important;
       border: 0!important;
       margin: 0!important;
       width: auto!important;
-      &:hover{
-        color:darken($link-color,20%)!important;
-      }
     }
     &:hover{text-decoration: underline!important;}
+    &:focus,&:active{
+      border-color:#000;
+      //outline: 3px solid $mtvh-focus;
+      //outline-offset: 0;
+      -webkit-box-shadow: 0 0 0 3px $mtvh-focus;
+      box-shadow: 0 0 0 3px $mtvh-focus;
+    }
     &.btn-primary{
-      border-color:$mtvh-primary;
-      background:$mtvh-primary;
+      border-color:$mtvh-link-default;
+      background:$mtvh-link-default;
       &:hover {
-        border-color:$mtvh-primary-dark;
-        background:$mtvh-primary-dark;
+        border-color:$mtvh-link-hover;
+        background:$mtvh-link-hover;
+      }
+      &:active {
+        border-color:$mtvh-link-click;
+        background:$mtvh-link-click;
+      }
+      &:disabled {
+        border:none;
+        border-color:$mtvh-link-default;
+        background:$mtvh-link-default;
+        opacity:.50;
+        cursor: default;
+        text-decoration: none!important;
+        -webkit-box-shadow: none;
+        box-shadow: none;
       }
     }
 
     &.btn-secondary{
-      color: $mtvh-grey;
+      color: $body-color;
       background-color: #fff;
-      border-color: $mtvh-grey;
+      border-color: $body-color;
       width:auto;
       margin:0;
       &:hover {
-        border-color:darken($mtvh-grey,15%);
-        color:darken($mtvh-grey,15%);
+        border-color:$mtvh-link-hover;
+        color:$mtvh-link-hover;
+      }
+      &:active {
+        color: $body-color;
+        background-color: #fff;
+        border-color:$mtvh-link-click;
+        color:$mtvh-link-click;
       }
     }
 
