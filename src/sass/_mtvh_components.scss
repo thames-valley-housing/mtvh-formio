@@ -20,7 +20,8 @@
     }
 
     .form-radio .form-check,.form-check.checkbox{
-      margin-bottom:1.5rem;
+      //margin-bottom:1.5rem;
+      margin-bottom:24px; //MTVHO Style
       padding-left:52px;
       min-height: 40px;
 
@@ -29,7 +30,8 @@
       }
 
       @include media-breakpoint-up(sm) {
-        margin-bottom:1rem;
+        //margin-bottom:1rem;
+        margin-bottom:16px; //MTVHO Style
         &:last-child{
           margin-bottom:0;
         }
@@ -99,9 +101,12 @@
 
   .formio-choices{
     div.form-control{
-      line-height: 1rem;
-      padding-top:1rem;
-      padding-bottom:1rem;
+      //line-height: 1rem;
+      //padding-top:1rem;
+      //padding-bottom:1rem;
+      line-height: 16px; //MTVHO Style
+      padding-top:16px; //MTVHO Style
+      padding-bottom:16px; //MTVHO Style
     }
     .choices__list{
       .choices__placeholder{
@@ -126,6 +131,9 @@
   /////////////////////////////// File upload component
 
   .formio-component-file{
+
+    font-size: $font-size-base; //MTVHO Style
+
     .list-group{
       border-radius: 0;
       border: 0px
@@ -141,7 +149,8 @@
       border: 2px solid $form-line-color;
       border-bottom: 0;
       border-radius: 0;
-      padding: 0.75rem 1.25rem!important;
+      //padding: 0.75rem 1.25rem!important;
+      padding: 12px 20px!important; //MTVHO Style
     }
     .list-group-item:only-child{
       display:none;
@@ -154,12 +163,15 @@
     }
     
     .fileSelector{
-      margin-top:1rem;
-      padding: 3rem 1.5rem;
+      //margin-top:1rem;
+      margin-top:16px; //MTVHO Style
+      //padding: 3rem 1.5rem;
+      padding: 48px 24px; //MTVHO Style
       border: 2px dashed $form-line-color;
     }
     .file{
-      margin-top:1rem;
+      //margin-top:1rem;
+      margin-top:16px; //MTVHO Style
       .row{
         .col-form-label{
           font-weight:600;
@@ -194,7 +206,7 @@
   
   .formio-component-fieldset{
     fieldset legend{
-      //@extend h2;
+      font-size:24px //MTVHO Style
     }
   }
   .formio-component-tabs{
@@ -229,10 +241,15 @@
   /////////////////////////////// 
 
   .formio-component-mtvhAddress{
+
+    font-size: $font-size-base; //MTVHO Style
+
     label.label-sm{
-      font-size: 1.175rem;
+      //font-size: 1.175rem;
+      font-size: 18.8px; //MTVHO Style
       @include media-breakpoint-up(sm) {
-        font-size:1.4rem;
+        //font-size:1.4rem;
+        font-size: 22.4px; //MTVHO Style
       }   
     }
   }

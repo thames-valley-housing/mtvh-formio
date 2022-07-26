@@ -16,7 +16,9 @@
   font-weight: 600;
   font-size: 18px;
   text-decoration: none;
-  border-radius: 1.5rem;
+  border-radius: 24px;
+  padding: 6px 12px;
+  line-height: 27px;
   border-width: 2px; }
   .formio-form button.btn:not(.btn-sm) {
     display: inline-block;
@@ -72,11 +74,19 @@
       border-color: #00385e;
       color: #00385e; }
 
+/*
+html{
+  font-size: 62.5% //MTVHO Style
+}
+*/
 .formio-form, .formio-form label {
   font-family: Arial, sans-serif;
   font-weight: 400;
   font-size: 18px;
   color: #000; }
+
+.formio-form {
+  font-size: 16px; }
 
 .formio-form h1 {
   font-family: "Paralucent W05", Arial, sans-serif;
@@ -84,16 +94,17 @@
   line-height: 1.1;
   margin: 0;
   padding-top: 0;
-  padding-bottom: 1.2rem; }
+  padding-bottom: 19.2px;
+  font-size: 2.5em; }
   @media (min-width: 576px) {
     .formio-form h1 {
-      padding-bottom: 2rem; } }
+      padding-bottom: 32px; } }
 
 .formio-form .mtvh-none {
   display: none; }
 
 .formio-form div.formio-component {
-  margin-bottom: 3rem;
+  margin-bottom: 3em;
   /*
     div.formio-component-form div.formio-component{
       margin-bottom:1rem;
@@ -107,7 +118,7 @@
     */ }
   @media (min-width: 576px) {
     .formio-form div.formio-component {
-      margin-bottom: 4rem; } }
+      margin-bottom: 4em; } }
   .formio-form div.formio-component.formio-hidden {
     margin-bottom: 0; }
   .formio-form div.formio-component.formio-component-button, .formio-form div.formio-component.formio-component-form {
@@ -115,22 +126,23 @@
   .formio-form div.formio-component .col-form-label {
     font-family: Arial, sans-serif;
     font-weight: 600;
-    font-size: 1.4rem;
-    margin-bottom: 0.75rem;
+    font-size: 1.4em;
+    margin-bottom: 12px;
     padding-top: 0;
     padding-bottom: 0;
     line-height: 1.2; }
     @media (min-width: 576px) {
       .formio-form div.formio-component .col-form-label {
-        font-size: 1.6875rem; } }
+        font-size: 1.6875em; } }
     .formio-form div.formio-component .col-form-label .optional-question {
       display: block;
-      font-size: 1.2rem;
-      margin-top: 0.25rem;
+      font-size: 19.2px;
+      margin-top: 4px;
       font-family: Arial, sans-serif;
       font-weight: 400; }
   .formio-form div.formio-component .form-text {
-    margin: -6px 0 0.85rem 0; }
+    font-size: 18px;
+    margin: -6px 0 13.6px 0; }
 
 .formio-form div.formio-component-form .formio-component:last-child {
   margin-bottom: 0px !important; }
@@ -141,7 +153,7 @@
   border: 2px solid #ced4da;
   border-radius: 0;
   height: auto;
-  padding: 0.75rem;
+  padding: 0.75em;
   outline: none;
   box-shadow: none;
   /*
@@ -166,7 +178,7 @@
     box-shadow: 0 0 0 3px #f8d643; }
 
 .formio-form input.form-control {
-  line-height: 1rem; }
+  line-height: 1em; }
 
 .formio-form .field-required:after {
   color: #fa3d54; }
@@ -177,7 +189,7 @@
   border: none;
   border-left: 6px solid #db070c !important;
   padding: 0 !important;
-  padding-left: 1rem !important; }
+  padding-left: 1em !important; }
 
 .formio-form .form-control.is-invalid {
   border-color: #db070c; }
@@ -195,10 +207,10 @@
   font-size: 18px !important; }
 
 .formio-form .formio-errors.invalid-feedback {
-  margin-top: 0.75rem !important; }
+  margin-top: 12px !important; }
 
 .formio-form .formio-component-selectboxes .formio-errors.invalid-feedback, .formio-form .formio-component-checkbox .formio-errors.invalid-feedback, .formio-form .formio-component-radio .formio-errors.invalid-feedback {
-  margin-top: 1rem !important; }
+  margin-top: 16px !important; }
 
 .formio-form .formio-component-mtvhAddress div#postCodeSection .form-control {
   width: 140px; }
@@ -225,7 +237,7 @@
   top: 6px; }
 
 .formio-form .formio-component-selectboxes .form-radio .form-check, .formio-form .formio-component-selectboxes .form-check.checkbox, .formio-form .formio-component-radio .form-radio .form-check, .formio-form .formio-component-radio .form-check.checkbox, .formio-form .formio-component-checkbox .form-radio .form-check, .formio-form .formio-component-checkbox .form-check.checkbox {
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
   padding-left: 52px;
   min-height: 40px;
   /*Adding focus styles on the outer-box of the fake checkbox*/ }
@@ -233,7 +245,7 @@
     margin-bottom: 0; }
   @media (min-width: 576px) {
     .formio-form .formio-component-selectboxes .form-radio .form-check, .formio-form .formio-component-selectboxes .form-check.checkbox, .formio-form .formio-component-radio .form-radio .form-check, .formio-form .formio-component-radio .form-check.checkbox, .formio-form .formio-component-checkbox .form-radio .form-check, .formio-form .formio-component-checkbox .form-check.checkbox {
-      margin-bottom: 1rem; }
+      margin-bottom: 16px; }
       .formio-form .formio-component-selectboxes .form-radio .form-check:last-child, .formio-form .formio-component-selectboxes .form-check.checkbox:last-child, .formio-form .formio-component-radio .form-radio .form-check:last-child, .formio-form .formio-component-radio .form-check.checkbox:last-child, .formio-form .formio-component-checkbox .form-radio .form-check:last-child, .formio-form .formio-component-checkbox .form-check.checkbox:last-child {
         margin-bottom: 0; } }
   .formio-form .formio-component-selectboxes .form-radio .form-check input, .formio-form .formio-component-selectboxes .form-check.checkbox input, .formio-form .formio-component-radio .form-radio .form-check input, .formio-form .formio-component-radio .form-check.checkbox input, .formio-form .formio-component-checkbox .form-radio .form-check input, .formio-form .formio-component-checkbox .form-check.checkbox input {
@@ -279,9 +291,9 @@
     content: '\f00c'; }
 
 .formio-form .formio-choices div.form-control {
-  line-height: 1rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem; }
+  line-height: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px; }
 
 .formio-form .formio-choices .choices__list .choices__placeholder {
   color: #404040;
@@ -297,42 +309,37 @@
   border: 2px solid #ced4da !important;
   border-top: 1px solid #ced4da !important; }
 
-.formio-form .formio-component-file .list-group {
-  border-radius: 0;
-  border: 0px; }
-
-@media (max-width: 767.98px) {
-  .formio-form .formio-component-file .list-group-header .col-md-1 {
-    display: none; } }
-
-.formio-form .formio-component-file .list-group-item {
-  border: 2px solid #ced4da;
-  border-bottom: 0;
-  border-radius: 0;
-  padding: 0.75rem 1.25rem !important; }
-
-.formio-form .formio-component-file .list-group-item:only-child {
-  display: none; }
-
-.formio-form .formio-component-file .list-group-item:not(.list-group-header) {
-  border-top: 1px solid #ced4da; }
-
-.formio-form .formio-component-file .list-group-item:last-child {
-  border-bottom: 2px solid #ced4da; }
-
-.formio-form .formio-component-file .fileSelector {
-  margin-top: 1rem;
-  padding: 3rem 1.5rem;
-  border: 2px dashed #ced4da; }
-
-.formio-form .formio-component-file .file {
-  margin-top: 1rem; }
-  .formio-form .formio-component-file .file .row .col-form-label {
-    font-weight: 600;
-    font-size: 18px; }
-  .formio-form .formio-component-file .file .bg-info {
-    background-color: #f8d643 !important;
-    padding: 15px; }
+.formio-form .formio-component-file {
+  font-size: 18px; }
+  .formio-form .formio-component-file .list-group {
+    border-radius: 0;
+    border: 0px; }
+  @media (max-width: 767.98px) {
+    .formio-form .formio-component-file .list-group-header .col-md-1 {
+      display: none; } }
+  .formio-form .formio-component-file .list-group-item {
+    border: 2px solid #ced4da;
+    border-bottom: 0;
+    border-radius: 0;
+    padding: 12px 20px !important; }
+  .formio-form .formio-component-file .list-group-item:only-child {
+    display: none; }
+  .formio-form .formio-component-file .list-group-item:not(.list-group-header) {
+    border-top: 1px solid #ced4da; }
+  .formio-form .formio-component-file .list-group-item:last-child {
+    border-bottom: 2px solid #ced4da; }
+  .formio-form .formio-component-file .fileSelector {
+    margin-top: 16px;
+    padding: 48px 24px;
+    border: 2px dashed #ced4da; }
+  .formio-form .formio-component-file .file {
+    margin-top: 16px; }
+    .formio-form .formio-component-file .file .row .col-form-label {
+      font-weight: 600;
+      font-size: 18px; }
+    .formio-form .formio-component-file .file .bg-info {
+      background-color: #f8d643 !important;
+      padding: 15px; }
 
 .formio-form .formio-component-editgrid .list-group {
   margin-bottom: 1.5rem; }
@@ -342,6 +349,9 @@
   .formio-form .formio-component-editgrid .list-group .list-group-header {
     font-weight: bold;
     border-bottom: 2px solid #ced4da; }
+
+.formio-form .formio-component-fieldset fieldset legend {
+  font-size: 24px; }
 
 .formio-form .formio-component-tabs .card-header {
   background: none;
@@ -353,14 +363,16 @@
 .formio-form .formio-component-tabs .tab-pane {
   border: 1px solid #ced4da; }
 
-.formio-form .formio-component-mtvhAddress label.label-sm {
-  font-size: 1.175rem; }
-  @media (min-width: 576px) {
-    .formio-form .formio-component-mtvhAddress label.label-sm {
-      font-size: 1.4rem; } }
+.formio-form .formio-component-mtvhAddress {
+  font-size: 18px; }
+  .formio-form .formio-component-mtvhAddress label.label-sm {
+    font-size: 18.8px; }
+    @media (min-width: 576px) {
+      .formio-form .formio-component-mtvhAddress label.label-sm {
+        font-size: 22.4px; } }
 
 .formio-form nav {
-  margin-top: 1.5rem;
+  margin-top: 24px;
   border-radius: 0;
   border: 0;
   background: #F9F2EA; }
@@ -369,34 +381,37 @@
       margin-top: 0; } }
   .formio-form nav h5 {
     font-family: "Paralucent W05", Arial, sans-serif;
-    font-weight: 600; }
+    font-weight: 600;
+    font-size: 18.75px; }
   .formio-form nav ul.mtvh-ul {
     display: inline-block;
     padding: 0;
     margin: 0;
-    padding-left: 0.9rem;
+    padding-left: 14.4px;
     list-style: none;
     position: relative;
     margin-top: 6px; }
     .formio-form nav ul.mtvh-ul li:before {
-      font-size: 2rem;
+      font-size: 32px;
       display: block;
       float: left;
       margin-top: -3px;
-      margin-left: -2.0rem;
+      margin-left: -32px;
       margin-right: 0;
       transition: background-size 0.3s;
       -webkit-transition: background-size 0.3s;
       font: normal normal normal 20px/1 FontAwesome;
       border: 2px solid;
-      border-radius: 5rem;
+      border-radius: 80px;
       height: 30px;
       width: 30px;
       padding: 3px;
       color: #fff; }
     .formio-form nav ul.mtvh-ul li.page-item {
-      padding: 0 0 1rem 1rem;
-      border-left: 2px solid #000; }
+      padding: 0 0 16px 16px;
+      border-left: 2px solid #000;
+      font-family: Arial, sans-serif;
+      font-size: 18px; }
       .formio-form nav ul.mtvh-ul li.page-item:before {
         border-color: #1d8106;
         background: #1d8106;
@@ -433,7 +448,7 @@
 .formio-wizard-nav-container {
   flex-direction: row; }
   .formio-wizard-nav-container li {
-    margin-right: 0.5rem; }
+    margin-right: 8px; }
     .formio-wizard-nav-container li .btn {
       width: auto;
       margin-bottom: auto; }

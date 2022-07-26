@@ -1,6 +1,7 @@
 .formio-form{
   nav{
-    margin-top:1.5rem;
+    //margin-top:1.5rem;
+    margin-top:24px; //MTVHO Style
     @include media-breakpoint-up(md) {
       margin-top:0;
     }
@@ -10,36 +11,44 @@
     h5{
       font-family: $headings-font-family;
       font-weight: $headings-font-weight;
+      font-size: 18.75px; //MTVHO Style
     }
     ul.mtvh-ul{
       display:inline-block;
       padding:0;
       margin:0;
-      padding-left: 0.9rem;
+      //padding-left: 0.9rem;
+      padding-left: 14.4px; //MTVHO Style
       list-style:none;
       position: relative;
       margin-top: 6px;
 
       li:before{ 
-        font-size: 2rem;
+        //font-size: 2rem;
+        font-size: 32px; //MTVHO Style
         display:block;
         float:left;
         margin-top: -3px; 
-        margin-left: -2.0rem;
+        //margin-left: -2.0rem;
+        margin-left: -32px; //MTVHO Style
         margin-right: 0;
         transition: background-size 0.3s;
         -webkit-transition: background-size 0.3s;
         font:$fontAwesome;
         border:2px solid;
-        border-radius:5rem;
+        //border-radius:5rem;
+        border-radius:80px; //MTVHO Style
         height:30px;
         width:30px;
         padding: 3px;
         color:#fff;
       }
       li.page-item{
-        padding:0 0 1rem 1rem;
+        //padding:0 0 1rem 1rem;
+        padding:0 0 16px 16px; //MTVHO Style
         border-left: 2px solid #000;
+        font-family:$font-family-base; //MTVHO Style
+        font-size: $font-size-base; //MTVHO Style
         &:before{
           border-color:$mtvh-green-darker;
           background:$mtvh-green-darker;
@@ -90,7 +99,8 @@
 .formio-wizard-nav-container {
   flex-direction: row;
   li {
-    margin-right: 0.5rem;
+    //margin-right: 0.5rem;
+    margin-right: 8px; //MTVHO Style
     .btn{
       width: auto;
       margin-bottom: auto;

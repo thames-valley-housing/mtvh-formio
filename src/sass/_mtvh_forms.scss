@@ -1,3 +1,9 @@
+/*
+html{
+  font-size: 62.5% //MTVHO Style
+}
+*/
+
 .formio-form{
 
   /////////////////////////////// General Styling
@@ -9,16 +15,23 @@
     color:$body-color;
   }
 
+  &{
+    font-size: 16px; //MTVHO Style
+  }
+
   h1{
     font-family: $headings-font-family;
     font-weight: 600;
     line-height: 1.1;
     margin: 0;
     padding-top: 0;
-    padding-bottom: 1.2rem;
+    //padding-bottom: 1.2rem;
+    padding-bottom: 19.2px; //MTVHO Style
     @include media-breakpoint-up(sm) {
-      padding-bottom: 2rem;
+      //padding-bottom: 2rem;
+      padding-bottom: 32px; //MTVHO Style
     } 
+    font-size: 2.5em; //MTVHO Style
   }
 
   .mtvh-none{
@@ -29,9 +42,11 @@
 
   div.formio-component{
     
-    margin-bottom:3rem;
+    //margin-bottom:3rem;
+    margin-bottom:3em; //MTVHO Style
     @include media-breakpoint-up(sm) {
-      margin-bottom:4rem;
+      //margin-bottom:4rem;
+      margin-bottom:4em; //MTVHO Style
     } 
 
     &.formio-hidden{
@@ -47,18 +62,23 @@
     .col-form-label {
       font-family: $font-family-base;
       font-weight: 600;
-      font-size: 1.4rem;
-      margin-bottom: 0.75rem;
+      //font-size: 1.4rem;
+      font-size: 1.4em; //MTVHO Style
+      //margin-bottom: 0.75rem;
+      margin-bottom: 12px; //MTVHO Style
       padding-top: 0;
       padding-bottom: 0;
       line-height:1.2;
       @include media-breakpoint-up(sm) {
-        font-size: 1.6875rem;
+        //font-size: 1.6875rem;
+        font-size: 1.6875em; //MTVHO Style
       } 
       .optional-question{
         display:block;
-        font-size: 1.2rem;
-        margin-top: 0.25rem;
+        //font-size: 1.2rem;
+        font-size: 19.2px; //MTVHO Style
+        //margin-top: 0.25rem;
+        margin-top: 4px; //MTVHO Style
         font-family: $font-family-base;
         font-weight:$font-weight;
       }
@@ -66,7 +86,9 @@
 
     //Description
     .form-text{
-      margin: -6px 0 0.85rem 0;
+      font-size: $font-size-base; //MTVHO Style
+      //margin: -6px 0 0.85rem 0;
+      margin: -6px 0 13.6px 0; //MTVHO Style
     }
 
     //Sub Components
@@ -118,7 +140,8 @@
     }
 
     height:auto;
-    padding:0.75rem;
+    //padding:0.75rem;
+    padding:0.75em; //MTVHO Style
     outline: none;//!important;
     box-shadow:none;// !important;
     /*
@@ -137,8 +160,9 @@
 
   //For IE11 fix on inputs
   input.form-control{
-    line-height: 1rem;
-  }
+    //line-height: 1rem;
+    line-height: 1em; //MTVHO Style
+  } 
 
   /////////////////////////////// Errors
 
@@ -154,7 +178,8 @@
     border:none;
     border-left: 6px solid $mtvh-error!important;
     padding:0!important;
-    padding-left:1rem!important;
+    //padding-left:1rem!important;
+    padding-left:1em!important; //MTVHO Style
   }
   .form-control.is-invalid{
     border-color: $mtvh-error;
@@ -172,12 +197,14 @@
     font-size:$font-size-base!important;
   }
   .formio-errors.invalid-feedback{
-    margin-top:0.75rem!important;
+    //margin-top:0.75rem!important;
+    margin-top:12px!important; //MTVHO Style
   }
   //Extra error styling for custom checkboxes and radio
   .formio-component-selectboxes,.formio-component-checkbox,.formio-component-radio{
     .formio-errors.invalid-feedback{
-      margin-top:1rem!important;
+      //margin-top:1rem!important;
+      margin-top:16px!important; //MTVHO Style
     }
   }
 

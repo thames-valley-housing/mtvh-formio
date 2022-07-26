@@ -19,7 +19,10 @@
     font-weight: 600;
     font-size: $font-size-base;
     text-decoration: none;
-    border-radius: 1.5rem;
+    //border-radius: 1.5rem;
+    border-radius: 24px; //MTVHO Style
+    padding: 6px 12px; //MTVHO Style
+    line-height: 27px; //MTVHO Style
     border-width:2px;
     &:not(.btn-sm){
       //display:block;
