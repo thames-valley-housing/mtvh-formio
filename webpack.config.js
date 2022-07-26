@@ -13,5 +13,6 @@ module.exports = {
   performance: { hints: false },
   externals: {
     formiojs: 'Formio'
-  }
+  },
+  devtool: 'source-map'
 };
