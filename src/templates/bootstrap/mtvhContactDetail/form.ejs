@@ -1,12 +1,17 @@
 <div>
 
-  <select lang="en" class="form-control mb-3" type="text" id="{{ctx.instance.id}}-{{ctx.component.key}}-selectAddress" ref="existingDetailsDropdown">
-    <option value="" selected="selected"></option>
-  </select>
-  <a ref="switchToFreetext">Switch to text</a>
+  <div ref="selectInput">
+    <select lang="en" class="form-control mb-3" type="text" id="{{ctx.instance.id}}-{{ctx.component.key}}-selectAddress" ref="existingDetailsDropdown">
+      <option value="" selected="selected"></option>
+    </select>
+    <a ref="switchToFreetext">Switch to text</a>
+  </div>
 
-  <input ref="newDetailsInput" type='number' placeholder='_____-______' class="form-control"></div>
-  <a ref="switchToDropdown">Switch to dropdown</a>
+  <div ref="manualInput">
+    <input ref="newDetailsInput" type='number' placeholder='_____-______' class="form-control">
+    <div ref="inlineValidation"></div>
+    <a ref="switchToDropdown">Switch to dropdown</a>
+  </div>
 
-  <div ref='messageContainer'></div>
+  <input value="{% if (ctx.value) { %}{{ctx.value}}{% } else { %}{% } %}" spellcheck="true" lang="en" class="form-control" type="hidden" name="data[{{ctx.component.key}}]" ref="mtvhContact">
 </div>

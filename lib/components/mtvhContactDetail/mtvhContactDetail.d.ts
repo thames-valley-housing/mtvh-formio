@@ -2,7 +2,6 @@ import editForm from './mtvhContactDetail.form';
 declare const mtvhContactDetail_base: any;
 export default class mtvhContactDetail extends mtvhContactDetail_base {
     NOT_UK_NUMBER: string;
-    ERROR_BEEN_SHOWN: boolean;
     static schema(): any;
     static editForm: typeof editForm;
     static builderInfo: {
@@ -28,11 +27,12 @@ export default class mtvhContactDetail extends mtvhContactDetail_base {
     mtvhContactDetailInitiate(element: any): void;
     switchToContactDetailFreetext(element: any): void;
     switchToContactDetailDropwdown(element: any): void;
+    resetValues(): void;
     getDropdownData(): string[];
     populateDropdown(): boolean;
     validatePhoneNumber(element: any): void;
-    mtvhInvalid(element: any, field: any, error: any): void;
-    mtvhValid(element: any, field: any): void;
+    mtvhInvalid(): void;
+    mtvhValid(): void;
     isPhoneNumberValid(input: any): boolean;
     inputtedPhoneNumber(): any;
 }
