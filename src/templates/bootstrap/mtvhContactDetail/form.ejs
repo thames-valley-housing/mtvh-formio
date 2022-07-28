@@ -1,16 +1,20 @@
 <div>
 
   <div ref="selectInput">
-    <select lang="en" class="form-control mb-3" type="text" id="{{ctx.instance.id}}-{{ctx.component.key}}-selectAddress" ref="existingDetailsDropdown">
+    <select lang="en" class="form-control mb-3 formio-component-mtvhContactDetail" type="text" id="{{ctx.instance.id}}-{{ctx.component.key}}-selectAddress" ref="existingDetailsDropdown">
       <option value="" selected="selected"></option>
     </select>
-    <a ref="switchToFreetext">Switch to text</a>
+    <a ref="switchToFreetext", href="#">
+      <span class="input-switch-icon"></span> Provide a different phone number
+      </a>
   </div>
 
   <div ref="manualInput">
-    <input ref="newDetailsInput" type='number' placeholder='_____-______' class="form-control">
+    <input ref="newDetailsInput" type='number' class="form-control">
     <div ref="inlineValidation"></div>
-    <a ref="switchToDropdown">Switch to dropdown</a>
+    <a ref="switchToDropdown", href="#">
+      <span class="input-switch-icon"></span> Choose an existing phone number
+    </a>
   </div>
 
   <input value="{% if (ctx.value) { %}{{ctx.value}}{% } else { %}{% } %}" spellcheck="true" lang="en" class="form-control" type="hidden" name="data[{{ctx.component.key}}]" ref="mtvhContact">

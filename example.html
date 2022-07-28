@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Form.io Premium Components</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.form.io/formiojs/formio.full.min.css">
+  <link rel="stylesheet" href="dist/mtvh-formio.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
+        <div id="formio"></div>
+      </div>
+    </div>
+  <div>
+<script src="https://cdn.form.io/formiojs/formio.form.min.js"></script>
+<script src="dist/mtvh-formio.use.min.js"></script>
+<script type="text/javascript">
+  var formElement = document.getElementById('formio');
+  var mtvhContact = { "components": [ { "label": "What is your number?", "description": "We need to know what number to contact you on", "tableView": true, "validate": { "required": true }, "key": "mtvhContactDetail", "type": "mtvhContactDetail", "input": true, "inputType": "text" }, { "type": "button", "label": "Submit", "key": "submit", "disableOnInvalid": true, "input": true, "tableView": false } ] }
+  var mtvhContactWithValidation = { "components": [ { "label": "What is your number?", "description": "We need to know what number to contact you on", "tableView": true, "validate": { "required": true, "customMessage": "Not a valid UK number", "custom": "valid = /^(?:\\W*\\d){11}\\W*$/.test(input)" }, "errorLabel": "er", "key": "mtvhContactDetail", "type": "mtvhContactDetail", "input": true, "inputType": "text" }, { "type": "button", "label": "Submit", "key": "submit", "disableOnInvalid": true, "input": true, "tableView": false } ] }
+  var mtvhContactBar = { "components": [ { "label": "What is your number?", "tableView": true, "key": "mtvhContactDetail", "type": "mtvhContactDetail", "input": true }, { "type": "button", "label": "Submit", "key": "submit", "disableOnInvalid": true, "input": true, "tableView": false } ] }
+
+  Formio.createForm(formElement, mtvhContactBar, { data: { isMtvho: true, phoneNumbers:['+447896543768', '+447865489776'], selectedPhoneNumber: '+447896543768' }}).then(function(form) {
+    form.nosubmit = true
+    form.on('change', (data) => {
+      console.log('data', data)
+    })
+    form.on('submit', (submission) => {
+    })
+  })
+
+</script>
+</body>
+</html>

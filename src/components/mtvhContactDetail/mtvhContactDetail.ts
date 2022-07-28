@@ -3,7 +3,6 @@ const Input = (Components as any).components.field;
 import editForm from './mtvhContactDetail.form';
 
 export default class mtvhContactDetail extends (Input as any) {
-  NOT_UK_NUMBER = 'This does not loook like a UK number';
 
   static schema() {
     return Input.schema({
@@ -64,7 +63,7 @@ export default class mtvhContactDetail extends (Input as any) {
     });
 
     this.addEventListener(this.refs.switchToDropdown, 'click', () => {
-      this.switchToContactDetailDropwdown(element);
+      this.switchToContactDetailDropdown(element);
     });
 
     this.addEventListener(this.refs.existingDetailsDropdown, 'change', () => {
@@ -131,7 +130,7 @@ export default class mtvhContactDetail extends (Input as any) {
       this.switchToContactDetailFreetext(element)
     }
     else{
-      this.switchToContactDetailDropwdown(element);
+      this.switchToContactDetailDropdown(element);
     }
   }
 
@@ -141,7 +140,7 @@ export default class mtvhContactDetail extends (Input as any) {
     this.resetValues();
   }
 
-  switchToContactDetailDropwdown(element){
+  switchToContactDetailDropdown(element){
     this.refs.selectInput.style.display = 'block';
     this.refs.manualInput.style.display = 'none';
     this.resetValues();
@@ -155,7 +154,19 @@ export default class mtvhContactDetail extends (Input as any) {
   }
 
   getDropdownData(){
-    return ['0123456', '789013456', '12390243']
+    if (this.options.data && this.options.data.isMtvho && this.options.data.phoneNumbers && this.options.data.phoneNumbers.length > 0) {
+      return this.options.data.phoneNumbers
+    } else {
+      return []
+    }
+  }
+
+  getSelected() {
+    if (this.options.data && this.options.data.selectedPhoneNumber && this.options.data.selectedPhoneNumber.length > 0) {
+      return this.options.data.selectedPhoneNumber
+    } else {
+      return ''
+    }
   }
 
   populateDropdown(){
@@ -170,6 +181,10 @@ export default class mtvhContactDetail extends (Input as any) {
         dropdown.options.add( new Option(option,option) );
       }
       dropdown.focus();
+      setTimeout( () => {
+        this.setValue(this.getSelected());
+        this.refs.existingDetailsDropdown.value = this.getSelected();
+      }, 200);
       return true
     }
   }
@@ -182,7 +197,7 @@ export default class mtvhContactDetail extends (Input as any) {
     if (this.isPhoneNumberValid(input)){
       this.updateValue(input);
       this.mtvhValid();
-    } 
+    }
     else {
       this.updateValue('');
       this.mtvhInvalid();
@@ -190,11 +205,15 @@ export default class mtvhContactDetail extends (Input as any) {
   }
 
   mtvhInvalid(){
-    this.refs.inlineValidation.innerHTML = '<b style="color:red">Not a valid phone number</b>';
+    if (this.inputtedPhoneNumber().length < 11) {
+      this.refs.inlineValidation.innerHTML = '<b style="color:orange">A valid UK phone number must be 11 digits</b>'
+    } else {
+      this.refs.inlineValidation.innerHTML = '<b style="color:red">Not a valid UK phone number</b>';
+    }
   }
 
   mtvhValid(){
-    this.refs.inlineValidation.innerHTML = '<b style="color:green">Valid phone number</b>';
+    this.refs.inlineValidation.innerHTML = '<b style="color:green">Valid UK phone number</b>';
   }
 
   isPhoneNumberValid(input){
