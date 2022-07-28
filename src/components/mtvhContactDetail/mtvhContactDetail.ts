@@ -184,10 +184,10 @@ export default class mtvhContactDetail extends (Input as any) {
 
     if (this.isPhoneNumberValid(input)){
       this.setValue(input);
-      this.mtvhValid(element, 'newDetailsInput');
+      //this.mtvhValid(element, 'newDetailsInput');
     } else {
       this.setValue('');
-      this.mtvhInvalid(element, 'newDetailsInput', this.NOT_UK_NUMBER);
+      //this.mtvhInvalid(element, 'newDetailsInput', this.NOT_UK_NUMBER);
     }
   }
 
