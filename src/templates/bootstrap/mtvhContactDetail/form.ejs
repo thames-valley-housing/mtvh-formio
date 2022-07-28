@@ -1,21 +1,28 @@
+{% if (ctx.readOnly === true) { %}
+<input value="{% if (ctx.value) { %}{{ctx.value}}{% } else { %}{% } %}" spellcheck="true" lang="en" class="form-control" type="input" name="data[{{ctx.component.key}}]" ref="mtvhContact" readonly>
+{% } else { %}
 <div>
-
   <div ref="selectInput">
-    <select lang="en" class="form-control mb-3 formio-component-mtvhContactDetail" type="text" id="{{ctx.instance.id}}-{{ctx.component.key}}-selectAddress" ref="existingDetailsDropdown">
+    <select lang="en" class="form-control mb-1 formio-component-mtvhContactDetail" type="text" id="{{ctx.instance.id}}-{{ctx.component.key}}-selectAddress" ref="existingDetailsDropdown">
       <option value="" selected="selected"></option>
     </select>
-    <a ref="switchToFreetext", href="#">
+    <div class="mt-2">
+      <a ref="switchToFreetext", href="#">
       <span class="input-switch-icon"></span> Provide a different phone number
       </a>
+    </div>
   </div>
 
   <div ref="manualInput">
-    <input ref="newDetailsInput" type='number' class="form-control">
+    <input ref="newDetailsInput" type='text' class="form-control  mb-1" autocomplete="tel">
     <div ref="inlineValidation"></div>
-    <a ref="switchToDropdown", href="#">
-      <span class="input-switch-icon"></span> Choose an existing phone number
-    </a>
+    <div class="mt-2">
+      <a ref="switchToDropdown", href="#">
+        <span class="input-switch-icon"></span> Choose an existing phone number
+      </a>
+    </div>
   </div>
 
   <input value="{% if (ctx.value) { %}{{ctx.value}}{% } else { %}{% } %}" spellcheck="true" lang="en" class="form-control" type="hidden" name="data[{{ctx.component.key}}]" ref="mtvhContact">
 </div>
+{% } %}
