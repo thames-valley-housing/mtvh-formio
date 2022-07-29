@@ -1,7 +1,8 @@
 {
   "name": "@mtvh/mtvh-formio",
-  "version": "2.0.12",
+  "version": "2.0.10",
   "description": "MTVH custom templates, components and styling for Form.io",
+  "main": "lib/index.js",
   "module": "node",
   "watch": {
     "mtvhFormioBuild": {
@@ -69,10 +70,10 @@
     "tslint": "^6.1.1",
     "typescript": "^3.8.3",
     "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "formiojs": "^4.14.8"
   },
   "dependencies": {
-    "formiojs": "4.14.1",
     "npm-watch": "^0.11.0",
     "watch": "^1.0.2"
   }
