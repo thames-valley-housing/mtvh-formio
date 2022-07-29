@@ -3,7 +3,6 @@ const Input = (Components as any).components.field;
 import editForm from './mtvhContactDetail.form';
 
 export default class mtvhContactDetail extends (Input as any) {
-  NOT_UK_NUMBER = 'This does not loook like a UK number';
 
   static schema() {
     return Input.schema({
@@ -68,7 +67,7 @@ export default class mtvhContactDetail extends (Input as any) {
     });
 
     this.addEventListener(this.refs.existingDetailsDropdown, 'change', () => {
-      this.setValue(this.refs.existingDetailsDropdown.value);
+      this.updateValue(this.refs.existingDetailsDropdown.value);
     });
 
     this.addEventListener(this.refs.newDetailsInput, 'keyup', (val) => {
@@ -80,58 +79,18 @@ export default class mtvhContactDetail extends (Input as any) {
     return super.attach(element);
   }
 
-  detach() {
-    return super.detach();
-  }
-
-  destroy() {
-    return super.destroy();
-  }
-
-  normalizeValue(value, flags = {}) {
-    return super.normalizeValue(value, flags);
-  }
-
-
-  // Required for display of values in readonly mode - Issues with nested forms
-
-  getValue() {
-    if(this.refs.mtvhContact){
-      return this.refs.mtvhContact.value;
-    }
-  }
-
-  getValueAt(index) {
-    return super.getValueAt(index);
-  }
-
-  setValue(value, flags = {}) {
-    return super.setValue(value, flags);
-  }
-
-  setValueAt(index, value, flags = {}) {
-    return super.setValueAt(index, value, flags);
-  }
-
-  // Required for display of values in readonly mode - Issues with nested forms
-
-  updateValue(value, flags = {}) {
-    if(this.refs.mtvhContact){
-      this.refs.mtvhContact.value = value;
-    }
-    return super.updateValue();
-  }
-
 
   // ========= switch between input modes
 
 
   mtvhContactDetailInitiate(element){
-    if (!(this.populateDropdown())){
-      this.switchToContactDetailFreetext(element)
-    }
-    else{
-      this.switchToContactDetailDropwdown(element);
+    if(this.refs.selectInput){ //Check for readonly mode
+      if (!(this.populateDropdown())){
+        this.switchToContactDetailFreetext(element)
+      }
+      else{
+        this.switchToContactDetailDropwdown(element);
+      }
     }
   }
 
@@ -153,6 +112,8 @@ export default class mtvhContactDetail extends (Input as any) {
     this.refs.inlineValidation.innerHTML = '';
     this.refs.existingDetailsDropdown.selectedIndex = 0;
   }
+
+  // ======= Dropdown =======
 
   getDropdownData(){
     return ['0123456', '789013456', '12390243']
@@ -204,4 +165,59 @@ export default class mtvhContactDetail extends (Input as any) {
   inputtedPhoneNumber(){
     return this.refs.newDetailsInput.value.replace(/\W+/g, '');
   }
+
+  //////////////////////////////// Formio functions
+
+  updateValue(value, flags = {}) {
+    if(this.refs.mtvhContact){
+      this.refs.mtvhContact.value = value;
+    }
+    return super.updateValue();
+  }
+  
+  getValue() {
+    if(this.refs.mtvhContact){
+      return this.refs.mtvhContact.value;
+    }
+  }
+
+  //////////////////////////// Formio functions not required
+  
+  /*
+  detach() {
+    return super.detach();
+  }
+
+  destroy() {
+    return super.destroy();
+  }
+
+  normalizeValue(value, flags = {}) {
+    return super.normalizeValue(value, flags);
+  }
+  
+  getValueAt(index) {
+    return super.getValueAt(index);
+  }
+
+  setValue(value, flags = {}) {
+    return super.setValue(value, flags);
+  }
+
+  setValueAt(index, value, flags = {}) {
+    return super.setValueAt(index, value, flags);
+  }
+  */
+
+  //////////////////////////// Formio functions amended
+  /*
+  getValue() {
+    return super.getValue();
+  }
+
+  updateValue(value, flags = {}) {
+    return super.updateValue(value, flags);
+  }
+  */
+ 
 }
