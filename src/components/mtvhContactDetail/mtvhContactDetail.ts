@@ -58,11 +58,13 @@ export default class mtvhContactDetail extends (Input as any) {
       selectInput: 'single',
     });
 
-    this.addEventListener(this.refs.switchToFreetext, 'click', () => {
+    this.addEventListener(this.refs.switchToFreetext, 'click', (event) => {
+      event.preventDefault();
       this.switchToContactDetailFreetext(element);
     });
 
-    this.addEventListener(this.refs.switchToDropdown, 'click', () => {
+    this.addEventListener(this.refs.switchToDropdown, 'click', (event) => {
+      event.preventDefault();
       this.switchToContactDetailDropdown(element);
     });
 
