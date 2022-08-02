@@ -196,50 +196,10 @@ export default class mtvhContactDetail extends (Input as any) {
     }
     return super.updateValue();
   }
-  
+
   getValue() {
     if(this.refs.mtvhContact){
       return this.refs.mtvhContact.value;
     }
   }
-
-  //////////////////////////// Formio functions not required
-  
-  /*
-  detach() {
-    return super.detach();
-  }
-
-  destroy() {
-    return super.destroy();
-  }
-
-  normalizeValue(value, flags = {}) {
-    return super.normalizeValue(value, flags);
-  }
-  
-  getValueAt(index) {
-    return super.getValueAt(index);
-  }
-
-  setValue(value, flags = {}) {
-    return super.setValue(value, flags);
-  }
-
-  setValueAt(index, value, flags = {}) {
-    return super.setValueAt(index, value, flags);
-  }
-  */
-
-  //////////////////////////// Formio functions amended
-  /*
-  getValue() {
-    return super.getValue();
-  }
-
-  updateValue(value, flags = {}) {
-    return super.updateValue(value, flags);
-  }
-  */
- 
 }
